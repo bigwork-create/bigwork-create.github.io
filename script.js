@@ -77,10 +77,18 @@
     // Captura de pantalla
     var cap = el('div', { clase: 'tarjeta__captura' });
     if (item.capturas && item.capturas.length) {
-      cap.appendChild(el('img', {
+      var img = el('img', {
         src: item.capturas[0], alt: 'Captura de pantalla de ' + item.nombre,
         loading: 'lazy', decoding: 'async', width: '640', height: '360'
-      }));
+      });
+      // Capturas verticales (de teléfono): se muestran completas, sin recortar
+      img.addEventListener('load', function () {
+        if (img.naturalHeight > img.naturalWidth) cap.classList.add('tarjeta__captura--vertical');
+      });
+      cap.appendChild(el('a', {
+        clase: 'tarjeta__captura-enlace', href: item.capturas[0], target: '_blank', rel: 'noopener',
+        title: 'Ver captura en tamaño completo'
+      }, [img]));
     } else {
       var sc = el('div', { clase: 'sin-captura' });
       sc.innerHTML = ICONO_IMG;
@@ -103,7 +111,9 @@
       el('div', null, [
         el('h3', { clase: 'tarjeta__nombre', id: 't-' + item.id, texto: item.nombre }),
         el('div', { clase: 'tarjeta__meta' }, [
-          el('span', { clase: 'version', texto: item.version && item.version !== '—' ? 'v' + item.version : 'Versión por definir' })
+          el('span', { clase: 'version', texto: item.version && item.version !== '—' ? 'v' + item.version : 'Versión por definir' }),
+          item.tamano ? el('span', { clase: 'tarjeta__sep', 'aria-hidden': 'true', texto: '·' }) : null,
+          item.tamano ? el('span', { texto: item.tamano }) : null
         ])
       ])
     ]);
@@ -115,6 +125,25 @@
     (item.plataformas || []).forEach(function (p) { ins.appendChild(insigniaPlataforma(p)); });
     (item.tecnologias || []).forEach(function (t) { ins.appendChild(el('span', { clase: 'insignia insignia--tec', texto: t })); });
     cuerpo.appendChild(ins);
+
+    if (item.requisitos) {
+      cuerpo.appendChild(el('p', { clase: 'tarjeta__req' }, [
+        el('strong', { texto: 'Requiere: ' }), document.createTextNode(item.requisitos)
+      ]));
+    }
+    if (item.permisos && item.permisos.length) {
+      var lista = el('ul', { clase: 'detalle__lista' });
+      item.permisos.forEach(function (t) { lista.appendChild(el('li', { texto: t })); });
+      cuerpo.appendChild(el('details', { clase: 'detalle' }, [
+        el('summary', { texto: 'Permisos y para qué se usan' }), lista
+      ]));
+    }
+    if (item.sha256) {
+      cuerpo.appendChild(el('details', { clase: 'detalle' }, [
+        el('summary', { texto: 'Verificar archivo (SHA-256)' }),
+        el('code', { clase: 'detalle__hash', texto: item.sha256 })
+      ]));
+    }
 
     // Botón de descarga
     if (!item.proximamente) {
@@ -132,6 +161,12 @@
         if (/\.(apk|zip|exe|deb|appimage|msi|tar\.gz)$/i.test(item.descarga)) a.setAttribute('download', '');
       }
       cuerpo.appendChild(a);
+      if (item.virustotal) {
+        cuerpo.appendChild(el('a', {
+          clase: 'enlace-vt', href: item.virustotal, target: '_blank', rel: 'noopener',
+          texto: 'Ver análisis en VirusTotal'
+        }));
+      }
     } else {
       cuerpo.appendChild(el('span', { clase: 'btn btn--secundario btn--bloque', 'aria-disabled': 'true', texto: 'Muy pronto' }));
     }
