@@ -140,7 +140,8 @@
     }
     // Galería: todas las capturas en miniatura (solo si hay más de una)
     if (item.capturas && item.capturas.length > 1) {
-      var galeria = el('div', { clase: 'galeria' });
+      // Software de escritorio: capturas horizontales (no recortarlas como las de teléfono)
+      var galeria = el('div', { clase: esApp ? 'galeria' : 'galeria galeria--horizontal' });
       item.capturas.forEach(function (src, i) {
         galeria.appendChild(el('a', {
           clase: 'galeria__item', href: src, target: '_blank', rel: 'noopener',

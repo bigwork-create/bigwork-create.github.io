@@ -224,6 +224,8 @@ p { margin: 0 0 1rem; }
 .galeria__item { display: block; border: 1px solid var(--borde); border-radius: 8px; overflow: hidden; background: var(--superficie); }
 .galeria__item:hover { border-color: var(--acento); }
 .galeria__item img { width: 100%; height: auto; aspect-ratio: 9 / 20; object-fit: cover; }
+.galeria--horizontal { grid-template-columns: repeat(2, 1fr); }
+.galeria--horizontal .galeria__item img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; }
 .detalle__hash { display: block; padding: .6rem .75rem; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: .78rem; color: var(--texto-suave); word-break: break-all; user-select: all; }
 .enlace-vt { align-self: center; font-size: .85rem; font-weight: 600; }
 

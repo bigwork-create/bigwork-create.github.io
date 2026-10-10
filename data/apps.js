@@ -131,15 +131,28 @@ window.CATALOGO = {
     {
       id: "registro-asistencia",
       nombre: "Registro de Asistencia Empresarial",
-      descripcion: "Marca la asistencia del personal por DNI. Funciona sin internet y guarda todo en una base de datos local.",
+      descripcion: "Carga tu padrón desde CSV, Excel o Word, abre reuniones y marca la asistencia buscando por nombre o DNI. Calcula el quórum y genera el acta en PDF, Excel o CSV. Funciona sin internet y los datos se quedan en tu computadora.",
       categoria: "Gestión",
-      version: "1.0.0", /* EDITA: versión real */
-      plataformas: ["Windows", "Linux"],
+      version: "2.0.0",
+      plataformas: ["Windows"],
+      requisitos: "Windows 10 o superior (64 bits)",
+      tamano: "46.4 MB",
       icono: "assets/icons/asistencia.svg",
-      capturas: ["assets/screens/captura-asistencia.svg"],
+      capturas: [
+        "assets/screens/registro-asistencia-inicio.webp",
+        "assets/screens/registro-asistencia-tomar.webp"
+      ],
       video: null,
-      descarga: "#", /* EDITA: enlace al .zip en GitHub Releases */
-      tecnologias: ["Python", "PyQt6", "SQLite", "Sin conexión"]
+      descarga: "https://github.com/bigwork-create/registro-asistencia-desktop/releases/download/v2.0.0/RegistroAsistencia.exe",
+      textoBoton: "Descargar para Windows (.exe)",
+      sha256: "7d1d2abd6f4d5d19a9a1d4043f079dd3a66e56acad6408d958637aad844a4a80",
+      virustotal: null,
+      permisos: [
+        "No necesita instalarse ni pide permisos de administrador: se abre con doble clic.",
+        "Guarda la base de datos solo en tu computadora, en la carpeta %APPDATA%\\RegistroAsistencia.",
+        "Windows SmartScreen puede mostrar un aviso porque el programa no está firmado: elige «Más información» y luego «Ejecutar de todas formas»."
+      ],
+      tecnologias: ["Python", "PySide6 (Qt)", "SQLite", "Sin conexión"]
     },
     {
       id: "proximamente-1",
