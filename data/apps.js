@@ -96,6 +96,24 @@ window.CATALOGO = {
         "Internet y estado de la red: los agrega automáticamente la librería de escaneo ML Kit de Google; el código de la app no usa internet."
       ],
       tecnologias: ["Escáner QR", "CSV"]
+    },
+    {
+      id: "lectordoc",
+      nombre: "Lector Doc",
+      descripcion: "Lee PDF, TXT, CSV e imágenes sin internet, y convierte imágenes a PDF, TXT a PDF y PDF a PNG. Tus archivos se quedan en tu teléfono.",
+      categoria: "Utilidades",
+      version: "1.0",
+      plataformas: ["Android"],
+      requisitos: "Android 8.0 o superior",
+      tamano: "19.8 MB",
+      icono: "assets/icons/lectordoc.png",
+      capturas: [],
+      video: null,
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/lectordoc-v1.0/LectorDoc-1.0.apk",
+      sha256: "d137ca44f47d036dea155a1ec80d17fa20b53b231e997268f498ee0f569c7d12",
+      virustotal: null,
+      permisos: ["No pide permisos especiales."],
+      tecnologias: ["Sin conexión", "PDF"]
     }
   ],
 
