@@ -138,6 +138,22 @@
         el('summary', { texto: 'Permisos y para qué se usan' }), lista
       ]));
     }
+    // Galería: todas las capturas en miniatura (solo si hay más de una)
+    if (item.capturas && item.capturas.length > 1) {
+      var galeria = el('div', { clase: 'galeria' });
+      item.capturas.forEach(function (src, i) {
+        galeria.appendChild(el('a', {
+          clase: 'galeria__item', href: src, target: '_blank', rel: 'noopener',
+          title: 'Ver captura ' + (i + 1) + ' en tamaño completo'
+        }, [el('img', {
+          src: src, alt: 'Captura ' + (i + 1) + ' de ' + item.nombre,
+          loading: 'lazy', decoding: 'async', width: '135', height: '300'
+        })]));
+      });
+      cuerpo.appendChild(el('details', { clase: 'detalle' }, [
+        el('summary', { texto: 'Capturas de pantalla (' + item.capturas.length + ')' }), galeria
+      ]));
+    }
     if (item.sha256) {
       cuerpo.appendChild(el('details', { clase: 'detalle' }, [
         el('summary', { texto: 'Verificar archivo (SHA-256)' }),
@@ -241,10 +257,14 @@
         allowfullscreen: ''
       }));
     } else {
-      var v = el('video', { src: item.video.valor, controls: '', autoplay: '', playsinline: '', preload: 'metadata' });
+      var attrs = { src: item.video.valor, controls: '', autoplay: '', playsinline: '', muted: '', preload: 'metadata' };
+      if (item.video.poster) attrs.poster = item.video.poster;
+      var v = el('video', attrs);
       v.muted = true;
       modalCuerpo.appendChild(v);
     }
+    // Videos verticales (de teléfono): ventana angosta y alta
+    modal.classList.toggle('modal--vertical', !!item.video.vertical);
     if (typeof modal.showModal === 'function') modal.showModal();
     else modal.setAttribute('open', '');
     document.getElementById('modalCerrar').focus();

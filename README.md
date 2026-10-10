@@ -60,13 +60,15 @@ Abre `data/apps.js`. Hay dos listas: `aplicaciones` (Android) y `software`
 }
 ```
 
-- Las apps publicadas son Mebusco, MineB y PuenteApp Asistencia. Usa `ejemplo: true` solo para tarjetas de muestra.
+- Las apps publicadas son Mebusco, MineB, PuenteApp Asistencia y Lector Doc. Usa `ejemplo: true` solo para tarjetas de muestra.
 - **VirusTotal:** si `virustotal` tiene un enlace (ej. `"https://www.virustotal.com/gui/file/SHA256_DEL_APK"`), aparece
   "Ver análisis en VirusTotal" debajo del botón de descarga. Con `null` no se muestra nada.
 - **Permisos:** escribe un texto por permiso explicando para qué se usa. Con `null` o `[]` no se muestra la lista.
 - **SHA-256:** en Linux lo obtienes con `sha256sum archivo.apk`.
 - Las capturas verticales (de teléfono) se muestran completas, sin recortar.
 - Si `descarga` es `"#"`, el botón aparece desactivado.
+- Si pones varias capturas, la primera se ve en la tarjeta y todas aparecen en la galería desplegable **"Capturas de pantalla"**. Conviene usar `.webp` de unos 540 px de ancho para que la página cargue rápido.
+- **Video mp4 vertical:** añade `poster: "assets/videos/portada.webp"` (imagen que se ve antes de reproducir) y `vertical: true` para que la ventana del video sea alta, como en Lector Doc.
 - **Video:** usa `{ tipo: "youtube", valor: "abc123XYZ" }` (el ID es lo que va después de `v=` en el enlace de YouTube; puede ser un video "no listado") o `{ tipo: "mp4", valor: "assets/videos/demo.mp4" }` para un clip corto (ideal menos de 10 MB). `assets/videos/demo-ejemplo.mp4` es solo un video de prueba: bórralo cuando pongas los tuyos.
 - Cuida las comas: cada `{ ... }` va separado por una coma.
 
@@ -104,7 +106,7 @@ python3 -m http.server 8000
 GitHub Pages no admite archivos de más de 100 MB y no es buena idea guardar los APK en el repositorio. Mejor:
 
 Los APK actuales están publicados como Releases de este mismo repositorio
-(`bigwork-create.github.io`), una por app, con etiquetas `mebusco-v1.0`, `mineb-v1.0` y `puenteapp-v1.0`.
+(`bigwork-create.github.io`), una por app, con etiquetas `mebusco-v1.0`, `mineb-v1.0`, `puenteapp-v1.0` y `lectordoc-v1.0`.
 
 1. En el repositorio ve a **Releases → Draft a new release**.
 2. Pon una etiqueta nueva (ej. `mebusco-v1.1`), arrastra el `.apk` (o el `.zip` del programa de escritorio) y publica.

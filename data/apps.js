@@ -13,8 +13,13 @@
      plataformas   Lista: ["Android"] o ["Windows", "Linux"]
      icono         Ruta a la imagen del icono (SVG o PNG)
      capturas      Lista de rutas a capturas de pantalla (puede ir vacía [])
+                   La primera va en la tarjeta; si hay más de una aparece
+                   la galería desplegable "Capturas de pantalla"
      video         null, o { tipo: "youtube", valor: "ID_DEL_VIDEO" }
                    o { tipo: "mp4", valor: "assets/videos/archivo.mp4" }
+                   En mp4 puedes añadir (opcional) poster: "imagen.webp"
+                   (portada antes de reproducir) y vertical: true
+                   (video grabado en vertical, de teléfono)
      descarga      Enlace de descarga (APK, .exe, .zip…). "#" = sin enlace aún
      textoBoton    (opcional) Texto del botón. Por defecto "Descargar APK"
                    en apps y "Descargar" en software
@@ -107,8 +112,13 @@ window.CATALOGO = {
       requisitos: "Android 8.0 o superior",
       tamano: "19.8 MB",
       icono: "assets/icons/lectordoc.png",
-      capturas: [],
-      video: null,
+      capturas: [
+        "assets/screens/lectordoc-inicio.webp",
+        "assets/screens/lectordoc-pdf.webp",
+        "assets/screens/lectordoc-csv.webp",
+        "assets/screens/lectordoc-busqueda.webp"
+      ],
+      video: { tipo: "mp4", valor: "assets/videos/lectordoc-demo.mp4", poster: "assets/videos/lectordoc-demo-poster.webp", vertical: true },
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/lectordoc-v1.0/LectorDoc-1.0.apk",
       sha256: "d137ca44f47d036dea155a1ec80d17fa20b53b231e997268f498ee0f569c7d12",
       virustotal: null,
