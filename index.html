@@ -138,15 +138,25 @@
       </div>
     </section>
 
-    <!-- COMENTARIOS (se editan en data/comentarios.js) -->
+    <!-- COMENTARIOS: los publicados desde la web (Firestore, assets/js/comentarios.js)
+         y los que agregas a mano en data/comentarios.js -->
     <section class="seccion" id="comentarios" aria-labelledby="tituloComentarios">
       <div class="contenedor">
         <div class="seccion__cabeza">
           <h2 id="tituloComentarios">Comentarios</h2>
           <p>Lo que opinan quienes usan estas apps.</p>
         </div>
+        <div class="comentarios__barra">
+          <!-- Se muestra cuando carga assets/js/comentarios.js -->
+          <button type="button" class="btn btn--primario" id="btnComentar" hidden>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            <span>Comentar</span>
+          </button>
+          <p class="comentarios__estado" id="estadoComentarios" role="status" aria-live="polite"></p>
+        </div>
         <div class="comentarios" id="listaComentarios"></div>
         <p class="vacio" id="vacioComentarios" hidden>Aún no hay comentarios.</p>
+        <div class="comentarios__mas"><button type="button" class="btn btn--secundario" id="masComentarios" hidden>Ver más comentarios</button></div>
       </div>
     </section>
 
@@ -206,5 +216,6 @@
   <script src="data/comentarios.js"></script>
   <script src="script.js"></script>
   <script src="compartir.js"></script>
+  <script type="module" src="assets/js/comentarios.js"></script>
 </body>
 </html>

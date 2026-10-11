@@ -1,0 +1,46 @@
+rules_version = '2';
+
+// Reglas de seguridad de Firestore para los comentarios de Hubert Apps (sección "Comentarios").
+// - Cualquiera puede LEER los comentarios (son públicos).
+// - Cualquiera puede CREAR uno (sin cuenta ni sesión), pero solo con los campos y largos
+//   permitidos, sin enlaces y con la fecha del servidor.
+// - Nadie puede EDITAR comentarios. Solo Hubert (bigwork4002@gmail.com, con Google) puede BORRARLOS.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function esAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'bigwork4002@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    // Sin enlaces: rechaza "http", "www." y "://" en cualquier parte (sin distinguir mayúsculas).
+    function sinEnlaces(t) {
+      return !t.lower().matches('(?s).*(http|www[.]|://).*');
+    }
+
+    match /comentarios/{comentarioId} {
+      allow read: if true;
+
+      allow create: if request.resource.data.keys().hasOnly(['nombre', 'texto', 'creado'])
+        && request.resource.data.keys().hasAll(['nombre', 'texto', 'creado'])
+        && request.resource.data.nombre is string
+        && request.resource.data.nombre.size() >= 1
+        && request.resource.data.nombre.size() <= 30
+        && sinEnlaces(request.resource.data.nombre)
+        && request.resource.data.texto is string
+        && request.resource.data.texto.size() >= 3
+        && request.resource.data.texto.size() <= 500
+        && sinEnlaces(request.resource.data.texto)
+        && request.resource.data.creado == request.time;
+
+      allow update: if false;
+      allow delete: if esAdmin();
+    }
+
+    // Todo lo demás, cerrado.
+    match /{documento=**} {
+      allow read, write: if false;
+    }
+  }
+}

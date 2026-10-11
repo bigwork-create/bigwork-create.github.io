@@ -1,10 +1,12 @@
 /* =====================================================================
    COMENTARIOS DE HUBERT APPS
    ---------------------------------------------------------------------
-   Lista de comentarios que se muestran en la sección "Comentarios" de la
-   página principal. Los agregas tú a mano (por ejemplo, opiniones que te
-   enviaron y que la persona aceptó publicar). Si la lista está vacía, la
-   página muestra "Aún no hay comentarios."
+   Comentarios que agregas tú a mano (por ejemplo, opiniones que te enviaron
+   y que la persona aceptó publicar). Se muestran en la sección "Comentarios"
+   junto con los que la gente publica desde la web (esos se guardan en
+   Firestore y se borran desde admin-comentarios.html). Si Firestore no
+   responde, la página muestra al menos estos. Si no hay ninguno, aparece
+   "Aún no hay comentarios."
 
    Campos de cada comentario:
      nombre   Nombre o apodo que eligió la persona, o "Anónimo"

@@ -56,16 +56,17 @@
     <article class="legal" aria-labelledby="tituloPagina">
       <h1 id="tituloPagina">Política de privacidad</h1>
       <p class="legal__fecha">Última actualización: 11 de octubre de 2026</p>
-      <p>Aquí te explico, en palabras sencillas, qué pasa con tus datos cuando visitas esta web y cuando usas mis apps. Lo resumo así: <strong>esta web no recoge datos personales ni usa cookies</strong>, y <strong>mis apps no me envían tus datos</strong>.</p>
+      <p>Aquí te explico, en palabras sencillas, qué pasa con tus datos cuando visitas esta web y cuando usas mis apps. Lo resumo así: <strong>esta web no usa cookies ni estadísticas de visitas</strong>, <strong>solo guarda datos si decides publicar un comentario</strong> (y puedes hacerlo como Anónimo), y <strong>mis apps no me envían tus datos</strong>.</p>
 
       <h2>1. Quién es el responsable</h2>
       <p>Esta web, <strong>Hubert Apps</strong> (<a href="https://hubert-app-001.web.app/" target="_blank" rel="noopener">hubert-app-001.web.app</a>), la mantiene <strong>Hubert</strong>, desarrollador independiente en Perú. Puedes escribirme a <a href="mailto:bigwork4002@gmail.com">bigwork4002@gmail.com</a>. Aplico la Ley N.º 29733, Ley de Protección de Datos Personales, y su reglamento (Decreto Supremo N.º 016-2024-JUS).</p>
 
       <h2>2. Qué datos recoge esta web</h2>
-      <p><strong>Ninguno.</strong> No hay registro de usuarios, formularios, comentarios, publicidad ni herramientas de estadísticas como Google Analytics. No te pido tu nombre, tu correo ni tu DNI.</p>
+      <p><strong>Si solo visitas la web, ninguno.</strong> No hay registro de usuarios, publicidad ni herramientas de estadísticas como Google Analytics. No te pido tu nombre, tu correo ni tu DNI.</p>
+      <p>La única parte que guarda datos son los <strong>comentarios</strong>, y solo si tú decides publicar uno. Te lo explico en el <a href="#comentarios">punto 6</a>.</p>
 
       <h2>3. Cookies y almacenamiento en tu navegador</h2>
-      <p>Esta web <strong>no usa cookies</strong>. Solo guarda dos cosas en el almacenamiento local de tu navegador:</p>
+      <p>Esta web <strong>no usa cookies</strong>. Solo guarda estas cosas en el almacenamiento de tu navegador:</p>
       <div class="legal__tabla-wrap">
         <table>
           <thead>
@@ -74,10 +75,11 @@
           <tbody>
             <tr><td><code>tema</code></td><td>Recuerda si elegiste el tema claro u oscuro.</td><td>Hasta que la borres desde tu navegador</td></tr>
             <tr><td><code>descargas:…</code></td><td>Guarda el número de descargas de cada app que muestra la página, para no volver a pedírselo a GitHub en cada visita.</td><td>Se renueva cada hora; queda hasta que la borres desde tu navegador</td></tr>
+            <tr><td><code>firebase-heartbeat-database</code> (IndexedDB)</td><td>La crea la biblioteca de Firebase (de Google) cuando la página carga o publica comentarios. Guarda solo los días en que se usó y la versión de la biblioteca, y Google la recibe junto con las consultas para saber qué versiones de su software se usan. No guarda tu apodo, lo que escribes ni otros datos tuyos.</td><td>Los últimos 30 días como máximo; queda hasta que borres los datos del sitio en tu navegador</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Esos datos se quedan en tu navegador, nunca se envían a ningún servidor y no son datos personales. Por eso la web no muestra un aviso de cookies.</p>
+      <p>El tema y el contador de descargas se quedan en tu navegador y nunca se envían a ningún servidor. Ninguno de estos datos te identifica. Publicar un comentario <strong>no guarda nada en tu navegador</strong>: la web no recuerda tu apodo ni tu elección, y cada vez que abres la ventana para comentar empieza en blanco. Por eso la web no muestra un aviso de cookies.</p>
 
       <h2>4. Datos técnicos del alojamiento</h2>
       <p>La web está alojada en <strong>Firebase Hosting</strong>, un servicio de Google. Como cualquier servidor web, para entregarte la página y protegerla de ataques puede procesar datos técnicos de la conexión, como tu dirección IP, tu navegador y la página pedida. Yo no uso esos datos para identificarte. Google los trata según su <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">política de privacidad</a>, y puede procesarlos en servidores fuera del Perú.</p>
@@ -86,7 +88,22 @@
       <p>Los archivos de las apps (APK) y del programa para Windows (.zip) están alojados en <strong>GitHub</strong>. Al pulsar un botón de descarga, tu navegador se conecta directamente a GitHub, que recibe datos técnicos como tu dirección IP. Eso se rige por la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">declaración de privacidad de GitHub</a>. Yo no recibo datos de quién descarga.</p>
       <p>Además, para mostrar el contador de descargas de cada app (por ejemplo, «↓ 12 descargas»), la página principal le pide ese número a la <strong>API pública de GitHub</strong> (<code>api.github.com</code>). Es una consulta anónima: no envía cookies ni datos tuyos, pero, como en cualquier conexión a internet, GitHub recibe tu dirección IP y datos técnicos de tu navegador. Eso también se rige por la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">declaración de privacidad de GitHub</a>. Yo no recibo esos datos. El número solo cuenta cuántas veces se bajó cada archivo, no quién lo bajó.</p>
 
-      <h2>6. Las apps y el software: tus datos se quedan contigo</h2>
+      <h2 id="comentarios">6. Comentarios</h2>
+      <p>En la sección <a href="index.html#comentarios">Comentarios</a> puedes dejar tu opinión. Es <strong>voluntario</strong>: si no comentas, no se guarda nada tuyo. Antes de escribir eliges si apareces como <strong>Anónimo</strong> o con un <strong>apodo</strong> que escribes tú. No te pido nombre real, correo, teléfono ni cuenta, y no se crea ninguna sesión.</p>
+      <h3>Qué se guarda</h3>
+      <ul>
+        <li>El <strong>apodo</strong>, si elegiste usar uno (si no, se guarda «Anónimo»).</li>
+        <li>El <strong>texto</strong> del comentario.</li>
+        <li>La <strong>fecha y hora</strong> de publicación.</li>
+      </ul>
+      <p>Como en cualquier conexión a internet, al publicar o leer comentarios <strong>Google (Firebase) procesa datos técnicos como tu dirección IP</strong> para entregar el servicio y protegerlo de abusos. Yo no veo tu IP. Los comentarios se guardan en <strong>Cloud Firestore</strong>, en servidores de Google en São Paulo (Brasil), así que tus datos salen del Perú. Google los trata según los <a href="https://firebase.google.com/support/privacy?hl=es-419" target="_blank" rel="noopener">términos de privacidad de Firebase</a> y su <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">política de privacidad</a>.</p>
+      <h3>Quién lo ve</h3>
+      <p>El apodo (o «Anónimo»), el texto y la fecha son <strong>públicos</strong>: cualquiera que visite la web los puede leer. No se guarda nada más junto al comentario. Publicas con tu consentimiento y aceptando las <a href="terminos.html#comentarios">reglas de comentarios</a>.</p>
+      <h3>Cuánto tiempo y cómo borrarlo</h3>
+      <p>Los comentarios se guardan <strong>hasta que se borren</strong>: los borro yo si no cumplen las reglas, o cuando tú me lo pidas. Como no hay cuentas, no puedes editar ni borrar tu comentario tú mismo: escríbeme a <a href="mailto:bigwork4002@gmail.com">bigwork4002@gmail.com</a> con la fecha aproximada y el texto, y lo borraré.</p>
+      <p><strong>No publiques datos personales</strong>, tuyos ni de otras personas (nombres reales, DNI, teléfonos, correos, direcciones). Si alguien publica datos tuyos, avísame y los borro.</p>
+
+      <h2>7. Las apps y el software: tus datos se quedan contigo</h2>
       <p>Las apps (Mebusco, Modo Noche, PuenteApp Asistencia, Lector Doc y Linterna) y el programa Registro de Asistencia Empresarial para Windows funcionan <strong>sin conexión a internet</strong> y guardan todo <strong>solo en tu dispositivo</strong>:</p>
       <ul>
         <li>Los padrones que cargas en Mebusco o en PuenteApp (con nombres y DNI) se quedan en tu teléfono.</li>
@@ -99,7 +116,7 @@
       <h3>Una excepción: ML Kit en PuenteApp Asistencia</h3>
       <p>PuenteApp usa <strong>ML Kit</strong>, la biblioteca de Google para leer códigos QR. La lectura se hace dentro del teléfono: <strong>las imágenes de la cámara y el contenido de los códigos no salen de tu equipo</strong>. Pero ML Kit puede enviar a Google métricas de uso y diagnóstico (por ejemplo, el modelo del teléfono, la versión de la app y datos de rendimiento y errores), como explica Google en <a href="https://developers.google.com/ml-kit/android-data-disclosure" target="_blank" rel="noopener">su aviso sobre datos de ML Kit</a>. Yo no recibo esas métricas.</p>
 
-      <h2>7. Si cargas datos de otras personas</h2>
+      <h2>8. Si cargas datos de otras personas</h2>
       <p>Cuando cargas un padrón con nombres y DNI de otras personas, tú decides qué datos usas y para qué. Por eso, <strong>tú eres el responsable de esos datos</strong>. Te recomiendo:</p>
       <ul>
         <li>Usa solo datos que tengas derecho a usar, por ejemplo los de tu organización, con un fin claro como tomar asistencia.</li>
@@ -108,8 +125,8 @@
         <li>Borra el padrón y los archivos exportados cuando ya no los necesites. Las apps tienen opciones para limpiar el padrón.</li>
       </ul>
 
-      <h2>8. Tus derechos</h2>
-      <p>Según la Ley N.º 29733, tienes derecho de <strong>información</strong>, <strong>acceso</strong>, <strong>rectificación</strong>, <strong>cancelación</strong> (eliminación) y <strong>oposición</strong> sobre tus datos personales (derechos ARCO). Esta web no guarda datos tuyos, pero si quieres consultar algo o ejercer alguno de estos derechos, escríbeme a <a href="mailto:bigwork4002@gmail.com">bigwork4002@gmail.com</a>. Te responderé dentro de los plazos del artículo 69 del reglamento:</p>
+      <h2>9. Tus derechos</h2>
+      <p>Según la Ley N.º 29733, tienes derecho de <strong>información</strong>, <strong>acceso</strong>, <strong>rectificación</strong>, <strong>cancelación</strong> (eliminación) y <strong>oposición</strong> sobre tus datos personales (derechos ARCO). Si visitas la web sin comentar, no guardo datos tuyos. Si publicaste un comentario, puedes pedir verlo, corregirlo o borrarlo. Para consultar algo o ejercer alguno de estos derechos, escríbeme a <a href="mailto:bigwork4002@gmail.com">bigwork4002@gmail.com</a>. Te responderé dentro de los plazos del artículo 69 del reglamento:</p>
       <ul>
         <li><strong>Información:</strong> hasta 8 días hábiles.</li>
         <li><strong>Acceso:</strong> hasta 20 días hábiles.</li>
@@ -117,10 +134,10 @@
       </ul>
       <p>Si crees que no se respetaron tus derechos, puedes presentar un reclamo ante la <strong>Autoridad Nacional de Protección de Datos Personales</strong> del Ministerio de Justicia y Derechos Humanos (<a href="https://www.gob.pe/anpd" target="_blank" rel="noopener">gob.pe/anpd</a>).</p>
 
-      <h2>9. Menores de edad</h2>
-      <p>Esta web y las apps no están dirigidas a menores de 14 años y no les piden datos personales. Si eres menor de 14 años, usa las apps con ayuda de tu madre, padre o tutor.</p>
+      <h2>10. Menores de edad</h2>
+      <p>Esta web y las apps no están dirigidas a menores de 14 años y no les piden datos personales. Si eres menor de 14 años, usa las apps con ayuda de tu madre, padre o tutor, y no publiques comentarios sin su permiso. Si me entero de que un menor de 14 años publicó un comentario, lo borraré.</p>
 
-      <h2>10. Cambios en esta política</h2>
+      <h2>11. Cambios en esta política</h2>
       <p>Si cambio algo importante, por ejemplo si algún día agrego estadísticas de visitas, actualizaré esta página y la fecha de “Última actualización” antes de hacerlo.</p>
 
       <p class="legal__nota">Esta página es información general sobre cómo funcionan la web y las apps, y no es asesoría legal.</p>

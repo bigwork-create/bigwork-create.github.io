@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /admin-comentarios.html
 
 Sitemap: https://hubert-app-001.web.app/sitemap.xml
