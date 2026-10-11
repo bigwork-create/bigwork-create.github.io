@@ -334,3 +334,14 @@ p { margin: 0 0 1rem; }
   0%, 35% { border-color: var(--acento); box-shadow: 0 0 0 3px color-mix(in srgb, var(--acento) 45%, transparent), var(--sombra); }
   100% { box-shadow: none; }
 }
+
+/* Comentarios (data/apps.js → comentarios) e invitación a opinar */
+.comentarios { list-style: none; margin: 0; padding: .6rem .75rem .75rem; display: grid; gap: .5rem; }
+.comentario { padding: .5rem .65rem; border: 1px solid var(--borde); border-radius: 8px; background: var(--superficie); }
+.comentario__cabeza { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .55rem; }
+.comentario__nombre { color: var(--texto); overflow-wrap: anywhere; }
+.comentario__estrellas { color: var(--aviso); letter-spacing: .05em; white-space: nowrap; }
+.comentario__fecha { margin-left: auto; font-size: .78rem; color: var(--texto-suave); }
+.comentario__texto { margin: .25rem 0 0; color: var(--texto-suave); white-space: pre-line; overflow-wrap: anywhere; }
+.tarjeta__opinar { margin: 0; text-align: center; font-size: .85rem; color: var(--texto-suave); }
+.tarjeta__opinar a { font-weight: 600; }
