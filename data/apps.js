@@ -43,17 +43,20 @@ window.CATALOGO = {
     {
       id: "mebusco",
       nombre: "Mebusco",
-      descripcion: "Consulta un padrón sin internet: importa tu lista desde un archivo CSV y busca a cualquier persona por DNI o por nombre. Los datos se quedan en tu teléfono.",
+      descripcion: "Consulta un padrón sin internet: importa un CSV y busca por DNI, apellido o nombre, aun con palabras incompletas. Reemplaza o agrega personas, y la ficha muestra también las columnas extra. Los datos se quedan en tu teléfono.",
       categoria: "Utilidades",
-      version: "1.0",
+      version: "2.0",
       plataformas: ["Android"],
       requisitos: "Android 8.0 o superior",
-      tamano: "10.6 MB",
+      tamano: "6.6 MB",
       icono: "assets/icons/mebusco.png",
-      capturas: [],
+      capturas: [
+        "assets/screens/mebusco-inicio.webp",
+        "assets/screens/mebusco-busqueda.webp"
+      ],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v1.0/Mebusco-1.0.apk",
-      sha256: "6bc70728d2ad3a9bfeba7c9ebd0fc91b68186ca6efd18d6f13f0873375ff38a0",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.0/Mebusco-2.0.apk",
+      sha256: "f8fc397e7c55de7490e213cc3568ac4ea099f84159174effe725e2d1a11ef6c5",
       virustotal: null,
       permisos: ["No pide permisos especiales."],
       tecnologias: ["Sin conexión"]
