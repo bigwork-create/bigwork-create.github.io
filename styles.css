@@ -336,11 +336,11 @@ p { margin: 0 0 1rem; }
 }
 
 /* ---------- Comentarios (data/comentarios.js) ---------- */
-.comentarios { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-@media (min-width: 620px) { .comentarios { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 980px) { .comentarios { grid-template-columns: repeat(3, 1fr); } }
-.comentario { padding: 1rem 1.1rem; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); box-shadow: var(--sombra); }
-.comentario__cabeza { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .25rem .75rem; margin-bottom: .4rem; }
+.comentarios { display: flex; flex-direction: column; max-width: 800px; margin: 0; padding: 0; list-style: none; }
+.comentario { position: relative; padding: .8rem 0 .8rem 1.4rem; border-bottom: 1px solid var(--borde); }
+.comentario:first-child { border-top: 1px solid var(--borde); }
+.comentario::before { content: "–"; position: absolute; left: .2rem; top: .8rem; color: var(--acento); font-weight: 700; }
+.comentario__cabeza { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .6rem; margin-bottom: .25rem; }
 .comentario__nombre { color: var(--texto); overflow-wrap: anywhere; }
 .comentario__fecha { font-size: .8rem; color: var(--texto-suave); }
 .comentario__texto { margin: 0; color: var(--texto-suave); white-space: pre-line; overflow-wrap: anywhere; }
@@ -349,7 +349,7 @@ p { margin: 0 0 1rem; }
 .comentarios__barra { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin: 0 0 1.25rem; }
 .comentarios__estado { margin: 0; color: var(--acento); font-weight: 600; }
 .comentarios__estado:empty { display: none; }
-.comentarios__mas { display: flex; justify-content: center; margin-top: 1.25rem; }
+.comentarios__mas { display: flex; justify-content: center; max-width: 800px; margin-top: 1.25rem; }
 .comentarios__mas:has(> [hidden]) { display: none; }
 
 /* Ventana "Escribir un comentario" */
