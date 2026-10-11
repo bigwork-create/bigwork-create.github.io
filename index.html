@@ -49,6 +49,7 @@
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#aplicaciones">Aplicaciones</a></li>
           <li><a href="#software">Software</a></li>
+          <li><a href="#comentarios">Comentarios</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -137,6 +138,18 @@
       </div>
     </section>
 
+    <!-- COMENTARIOS (se editan en data/comentarios.js) -->
+    <section class="seccion" id="comentarios" aria-labelledby="tituloComentarios">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <h2 id="tituloComentarios">Comentarios</h2>
+          <p>Lo que opinan quienes usan estas apps.</p>
+        </div>
+        <div class="comentarios" id="listaComentarios"></div>
+        <p class="vacio" id="vacioComentarios" hidden>Aún no hay comentarios.</p>
+      </div>
+    </section>
+
     <!-- CONTACTO -->
     <section class="seccion" id="contacto" aria-labelledby="tituloContacto">
       <div class="contenedor contacto">
@@ -190,6 +203,7 @@
   </dialog>
 
   <script src="data/apps.js"></script>
+  <script src="data/comentarios.js"></script>
   <script src="script.js"></script>
   <script src="compartir.js"></script>
 </body>

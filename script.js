@@ -340,6 +340,37 @@
   soft.forEach(function (s) { gridSoft.appendChild(crearTarjeta(s, 'soft')); });
   cargarDescargas();
 
+  /* ---------- Comentarios (data/comentarios.js) ---------- */
+  (function () {
+    var lista = document.getElementById('listaComentarios');
+    var vacio = document.getElementById('vacioComentarios');
+    if (!lista) return;
+    var formato;
+    try { var f = new Intl.DateTimeFormat('es-PE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }); formato = function (d) { return f.format(d); }; }
+    catch (e) { formato = function (d) { return d.toISOString().slice(0, 10); }; }
+    function fecha(s) {
+      var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || ''));
+      if (!m) return null;
+      var d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
+      return isNaN(d.getTime()) ? null : d;
+    }
+    var coms = (Array.isArray(window.COMENTARIOS) ? window.COMENTARIOS : []).filter(function (c) {
+      return c && String(c.texto || '').trim();
+    }).sort(function (a, b) { return String(b.fecha || '').localeCompare(String(a.fecha || '')); });
+    coms.forEach(function (c) {
+      var d = fecha(c.fecha);
+      lista.appendChild(el('article', { clase: 'comentario' }, [
+        el('div', { clase: 'comentario__cabeza' }, [
+          el('strong', { clase: 'comentario__nombre', texto: String(c.nombre || '').trim() || 'Anónimo' }),
+          d ? el('time', { clase: 'comentario__fecha', datetime: c.fecha, texto: formato(d) }) : null
+        ]),
+        el('p', { clase: 'comentario__texto', texto: String(c.texto).trim() })
+      ]));
+    });
+    lista.hidden = coms.length === 0;
+    vacio.hidden = coms.length > 0;
+  })();
+
   /* ---------- Estadísticas del hero ---------- */
   document.getElementById('statApps').textContent = apps.length;
   document.getElementById('statSoft').textContent = soft.filter(function (s) { return !s.proximamente; }).length;
@@ -428,7 +459,7 @@
         }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['inicio', 'aplicaciones', 'software', 'contacto'].forEach(function (id) {
+    ['inicio', 'aplicaciones', 'software', 'comentarios', 'contacto'].forEach(function (id) {
       var s = document.getElementById(id); if (s) obs.observe(s);
     });
   }

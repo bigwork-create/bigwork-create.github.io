@@ -334,3 +334,13 @@ p { margin: 0 0 1rem; }
   0%, 35% { border-color: var(--acento); box-shadow: 0 0 0 3px color-mix(in srgb, var(--acento) 45%, transparent), var(--sombra); }
   100% { box-shadow: none; }
 }
+
+/* ---------- Comentarios (data/comentarios.js) ---------- */
+.comentarios { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 620px) { .comentarios { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .comentarios { grid-template-columns: repeat(3, 1fr); } }
+.comentario { padding: 1rem 1.1rem; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); box-shadow: var(--sombra); }
+.comentario__cabeza { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .25rem .75rem; margin-bottom: .4rem; }
+.comentario__nombre { color: var(--texto); overflow-wrap: anywhere; }
+.comentario__fecha { font-size: .8rem; color: var(--texto-suave); }
+.comentario__texto { margin: 0; color: var(--texto-suave); white-space: pre-line; overflow-wrap: anywhere; }
