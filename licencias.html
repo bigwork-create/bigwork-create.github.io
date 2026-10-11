@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Licencias y verificación de descargas · Hubert Apps</title>
+  <meta name="description" content="Bibliotecas de código abierto que usan las apps de Hubert Apps, sus licencias, y cómo verificar que tus descargas son originales.">
+  <link rel="canonical" href="https://hubert-app-001.web.app/licencias.html">
+  <meta name="theme-color" content="#0f1420">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hubert Apps">
+  <meta property="og:title" content="Licencias y verificación de descargas · Hubert Apps">
+  <meta property="og:description" content="Bibliotecas de código abierto que usan las apps de Hubert Apps, sus licencias, y cómo verificar que tus descargas son originales.">
+  <meta property="og:url" content="https://hubert-app-001.web.app/licencias.html">
+  <meta property="og:image" content="https://hubert-app-001.web.app/assets/og-image.png">
+  <meta property="og:locale" content="es_PE">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="tema.js"></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera__fila">
+      <a class="marca" href="index.html" aria-label="Hubert Apps, ir al inicio">
+        <img src="assets/logo.svg" alt="" width="32" height="32">
+        <span class="marca__texto">Hubert Apps</span>
+      </a>
+
+      <button class="btn-icono menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navPrincipal" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <nav class="nav" id="navPrincipal" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#aplicaciones">Aplicaciones</a></li>
+          <li><a href="index.html#software">Software</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn-icono" id="temaToggle" aria-label="Cambiar a tema claro" title="Cambiar tema">
+        <svg class="ico-sol" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg class="ico-luna" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <article class="legal" aria-labelledby="tituloPagina">
+      <h1 id="tituloPagina">Licencias y verificación de descargas</h1>
+      <p class="legal__fecha">Última actualización: 11 de octubre de 2026</p>
+      <p>Mis apps usan bibliotecas de código abierto hechas por otras personas y empresas. Aquí está la lista de cada una, con su licencia y el enlace al texto completo. Cada app también muestra esta información dentro de ella: en <strong>Licencias</strong> (en el menú, en los ajustes o al final de la pantalla principal) y, en el programa de Windows, en <strong>Ayuda → Licencias de terceros</strong>.</p>
+
+      <nav class="legal__indice" aria-label="En esta página">
+        <strong>En esta página</strong>
+        <ul>
+          <li><a href="#propias">Licencia de mis apps y de esta web</a></li>
+          <li><a href="#android">Apps Android</a></li>
+          <li><a href="#windows">Registro de Asistencia (Windows)</a></li>
+          <li><a href="#textos">Textos completos de las licencias</a></li>
+          <li><a href="#verificar">Cómo verificar las descargas</a></li>
+        </ul>
+      </nav>
+
+      <h2 id="propias">Licencia de mis apps y de esta web</h2>
+      <ul>
+        <li><strong>Apps Android:</strong> gratis, para usar y compartir sin modificar. Detalles en los <a href="terminos.html">términos de uso</a>.</li>
+        <li><strong>Registro de Asistencia:</strong> código abierto con <a href="https://github.com/bigwork-create/registro-asistencia-desktop/blob/main/LICENSE" target="_blank" rel="noopener">licencia MIT</a>.</li>
+        <li><strong>Esta web:</strong> código con <a href="https://github.com/bigwork-create/bigwork-create.github.io/blob/main/LICENSE" target="_blank" rel="noopener">licencia MIT</a>. No usa bibliotecas, fuentes ni servicios de terceros.</li>
+      </ul>
+
+      <h2 id="android">Apps Android</h2>
+      <p>Casi todas las bibliotecas usan la licencia Apache 2.0, que permite incluirlas en apps gratuitas o de pago siempre que se muestre su aviso y el texto de la licencia.</p>
+
+      <h3 id="mebusco">Mebusco 2.0.1</h3>
+      <div class="legal__tabla-wrap">
+        <table>
+          <thead><tr><th scope="col">Biblioteca</th><th scope="col">Licencia</th><th scope="col">Proyecto</th></tr></thead>
+          <tbody>
+            <tr><td>AndroidX (Core, Activity, Lifecycle, SavedState, Annotation, Collection, Startup y otras)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Jetpack Compose (UI, Foundation, Material 3, Runtime, Animation)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Kotlin Standard Library<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/kotlin" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>kotlinx.coroutines<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>JetBrains Java Annotations<br><small>JetBrains s.r.o.</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/java-annotations" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Guava ListenableFuture<br><small>The Guava Authors</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/google/guava" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>kotlinx.serialization<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/Kotlin/kotlinx.serialization" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Room y SQLite de AndroidX<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/room" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Navigation Compose<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/navigation" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Material Icons para Compose<br><small>Google LLC</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/compose-material" target="_blank" rel="noopener">Sitio</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="modonoche">Modo Noche 1.1.1</h3>
+      <div class="legal__tabla-wrap">
+        <table>
+          <thead><tr><th scope="col">Biblioteca</th><th scope="col">Licencia</th><th scope="col">Proyecto</th></tr></thead>
+          <tbody>
+            <tr><td>AndroidX (Core, Activity, Lifecycle, SavedState, Annotation, Collection, Startup y otras)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Jetpack Compose (UI, Foundation, Material 3, Runtime, Animation)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Kotlin Standard Library<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/kotlin" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>kotlinx.coroutines<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>JetBrains Java Annotations<br><small>JetBrains s.r.o.</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/java-annotations" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Guava ListenableFuture<br><small>The Guava Authors</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/google/guava" target="_blank" rel="noopener">Sitio</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="puenteapp">PuenteApp Asistencia 1.0.1</h3>
+      <div class="legal__tabla-wrap">
+        <table>
+          <thead><tr><th scope="col">Biblioteca</th><th scope="col">Licencia</th><th scope="col">Proyecto</th></tr></thead>
+          <tbody>
+            <tr><td>AndroidX (Core, Activity, Lifecycle, SavedState, Annotation, Collection, Startup y otras)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Jetpack Compose (UI, Foundation, Material 3, Runtime, Animation)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Kotlin Standard Library<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/kotlin" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>kotlinx.coroutines<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>JetBrains Java Annotations<br><small>JetBrains s.r.o.</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/java-annotations" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Guava ListenableFuture<br><small>The Guava Authors</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/google/guava" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>kotlinx.serialization<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/Kotlin/kotlinx.serialization" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Room y SQLite de AndroidX<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/room" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Navigation Compose<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/navigation" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Material Icons para Compose<br><small>Google LLC</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/compose-material" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>CameraX<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/camera" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>AppCompat, Fragment y otras bibliotecas de AndroidX que usa CameraX<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Firebase Components y Firebase Encoders (usados por ML Kit)<br><small>Google LLC</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/firebase/firebase-android-sdk" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Google Data Transport (usado por ML Kit)<br><small>Google LLC</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/firebase/firebase-android-sdk" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>AutoValue Annotations<br><small>Google LLC</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/google/auto" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>javax.inject<br><small>The JSR-330 Expert Group</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/javax-inject/javax-inject" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>ML Kit Barcode Scanning (lector de códigos QR)<br><small>Google LLC</small></td><td><a href="https://developers.google.com/ml-kit/terms" target="_blank" rel="noopener">Términos del servicio de ML Kit (no es código abierto)</a></td><td><a href="https://developers.google.com/ml-kit/vision/barcode-scanning" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Servicios de Google Play (Basement, Base, Tasks) y ODML Image, usados por ML Kit<br><small>Google LLC</small></td><td><a href="https://developer.android.com/studio/terms" target="_blank" rel="noopener">Licencia del Android SDK de Google (no es código abierto)</a></td><td><a href="https://developers.google.com/android/guides/overview" target="_blank" rel="noopener">Sitio</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>ML Kit y los servicios de Google Play no son código abierto: se usan según los <a href="https://developers.google.com/ml-kit/terms" target="_blank" rel="noopener">términos de ML Kit</a> y la <a href="https://developer.android.com/studio/terms" target="_blank" rel="noopener">licencia del Android SDK</a>. Sobre los datos que puede enviar, mira la <a href="privacidad.html">política de privacidad</a>.</p>
+
+      <h3 id="lectordoc">Lector Doc 1.0.1</h3>
+      <div class="legal__tabla-wrap">
+        <table>
+          <thead><tr><th scope="col">Biblioteca</th><th scope="col">Licencia</th><th scope="col">Proyecto</th></tr></thead>
+          <tbody>
+            <tr><td>AndroidX (Core, Activity, Lifecycle, SavedState, Annotation, Collection, Startup y otras)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Jetpack Compose (UI, Foundation, Material 3, Runtime, Animation)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Kotlin Standard Library<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/kotlin" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>kotlinx.coroutines<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>JetBrains Java Annotations<br><small>JetBrains s.r.o.</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/java-annotations" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Guava ListenableFuture<br><small>The Guava Authors</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/google/guava" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>kotlinx.serialization<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/Kotlin/kotlinx.serialization" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Room y SQLite de AndroidX<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/room" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Navigation Compose<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/navigation" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>DataStore<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/datastore" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Material Icons Extended para Compose<br><small>Google LLC</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/compose-material" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>ExifInterface<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/exifinterface" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Coil (carga de imágenes)<br><small>Coil Contributors</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/coil-kt/coil" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>OkHttp y Okio (incluidas por Coil; la app no usa internet)<br><small>Square, Inc.</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/square/okhttp" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Accompanist Drawable Painter<br><small>Google LLC</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/google/accompanist" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>PdfBox-Android (basada en Apache PDFBox)<br><small>Tom Roush / The Apache Software Foundation</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0 (ver aviso NOTICE y componentes externos abajo)</a></td><td><a href="https://github.com/TomRoush/PdfBox-Android" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Bouncy Castle (bcprov, bcpkix, bcutil; incluidas por PdfBox-Android)<br><small>The Legion of the Bouncy Castle Inc.</small></td><td><a href="https://www.bouncycastle.org/about/license/" target="_blank" rel="noopener">Licencia Bouncy Castle (tipo MIT, texto completo abajo)</a></td><td><a href="https://www.bouncycastle.org" target="_blank" rel="noopener">Sitio</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Aviso (NOTICE) de PdfBox-Android, que se debe reproducir según la licencia Apache 2.0:</p>
+      <pre class="legal__pre">Apache PDFBox
+Copyright 2014 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+Based on source code originally developed in the PDFBox and 
+FontBox projects.
+
+Copyright (c) 2002-2007, www.pdfbox.org
+
+Based on source code originally developed in the PaDaF project.
+Copyright (c) 2010 Atos Worldline SAS
+
+Includes the Adobe Glyph List
+Copyright 1997, 1998, 2002, 2007, 2010 Adobe Systems Incorporated.
+
+Includes the Zapf Dingbats Glyph List
+Copyright 2002, 2010 Adobe Systems Incorporated.
+
+Includes the Script Property (Scripts-10.0.0.txt)
+Copyright 2017 Unicode, Inc.</pre>
+      <p>Apache PDFBox incluye además componentes con sus propias licencias (BSD y avisos de Adobe y Unicode), descritos en su <a href="https://github.com/TomRoush/PdfBox-Android/blob/v2.0.27.0/LICENSE.txt" target="_blank" rel="noopener">archivo LICENSE</a>. El texto completo está también dentro de la app.</p>
+
+      <h3 id="linterna">Linterna 1.0.1</h3>
+      <div class="legal__tabla-wrap">
+        <table>
+          <thead><tr><th scope="col">Biblioteca</th><th scope="col">Licencia</th><th scope="col">Proyecto</th></tr></thead>
+          <tbody>
+            <tr><td>AndroidX (Core, Activity, Lifecycle, SavedState, Annotation, Collection, Startup y otras)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Jetpack Compose (UI, Foundation, Material 3, Runtime, Animation)<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Kotlin Standard Library<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/kotlin" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>kotlinx.coroutines<br><small>JetBrains s.r.o. y colaboradores</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/Kotlin/kotlinx.coroutines" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>JetBrains Java Annotations<br><small>JetBrains s.r.o.</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/JetBrains/java-annotations" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Guava ListenableFuture<br><small>The Guava Authors</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://github.com/google/guava" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>DataStore<br><small>Google LLC / The Android Open Source Project</small></td><td><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></td><td><a href="https://developer.android.com/jetpack/androidx/releases/datastore" target="_blank" rel="noopener">Sitio</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="windows">Registro de Asistencia Empresarial (Windows)</h2>
+      <div class="legal__tabla-wrap">
+        <table>
+          <thead><tr><th scope="col">Componente</th><th scope="col">Licencia</th><th scope="col">Proyecto</th></tr></thead>
+          <tbody>
+            <tr><td>Qt for Python (PySide6 y Shiboken6) y Qt 6<br><small>The Qt Company Ltd. y colaboradores</small></td><td><a href="https://www.gnu.org/licenses/lgpl-3.0.html" target="_blank" rel="noopener">LGPL-3.0</a></td><td><a href="https://code.qt.io/cgit/pyside/pyside-setup.git/" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>openpyxl y et_xmlfile<br><small>openpyxl</small></td><td><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">MIT</a></td><td><a href="https://foss.heptapod.net/openpyxl/openpyxl" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>python-docx<br><small>Steve Canny</small></td><td><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">MIT</a></td><td><a href="https://github.com/python-openxml/python-docx" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>lxml (incluye libxml2 y libxslt)<br><small>lxml dev team</small></td><td><a href="https://opensource.org/license/bsd-3-clause" target="_blank" rel="noopener">BSD-3-Clause (libxml2 y libxslt: MIT)</a></td><td><a href="https://github.com/lxml/lxml" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>typing_extensions<br><small>Python Software Foundation</small></td><td><a href="https://github.com/python/typing_extensions/blob/main/LICENSE" target="_blank" rel="noopener">PSF-2.0</a></td><td><a href="https://github.com/python/typing_extensions" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>Python<br><small>Python Software Foundation</small></td><td><a href="https://docs.python.org/3/license.html" target="_blank" rel="noopener">PSF License</a></td><td><a href="https://www.python.org/" target="_blank" rel="noopener">Sitio</a></td></tr>
+            <tr><td>PyInstaller (cargador)<br><small>PyInstaller Development Team</small></td><td><a href="https://pyinstaller.org/en/stable/license.html" target="_blank" rel="noopener">GPL-2.0 con excepción para el cargador</a></td><td><a href="https://pyinstaller.org/" target="_blank" rel="noopener">Sitio</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Para cumplir la licencia LGPL-3.0 de Qt, el programa se entrega como una carpeta (dentro de un .zip) y no como un único .exe: así, Qt y PySide6 quedan como bibliotecas separadas en <code>_internal\PySide6</code> que se pueden reemplazar por otra versión compatible. El zip incluye la carpeta <code>LICENSES</code> con los textos completos, la lista exacta de versiones y los enlaces al código fuente de Qt (<a href="https://code.qt.io/" target="_blank" rel="noopener">code.qt.io/</a>). Qt incluye a su vez componentes de terceros, listados en <a href="https://doc.qt.io/qt-6/licenses-used-in-qt.html" target="_blank" rel="noopener">la documentación de Qt</a>.</p>
+
+      <h2 id="textos">Textos completos de las licencias</h2>
+      <ul>
+        <li><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache License 2.0</a></li>
+        <li><a href="https://www.gnu.org/licenses/lgpl-3.0.html" target="_blank" rel="noopener">GNU LGPL 3.0</a> y <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GNU GPL 3.0</a></li>
+        <li><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Licencia MIT</a></li>
+        <li><a href="https://opensource.org/license/bsd-3-clause" target="_blank" rel="noopener">Licencia BSD de 3 cláusulas</a></li>
+        <li><a href="https://www.bouncycastle.org/about/license/" target="_blank" rel="noopener">Licencia Bouncy Castle</a></li>
+        <li><a href="https://docs.python.org/3/license.html" target="_blank" rel="noopener">Licencia de Python (PSF)</a></li>
+        <li><a href="https://developers.google.com/ml-kit/terms" target="_blank" rel="noopener">Términos de ML Kit</a> y <a href="https://developer.android.com/studio/terms" target="_blank" rel="noopener">licencia del Android SDK</a></li>
+      </ul>
+
+      <h2 id="verificar">Cómo verificar las descargas</h2>
+      <p>Así puedes comprobar que un archivo es el original y que nadie lo modificó:</p>
+      <h3>1. Huella SHA-256 del archivo</h3>
+      <p>Cada app muestra en su tarjeta, en <strong>Verificar archivo (SHA-256)</strong>, la huella del archivo publicado. Calcula la huella del archivo que descargaste y compárala: deben ser idénticas.</p>
+      <ul>
+        <li><strong>Windows:</strong> en PowerShell, <code>Get-FileHash .\archivo.zip -Algorithm SHA256</code></li>
+        <li><strong>Linux o macOS:</strong> <code>sha256sum archivo.apk</code> (en macOS, <code>shasum -a 256 archivo.apk</code>)</li>
+      </ul>
+      <h3>2. Certificado de firma de las apps Android</h3>
+      <p>Todas mis apps Android están firmadas con el mismo certificado. Esta es su huella SHA-256:</p>
+      <code class="legal__huella">9C:E4:B5:17:69:60:AA:F2:85:97:D7:11:15:53:AC:2D:DE:62:94:65:C5:05:A7:40:35:DF:AB:F2:92:D9:EB:49</code>
+      <p>Puedes comprobarlo con la herramienta <code>apksigner</code> del Android SDK: <code>apksigner verify --print-certs archivo.apk</code>. Si el certificado no coincide, no instales el archivo. Android tampoco deja instalar una actualización firmada con otro certificado encima de una app ya instalada.</p>
+      <h3>3. Análisis antivirus</h3>
+      <p>Si quieres una revisión adicional, puedes subir el archivo a <a href="https://www.virustotal.com/" target="_blank" rel="noopener">VirusTotal</a>, que lo analiza con decenas de antivirus. Algunos antivirus marcan por precaución los programas nuevos o sin firma digital de Windows; eso no significa que tengan virus.</p>
+
+      <p class="legal__nota">¿Falta algo en esta lista o encontraste un error? Escríbeme a <a href="mailto:bigwork4002@gmail.com">bigwork4002@gmail.com</a>.</p>
+    </article>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__fila">
+      <p>© <span id="anio">2026</span> Hubert Apps · <a href="mailto:bigwork4002@gmail.com">bigwork4002@gmail.com</a></p>
+      <ul class="pie__enlaces">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="privacidad.html">Privacidad</a></li>
+        <li><a href="terminos.html">Términos</a></li>
+        <li><a href="licencias.html" aria-current="page">Licencias</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

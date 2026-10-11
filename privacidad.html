@@ -4,26 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Política de privacidad · Hubert Apps</title>
-  <meta name="description" content="Qué datos recoge la web de Hubert Apps, para qué, y cómo puedes aceptar o rechazar las cookies de Google Analytics.">
+  <meta name="description" content="Esta web no recoge datos personales ni usa cookies, y las apps de Hubert Apps guardan tus datos solo en tu equipo. Conoce tus derechos y cómo ejercerlos.">
+  <link rel="canonical" href="https://hubert-app-001.web.app/privacidad.html">
   <meta name="theme-color" content="#0f1420">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hubert Apps">
+  <meta property="og:title" content="Política de privacidad · Hubert Apps">
+  <meta property="og:description" content="Esta web no recoge datos personales ni usa cookies, y las apps de Hubert Apps guardan tus datos solo en tu equipo. Conoce tus derechos y cómo ejercerlos.">
+  <meta property="og:url" content="https://hubert-app-001.web.app/privacidad.html">
+  <meta property="og:image" content="https://hubert-app-001.web.app/assets/og-image.png">
+  <meta property="og:locale" content="es_PE">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
-  <script>
-    /* Aplica el tema guardado antes de pintar la página (evita parpadeo) */
-    (function () {
-      try {
-        var t = localStorage.getItem('tema');
-        if (t === 'claro' || t === 'oscuro') document.documentElement.setAttribute('data-tema', t);
-      } catch (e) {}
-    })();
-  </script>
+  <script src="tema.js"></script>
 </head>
 <body>
   <a class="saltar" href="#contenido">Saltar al contenido</a>
 
   <header class="cabecera">
     <div class="contenedor cabecera__fila">
-      <!-- EDITA AQUÍ: nombre / marca -->
       <a class="marca" href="index.html" aria-label="Hubert Apps, ir al inicio">
         <img src="assets/logo.svg" alt="" width="32" height="32">
         <span class="marca__texto">Hubert Apps</span>
@@ -38,7 +38,7 @@
           <li><a href="index.html#inicio">Inicio</a></li>
           <li><a href="index.html#aplicaciones">Aplicaciones</a></li>
           <li><a href="index.html#software">Software</a></li>
-          <li><a href="privacidad.html" class="activo" aria-current="page">Privacidad</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
         </ul>
       </nav>
 
@@ -50,105 +50,90 @@
   </header>
 
   <main id="contenido">
-    <article class="legal" aria-labelledby="tituloPrivacidad">
-      <h1 id="tituloPrivacidad">Política de privacidad</h1>
+    <article class="legal" aria-labelledby="tituloPagina">
+      <h1 id="tituloPagina">Política de privacidad</h1>
       <p class="legal__fecha">Última actualización: 11 de octubre de 2026</p>
-      <p>Aquí te explico, en palabras sencillas, qué datos recoge esta web, para qué los uso y qué puedes hacer al respecto. La idea es simple: <strong>la web solo mide visitas y descargas si tú lo aceptas</strong>, y <strong>mis apps no me envían tus datos</strong>.</p>
+      <p>Aquí te explico, en palabras sencillas, qué pasa con tus datos cuando visitas esta web y cuando usas mis apps. Lo resumo así: <strong>esta web no recoge datos personales ni usa cookies</strong>, y <strong>mis apps no me envían tus datos</strong>.</p>
 
       <h2>1. Quién es el responsable</h2>
-      <p>Esta web, <strong>Hubert Apps</strong>, la mantiene Hubert, desarrollador independiente en Perú. Yo soy el responsable de los datos que se recogen a través de ella, según la Ley N.º 29733, Ley de Protección de Datos Personales, y su reglamento.</p>
+      <p>Esta web, <strong>Hubert Apps</strong> (<a href="https://hubert-app-001.web.app/" target="_blank" rel="noopener">hubert-app-001.web.app</a>), la mantiene <strong>Hubert</strong>, desarrollador independiente en Perú. Puedes escribirme a <a href="mailto:bigwork4002@gmail.com">bigwork4002@gmail.com</a>. Aplico la Ley N.º 29733, Ley de Protección de Datos Personales, y su reglamento (Decreto Supremo N.º 016-2024-JUS).</p>
 
-      <h2>2. Qué datos se recogen</h2>
-      <p>No hay registro de usuarios, formularios ni comentarios: no te pido tu nombre, tu correo ni tu DNI. Solo si aceptas las cookies, la web usa <strong>Google Analytics</strong> (a través de Firebase) para recoger datos de uso como:</p>
-      <ul>
-        <li>Las páginas que ves y cuánto tiempo pasas en ellas.</li>
-        <li>Tu ubicación aproximada (país y ciudad), que Google estima a partir de tu dirección IP. Según Google, Google Analytics 4 no guarda la dirección IP completa.</li>
-        <li>Datos de tu dispositivo: tipo de equipo, sistema operativo, navegador, idioma y tamaño de pantalla.</li>
-        <li>Cómo llegaste a la web (por ejemplo, desde un buscador o un enlace).</li>
-        <li>Los clics en los botones de descarga (evento <code>descarga_app</code>), con el nombre del archivo descargado.</li>
-        <li>Un identificador aleatorio guardado en una cookie, que permite distinguir visitas nuevas de repetidas sin saber quién eres.</li>
-      </ul>
-      <p>Si rechazas o no eliges nada, Google Analytics <strong>no se carga</strong> y no se recoge nada de lo anterior.</p>
+      <h2>2. Qué datos recoge esta web</h2>
+      <p><strong>Ninguno.</strong> No hay registro de usuarios, formularios, comentarios, publicidad ni herramientas de estadísticas como Google Analytics. No te pido tu nombre, tu correo ni tu DNI.</p>
 
-      <h2>3. Para qué los uso</h2>
-      <p>Solo para saber cuántas personas visitan la web, desde qué países, qué apps interesan más y cuántas veces se descargan, y así mejorar la web y las apps. No uso estos datos para publicidad, no los vendo y no intento identificar a nadie.</p>
-
-      <h2>4. Base legal: tu consentimiento</h2>
-      <p>Las cookies de Google Analytics solo se activan si pulsas <strong>“Aceptar”</strong> en el aviso de cookies, de acuerdo con la Ley N.º 29733 y su reglamento. Tu consentimiento es libre: si rechazas, la web funciona igual y puedes descargar todas las apps.</p>
-
-      <h2>5. Cookies y almacenamiento en tu navegador</h2>
+      <h2>3. Cookies y almacenamiento en tu navegador</h2>
+      <p>Esta web <strong>no usa cookies</strong>. Solo guarda una preferencia en el almacenamiento local de tu navegador:</p>
       <div class="legal__tabla-wrap">
         <table>
           <thead>
-            <tr><th scope="col">Nombre</th><th scope="col">Para qué sirve</th><th scope="col">Duración</th><th scope="col">¿Necesita tu permiso?</th></tr>
+            <tr><th scope="col">Nombre</th><th scope="col">Para qué sirve</th><th scope="col">Duración</th></tr>
           </thead>
           <tbody>
-            <tr><td><code>_ga</code>, <code>_ga_YQT7FG748M</code></td><td>Cookies de Google Analytics para contar visitas y descargas.</td><td>Hasta 2 años</td><td>Sí. Solo se crean si aceptas.</td></tr>
-            <tr><td>Datos de Firebase (IndexedDB)</td><td>Datos técnicos que Firebase guarda en el navegador para que Analytics funcione.</td><td>Hasta que borres los datos del sitio</td><td>Sí. Solo se crean si aceptas.</td></tr>
-            <tr><td><code>consentimiento_analitica</code></td><td>Recuerda si aceptaste o rechazaste las cookies, para no preguntarte en cada visita.</td><td>Hasta que la borres</td><td>No, es necesaria.</td></tr>
-            <tr><td><code>tema</code></td><td>Recuerda si prefieres el tema claro u oscuro.</td><td>Hasta que la borres</td><td>No, es una preferencia tuya.</td></tr>
+            <tr><td><code>tema</code></td><td>Recuerda si elegiste el tema claro u oscuro.</td><td>Hasta que la borres desde tu navegador</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Las dos últimas se guardan solo en tu navegador (almacenamiento local) y nunca se envían a ningún servidor.</p>
+      <p>Ese dato se queda en tu navegador, nunca se envía a ningún servidor y no es un dato personal. Por eso la web no muestra un aviso de cookies.</p>
 
-      <h2>6. Cómo cambiar o retirar tu consentimiento</h2>
-      <p>Puedes cambiar de opinión cuando quieras. Pulsa el botón de abajo o el enlace <strong>“Configurar cookies”</strong> al pie de cualquier página. Si retiras tu consentimiento, Analytics se detiene y se borran sus cookies en esta web.</p>
-      <p class="legal__estado" id="estadoCookies" role="status">Ahora mismo: Google Analytics no se carga hasta que aceptes.</p>
-      <p><button type="button" class="btn btn--secundario" data-configurar-cookies>Configurar cookies</button></p>
-      <p>También puedes borrar las cookies desde la configuración de tu navegador o usar el complemento de Google para desactivar Analytics: <a href="https://tools.google.com/dlpage/gaoptout?hl=es" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>.</p>
+      <h2>4. Datos técnicos del alojamiento</h2>
+      <p>La web está alojada en <strong>Firebase Hosting</strong>, un servicio de Google. Como cualquier servidor web, para entregarte la página y protegerla de ataques puede procesar datos técnicos de la conexión, como tu dirección IP, tu navegador y la página pedida. Yo no uso esos datos para identificarte. Google los trata según su <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">política de privacidad</a>, y puede procesarlos en servidores fuera del Perú.</p>
 
-      <h2>7. Cuánto tiempo se guardan los datos</h2>
-      <p>Los datos de Google Analytics se conservan según la configuración de retención de Google Analytics (por defecto, 2 meses para los datos detallados de cada visita). Los informes con totales, como “100 visitas en octubre”, no identifican a nadie y pueden conservarse más tiempo.</p>
+      <h2>5. Descargas desde GitHub</h2>
+      <p>Los archivos de las apps (APK) y del programa para Windows (.zip) están alojados en <strong>GitHub</strong>. Al pulsar un botón de descarga, tu navegador se conecta directamente a GitHub, que recibe datos técnicos como tu dirección IP. Eso se rige por la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">declaración de privacidad de GitHub</a>. Yo no recibo datos de quién descarga.</p>
 
-      <h2>8. Con quién se comparten</h2>
+      <h2>6. Las apps y el software: tus datos se quedan contigo</h2>
+      <p>Las apps (Mebusco, Modo Noche, PuenteApp Asistencia, Lector Doc y Linterna) y el programa Registro de Asistencia Empresarial para Windows funcionan <strong>sin conexión a internet</strong> y guardan todo <strong>solo en tu dispositivo</strong>:</p>
       <ul>
-        <li><strong>Google (Firebase y Google Analytics):</strong> recibe los datos de uso descritos arriba, solo si aceptas. Google también aloja esta web (Firebase Hosting). Más información en la <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener">política de privacidad de Google</a>.</li>
-        <li><strong>GitHub:</strong> los archivos de descarga (APK y .exe) están alojados en GitHub. Al descargar, tu navegador se conecta a GitHub, que recibe datos técnicos como tu dirección IP. Más información en la <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">declaración de privacidad de GitHub</a>.</li>
-        <li><strong>Proveedores de alojamiento:</strong> como cualquier servidor web, Firebase Hosting (y GitHub Pages, donde hay una copia de esta web) pueden registrar datos técnicos de la conexión, como la IP, para entregar la página y protegerla de ataques.</li>
-      </ul>
-      <p>No comparto tus datos con nadie más. Los videos de demostración se sirven desde esta misma web, sin YouTube ni otros servicios externos.</p>
-
-      <h2>9. Transferencia internacional</h2>
-      <p>Google y GitHub pueden guardar y procesar los datos en servidores fuera del Perú, principalmente en Estados Unidos. Al aceptar las cookies de Analytics, aceptas también esta transferencia, que se hace con las medidas de protección que esas empresas ofrecen.</p>
-
-      <h2>10. Las apps y el software: tus datos se quedan contigo</h2>
-      <p>Las apps (Mebusco, Modo Noche, PuenteApp Asistencia, Lector Doc y Linterna) y el programa Registro de Asistencia Empresarial para Windows están hechos para funcionar <strong>sin conexión a internet</strong> y guardan todo <strong>solo en tu dispositivo</strong>:</p>
-      <ul>
-        <li>Los padrones que cargas en Mebusco (con nombres y DNI) se quedan en tu teléfono.</li>
-        <li>Los registros de asistencia de PuenteApp y del programa de Windows se guardan en tu teléfono o en tu PC (en Windows, en la carpeta <code>%APPDATA%</code> de tu usuario).</li>
+        <li>Los padrones que cargas en Mebusco o en PuenteApp (con nombres y DNI) se quedan en tu teléfono.</li>
+        <li>Los registros de asistencia se guardan en tu teléfono o en tu PC (en Windows, en la carpeta <code>%APPDATA%\RegistroAsistencia</code> de tu usuario).</li>
         <li>Los documentos que abres con Lector Doc no salen de tu teléfono.</li>
+        <li>Modo Noche y Linterna solo guardan tus ajustes en el teléfono.</li>
       </ul>
-      <p>Una aclaración: PuenteApp usa ML Kit, la librería de Google para escanear códigos QR. Esa librería puede conectarse a internet a través de los servicios de Google de tu teléfono (por ejemplo, para descargar sus componentes), pero tus registros de asistencia no se envían a ningún lado.</p>
-      <p>Ni esta web ni yo recibimos esos datos. Si cargas datos de otras personas, como un padrón con DNI, tú eres responsable de usarlos de forma correcta y de protegerlos en tu dispositivo.</p>
+      <p>Ni esta web ni yo recibimos esos datos, y no tengo forma de verlos.</p>
 
-      <h2>11. Tus derechos</h2>
-      <p>Según la Ley N.º 29733, tienes derecho de <strong>acceso</strong>, <strong>rectificación</strong>, <strong>cancelación</strong> (eliminación) y <strong>oposición</strong> sobre tus datos personales (derechos ARCO). Para ejercerlos, escríbeme por el medio indicado en la sección <strong>Contacto</strong> de la página principal, cuando esté disponible.</p>
-      <p>Ten en cuenta que Google Analytics no me muestra quién eres, así que no puedo encontrar tus datos por tu nombre. La forma más rápida de oponerte es <strong>rechazar las cookies</strong> o borrarlas de tu navegador. Si crees que no se respetaron tus derechos, puedes presentar un reclamo ante la Autoridad Nacional de Protección de Datos Personales del Ministerio de Justicia y Derechos Humanos.</p>
+      <h3>Una excepción: ML Kit en PuenteApp Asistencia</h3>
+      <p>PuenteApp usa <strong>ML Kit</strong>, la biblioteca de Google para leer códigos QR. La lectura se hace dentro del teléfono: <strong>las imágenes de la cámara y el contenido de los códigos no salen de tu equipo</strong>. Pero ML Kit puede enviar a Google métricas de uso y diagnóstico (por ejemplo, el modelo del teléfono, la versión de la app y datos de rendimiento y errores), como explica Google en <a href="https://developers.google.com/ml-kit/android-data-disclosure" target="_blank" rel="noopener">su aviso sobre datos de ML Kit</a>. Yo no recibo esas métricas.</p>
 
-      <h2>12. Menores de edad</h2>
-      <p>Esta web no está dirigida especialmente a menores de 14 años ni les pide datos personales.</p>
+      <h2>7. Si cargas datos de otras personas</h2>
+      <p>Cuando cargas un padrón con nombres y DNI de otras personas, tú decides qué datos usas y para qué. Por eso, <strong>tú eres el responsable de esos datos</strong>. Te recomiendo:</p>
+      <ul>
+        <li>Usa solo datos que tengas derecho a usar, por ejemplo los de tu organización, con un fin claro como tomar asistencia.</li>
+        <li>Carga solo los datos que necesitas.</li>
+        <li>Protege tu teléfono o tu PC con bloqueo de pantalla y no compartas los archivos exportados con quien no corresponde.</li>
+        <li>Borra el padrón y los archivos exportados cuando ya no los necesites. Las apps tienen opciones para limpiar el padrón.</li>
+      </ul>
 
-      <h2>13. Cambios en esta política</h2>
-      <p>Si cambio algo importante, actualizaré esta página y la fecha de “Última actualización”.</p>
+      <h2>8. Tus derechos</h2>
+      <p>Según la Ley N.º 29733, tienes derecho de <strong>información</strong>, <strong>acceso</strong>, <strong>rectificación</strong>, <strong>cancelación</strong> (eliminación) y <strong>oposición</strong> sobre tus datos personales (derechos ARCO). Esta web no guarda datos tuyos, pero si quieres consultar algo o ejercer alguno de estos derechos, escríbeme a <a href="mailto:bigwork4002@gmail.com">bigwork4002@gmail.com</a>. Te responderé dentro de los plazos del artículo 69 del reglamento:</p>
+      <ul>
+        <li><strong>Información:</strong> hasta 8 días hábiles.</li>
+        <li><strong>Acceso:</strong> hasta 20 días hábiles.</li>
+        <li><strong>Rectificación, cancelación u oposición:</strong> hasta 10 días hábiles.</li>
+      </ul>
+      <p>Si crees que no se respetaron tus derechos, puedes presentar un reclamo ante la <strong>Autoridad Nacional de Protección de Datos Personales</strong> del Ministerio de Justicia y Derechos Humanos (<a href="https://www.gob.pe/anpd" target="_blank" rel="noopener">gob.pe/anpd</a>).</p>
 
-      <p class="legal__nota">Esta página es información general sobre cómo funciona la web y no es asesoría legal.</p>
+      <h2>9. Menores de edad</h2>
+      <p>Esta web y las apps no están dirigidas a menores de 14 años y no les piden datos personales. Si eres menor de 14 años, usa las apps con ayuda de tu madre, padre o tutor.</p>
+
+      <h2>10. Cambios en esta política</h2>
+      <p>Si cambio algo importante, por ejemplo si algún día agrego estadísticas de visitas, actualizaré esta página y la fecha de “Última actualización” antes de hacerlo.</p>
+
+      <p class="legal__nota">Esta página es información general sobre cómo funcionan la web y las apps, y no es asesoría legal.</p>
     </article>
   </main>
 
   <footer class="pie">
     <div class="contenedor pie__fila">
-      <p>© <span id="anio"></span> Hubert Apps. Hecho con HTML, CSS y JavaScript.</p>
+      <p>© <span id="anio">2026</span> Hubert Apps · <a href="mailto:bigwork4002@gmail.com">bigwork4002@gmail.com</a></p>
       <ul class="pie__enlaces">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="privacidad.html" aria-current="page">Privacidad</a></li>
-        <li><button type="button" class="pie__boton" data-configurar-cookies>Configurar cookies</button></li>
+        <li><a href="terminos.html">Términos</a></li>
+        <li><a href="licencias.html">Licencias</a></li>
       </ul>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <!-- Aviso de cookies. Google Analytics (analitica.js) solo se carga si el visitante pulsa "Aceptar". -->
-  <script src="consentimiento.js"></script>
 </body>
 </html>

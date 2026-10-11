@@ -10,7 +10,7 @@
      descripcion   Descripción corta (1–2 líneas)
      categoria     Categoría para los filtros (ej. "Utilidades")
      version       Versión (ej. "1.0.0")
-     plataformas   Lista: ["Android"] o ["Windows", "Linux"]
+     plataformas   Lista: ["Android"] o ["Windows"]
      icono         Ruta a la imagen del icono (SVG o PNG)
      capturas      Lista de rutas a capturas de pantalla (puede ir vacía [])
                    La primera va en la tarjeta; si hay más de una aparece
@@ -45,7 +45,7 @@ window.CATALOGO = {
       nombre: "Mebusco",
       descripcion: "Consulta un padrón sin internet: importa un CSV y busca por DNI, apellido o nombre, aun con palabras incompletas. Reemplaza o agrega personas, y la ficha muestra también las columnas extra. Los datos se quedan en tu teléfono.",
       categoria: "Utilidades",
-      version: "2.0",
+      version: "2.0.1",
       plataformas: ["Android"],
       requisitos: "Android 8.0 o superior",
       tamano: "6.6 MB",
@@ -55,8 +55,8 @@ window.CATALOGO = {
         "assets/screens/mebusco-busqueda.webp"
       ],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.0/Mebusco-2.0.apk",
-      sha256: "f8fc397e7c55de7490e213cc3568ac4ea099f84159174effe725e2d1a11ef6c5",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.0.1/Mebusco-2.0.1.apk",
+      sha256: "88b267c2dc665388bd421a6d6233d786bdf787b6d2d186e70af4103a4ba7e4c7",
       virustotal: null,
       permisos: ["No pide permisos especiales."],
       tecnologias: ["Sin conexión"]
@@ -66,7 +66,7 @@ window.CATALOGO = {
       nombre: "Modo Noche",
       descripcion: "Oscurece la pantalla por debajo del brillo mínimo y aplica un filtro cálido para descansar la vista de noche. Se activa con horario, desde los ajustes rápidos o con sus widgets.",
       categoria: "Utilidades",
-      version: "1.1",
+      version: "1.1.1",
       plataformas: ["Android"],
       requisitos: "Android 8.0 o superior",
       tamano: "6.2 MB",
@@ -76,8 +76,8 @@ window.CATALOGO = {
         "assets/screens/modonoche-activo.webp"
       ],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/modonoche-v1.1/ModoNoche-1.1.apk",
-      sha256: "bc757bdf9a4b75b9dc36e21c6ee0cfbd5a45641bba638c5ebc793af645ac3517",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/modonoche-v1.1.1/ModoNoche-1.1.1.apk",
+      sha256: "024a5960972ff68c3d1834302b75f71d72c8267b560eb5ebe8c328731a807f62",
       virustotal: null,
       permisos: [
         "Mostrar sobre otras apps: para dibujar el filtro oscuro encima de la pantalla.",
@@ -91,20 +91,20 @@ window.CATALOGO = {
       nombre: "PuenteApp Asistencia",
       descripcion: "Toma asistencia escaneando el código QR con el DNI de cada persona. Importa el padrón desde CSV, mira quién asistió y quién falta, y exporta el resultado a CSV.",
       categoria: "Gestión",
-      version: "1.0",
+      version: "1.0.1",
       plataformas: ["Android"],
       requisitos: "Android 7.0 o superior, con cámara",
       tamano: "29.3 MB",
       icono: "assets/icons/puenteapp.png",
       capturas: ["assets/screens/puenteapp-inicio.png"],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/puenteapp-v1.0/PuenteApp-1.0.apk",
-      sha256: "5a2a622a93abe67f388455937189a73d38276382e743cae0fa400a764e286bf8",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/puenteapp-v1.0.1/PuenteApp-1.0.1.apk",
+      sha256: "53dc117d15c4fc56d83440223535921643be0c9142506126c67308c7bf82ad3b",
       virustotal: null,
       permisos: [
         "Cámara: para escanear los códigos QR.",
         "Vibración: para avisarte cuando registra una lectura.",
-        "Internet y estado de la red: los agrega automáticamente la librería de escaneo ML Kit de Google; el código de la app no usa internet."
+        "Internet y estado de la red: los agrega la librería de escaneo ML Kit de Google, que puede enviar a Google métricas de uso y diagnóstico (no las imágenes ni el contenido de los códigos). El código de la app no usa internet."
       ],
       tecnologias: ["Escáner QR", "CSV"]
     },
@@ -113,7 +113,7 @@ window.CATALOGO = {
       nombre: "Lector Doc",
       descripcion: "Lee PDF, TXT, CSV e imágenes sin internet, y convierte imágenes a PDF, TXT a PDF y PDF a PNG. Tus archivos se quedan en tu teléfono.",
       categoria: "Utilidades",
-      version: "1.0",
+      version: "1.0.1",
       plataformas: ["Android"],
       requisitos: "Android 8.0 o superior",
       tamano: "19.8 MB",
@@ -125,8 +125,8 @@ window.CATALOGO = {
         "assets/screens/lectordoc-busqueda.webp"
       ],
       video: { tipo: "mp4", valor: "assets/videos/lectordoc-demo.mp4", poster: "assets/videos/lectordoc-demo-poster.webp", vertical: true },
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/lectordoc-v1.0/LectorDoc-1.0.apk",
-      sha256: "d137ca44f47d036dea155a1ec80d17fa20b53b231e997268f498ee0f569c7d12",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/lectordoc-v1.0.1/LectorDoc-1.0.1.apk",
+      sha256: "a1035c57612a4a19c206e066418edaa6761e89894e5c5739775cff77e6f9cb2f",
       virustotal: null,
       permisos: ["No pide permisos especiales."],
       tecnologias: ["Sin conexión", "PDF"]
@@ -136,18 +136,18 @@ window.CATALOGO = {
       nombre: "Linterna",
       descripcion: "Enciende la linterna con un toque, desde los ajustes rápidos, con su widget o con los botones de volumen aunque la app esté cerrada. Se apaga sola después del tiempo que elijas o al agitar el teléfono.",
       categoria: "Utilidades",
-      version: "1.0",
+      version: "1.0.1",
       plataformas: ["Android"],
       requisitos: "Android 8.0 o superior, con flash",
-      tamano: "965 KB",
+      tamano: "969 KB",
       icono: "assets/icons/linterna.png",
       capturas: [
         "assets/screens/linterna-encendida.webp",
         "assets/screens/linterna-temporizador.webp"
       ],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/linterna-v1.0/Linterna-1.0.apk",
-      sha256: "9e58d84d45fc94c48c29e754d730358280aeed8b062eade234ff0ae68c26c42a",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/linterna-v1.0.1/Linterna-1.0.1.apk",
+      sha256: "d29fe56680e9463f6241abeda738d50c3360e252f4a5e4f4b8180fee0f160ccc",
       virustotal: null,
       permisos: [
         "Flash: usa el flash de la cámara solo como luz. No pide permiso de cámara, no toma fotos ni graba.",
@@ -164,24 +164,26 @@ window.CATALOGO = {
       nombre: "Registro de Asistencia Empresarial",
       descripcion: "Carga tu padrón desde CSV, Excel o Word, abre reuniones y marca la asistencia buscando por nombre o DNI. Calcula el quórum y genera el acta en PDF, Excel o CSV. Funciona sin internet y los datos se quedan en tu computadora.",
       categoria: "Gestión",
-      version: "2.0.0",
+      version: "2.0.2",
       plataformas: ["Windows"],
       requisitos: "Windows 10 o superior (64 bits)",
-      tamano: "46.4 MB",
+      tamano: "46.3 MB",
       icono: "assets/icons/asistencia.svg",
       capturas: [
         "assets/screens/registro-asistencia-inicio.webp",
         "assets/screens/registro-asistencia-tomar.webp"
       ],
       video: null,
-      descarga: "https://github.com/bigwork-create/registro-asistencia-desktop/releases/download/v2.0.0/RegistroAsistencia.exe",
-      textoBoton: "Descargar para Windows (.exe)",
-      sha256: "7d1d2abd6f4d5d19a9a1d4043f079dd3a66e56acad6408d958637aad844a4a80",
+      descarga: "https://github.com/bigwork-create/registro-asistencia-desktop/releases/download/v2.0.2/RegistroAsistencia-2.0.2-windows.zip",
+      textoBoton: "Descargar para Windows (.zip)",
+      sha256: "31fd497d6384be30e1d5301f40a550207277bf13d7ee6a6c8f9f542ad7a65708",
       virustotal: null,
       permisos: [
-        "No necesita instalarse ni pide permisos de administrador: se abre con doble clic.",
+        "Cómo abrirlo: descomprime el .zip (clic derecho > Extraer todo), abre la carpeta RegistroAsistencia y haz doble clic en RegistroAsistencia.exe. No saques el .exe de su carpeta.",
+        "No necesita instalarse ni pide permisos de administrador.",
         "Guarda la base de datos solo en tu computadora, en la carpeta %APPDATA%\\RegistroAsistencia.",
-        "Windows SmartScreen puede mostrar un aviso porque el programa no está firmado: elige «Más información» y luego «Ejecutar de todas formas»."
+        "Windows SmartScreen puede mostrar un aviso porque el programa no está firmado: elige «Más información» y luego «Ejecutar de todas formas».",
+        "Código abierto con licencia MIT. Incluye Qt for Python (PySide6) bajo LGPL-3.0; los avisos están en la carpeta LICENSES del zip."
       ],
       tecnologias: ["Python", "PySide6 (Qt)", "SQLite", "Sin conexión"]
     },
@@ -191,7 +193,7 @@ window.CATALOGO = {
       descripcion: "Nuevo programa de escritorio en desarrollo. ¡Muy pronto aquí!",
       categoria: "En desarrollo",
       version: "—",
-      plataformas: ["Windows", "Linux"],
+      plataformas: ["Windows"],
       icono: "assets/icons/proximamente.svg",
       capturas: [],
       video: null,
