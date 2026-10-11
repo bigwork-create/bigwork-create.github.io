@@ -2,7 +2,7 @@
    Estas claves NO son secretas: identifican el proyecto. La seguridad la dan las reglas de
    Firestore (firestore.rules en la raíz de la web). */
 import { initializeApp } from 'firebase/app';
-import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore/lite';
+import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 
 export const configFirebase = {
   apiKey: 'AIzaSyCUEKEimBQRCznM8Vgw8jeGgkgZdhcaFB0',

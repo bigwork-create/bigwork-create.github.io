@@ -1,6 +1,7 @@
 /* Comentarios de Hubert Apps (sección "Comentarios" de la página principal).
-   - Muestra los comentarios publicados en Firestore (los más recientes primero, de 20 en 20)
-     junto con los que Hubert agrega a mano en data/comentarios.js.
+   - Muestra los comentarios publicados en Firestore EN VIVO (onSnapshot): los nuevos aparecen y los
+     borrados desaparecen sin recargar. Los más recientes primero, de 20 en 20 ("Ver más" amplía
+     el límite de la misma escucha). Se mezclan con los que Hubert agrega a mano en data/comentarios.js.
    - Si Firestore no responde, se quedan los de data/comentarios.js (los pinta script.js).
    - El botón "Comentar" abre una ventana para escribir; se publica al instante (sin cuenta ni
      sesión) y Hubert borra los malos con su programa de escritorio
@@ -12,7 +13,7 @@
      ventana muestra "Comentas como X · Cambiar"; "Cambiar" borra lo guardado.
    - El texto del comentario se borra al publicar.
    Se compila con esbuild (ver herramientas/comentarios/README.md); no editar assets/js a mano. */
-import { collection, query, orderBy, limit, startAfter, getDocs, addDoc, serverTimestamp } from 'firebase/firestore/lite';
+import { collection, query, orderBy, limit, onSnapshot, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase-config.js';
 import { el, fechaDe, fechaDia, fechaCompleta } from './comun.js';
 
@@ -63,11 +64,13 @@ const estaticos = (Array.isArray(window.COMENTARIOS) ? window.COMENTARIOS : [])
   .filter(function (c) { return c && String(c.texto || '').trim(); })
   .map(function (c) { return { nombre: c.nombre, texto: c.texto, fecha: fechaEstatica(c.fecha), soloDia: true }; });
 
-let remotos = [];     // comentarios leídos de Firestore
-let propios = [];     // publicados desde este navegador en esta visita
-let ultimoDoc = null; // para "Ver más"
+let remotos = [];     // comentarios de Firestore (los mantiene al día la escucha en vivo)
+let propios = [];     // publicados en esta visita; solo se usan si la escucha en vivo falló
+let limite = POR_PAGINA; // cuántos se escuchan ahora ("Ver más" suma POR_PAGINA)
 let agotado = false;  // ya no hay más en Firestore
-let fallo = false;    // Firestore no respondió
+let fallo = false;    // la escucha en vivo no funciona
+let cargado = false;  // ya llegó al menos una respuesta
+let dejarDeEscuchar = null;
 
 function tarjeta(c) {
   const d = c.fecha;
@@ -90,8 +93,9 @@ function pintar() {
     if (fallo || agotado) return true;
     return corte && e.fecha && e.fecha >= corte;
   });
-  const idsPropios = new Set(propios.map(function (p) { return p.id; }));
-  const todos = propios.concat(remotos.filter(function (r) { return !idsPropios.has(r.id); }), fijos);
+  const idsRemotos = new Set(remotos.map(function (r) { return r.id; }));
+  const extra = fallo ? propios.filter(function (p) { return !idsRemotos.has(p.id); }) : [];
+  const todos = extra.concat(remotos, fijos);
   todos.sort(function (a, b) { return (b.fecha ? b.fecha.getTime() : 0) - (a.fecha ? a.fecha.getTime() : 0); });
   lista.textContent = '';
   todos.forEach(function (c) { lista.appendChild(tarjeta(c)); });
@@ -100,34 +104,40 @@ function pintar() {
   botonMas.hidden = agotado || fallo;
 }
 
-async function cargarPagina() {
+function escuchar() {
+  if (dejarDeEscuchar) dejarDeEscuchar();
   botonMas.disabled = true;
-  try {
-    const partes = [collection(db, 'comentarios'), orderBy('creado', 'desc')];
-    if (ultimoDoc) partes.push(startAfter(ultimoDoc));
-    partes.push(limit(POR_PAGINA));
-    const snap = await getDocs(query.apply(null, partes));
-    snap.docs.forEach(function (d) {
-      const x = d.data();
-      remotos.push({ id: d.id, nombre: x.nombre, texto: x.texto, fecha: fechaDe(x.creado) });
+  const pedido = limite;
+  const q = query(collection(db, 'comentarios'), orderBy('creado', 'desc'), limit(pedido));
+  dejarDeEscuchar = onSnapshot(q, function (snap) {
+    // 'estimate': el comentario recién enviado se muestra al instante con la hora local.
+    remotos = snap.docs.map(function (d) {
+      const x = d.data({ serverTimestamps: 'estimate' });
+      return { id: d.id, nombre: x.nombre, texto: x.texto, fecha: fechaDe(x.creado) || new Date() };
     });
-    if (snap.docs.length) ultimoDoc = snap.docs[snap.docs.length - 1];
-    agotado = snap.docs.length < POR_PAGINA;
+    agotado = snap.size < pedido;
     fallo = false;
-    estado.textContent = '';
-  } catch (err) {
-    if (!remotos.length) {
-      fallo = true;
+    cargado = true;
+    if (estado.textContent.indexOf('No se pudieron') === 0) estado.textContent = '';
+    botonMas.disabled = false;
+    pintar();
+  }, function (err) {
+    dejarDeEscuchar = null;
+    if (window.console) console.warn('Comentarios:', err);
+    fallo = true;
+    botonMas.disabled = false;
+    if (!cargado) {
       botonComentar.hidden = true;
       estado.textContent = 'No se pudieron cargar los comentarios más recientes. Revisa tu conexión.';
     } else {
-      estado.textContent = 'No se pudieron cargar más comentarios. Inténtalo de nuevo.';
+      estado.textContent = 'No se pudieron actualizar los comentarios. Recarga la página para volver a intentarlo.';
     }
-    if (window.console) console.warn('Comentarios:', err);
-  } finally {
-    botonMas.disabled = false;
     pintar();
-  }
+  });
+}
+function verMas() {
+  limite += POR_PAGINA;
+  escuchar();
 }
 
 /* ---------- Ventana "Escribir un comentario" ---------- */
@@ -329,7 +339,13 @@ form.addEventListener('submit', async function (e) {
   enviar.disabled = true;
   enviar.textContent = 'Publicando…';
   try {
-    const nuevo = await addDoc(collection(db, 'comentarios'), { nombre: nombre, texto: t, creado: serverTimestamp() });
+    // Con la escucha en vivo, el comentario aparece en la lista apenas se envía; aquí se espera la
+    // confirmación del servidor (máximo 20 s, por si no hay conexión).
+    let reloj;
+    const nuevo = await Promise.race([
+      addDoc(collection(db, 'comentarios'), { nombre: nombre, texto: t, creado: serverTimestamp() }),
+      new Promise(function (_, no) { reloj = setTimeout(function () { no({ code: 'tiempo-agotado' }); }, 20000); })
+    ]).finally(function () { clearTimeout(reloj); });
     propios.unshift({ id: nuevo.id, nombre: nombre, texto: t, fecha: new Date() });
     if (!preferencia && noPreguntar.checked && hayAlmacen) {
       recordar();
@@ -352,6 +368,6 @@ form.addEventListener('submit', async function (e) {
   }
 });
 
-botonMas.addEventListener('click', cargarPagina);
+botonMas.addEventListener('click', verMas);
 botonComentar.hidden = false;
-cargarPagina();
+escuchar();
