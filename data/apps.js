@@ -71,7 +71,10 @@ window.CATALOGO = {
       requisitos: "Android 8.0 o superior",
       tamano: "6.2 MB",
       icono: "assets/icons/modonoche.png",
-      capturas: [],
+      capturas: [
+        "assets/screens/modonoche-inicio.webp",
+        "assets/screens/modonoche-activo.webp"
+      ],
       video: null,
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/modonoche-v1.1/ModoNoche-1.1.apk",
       sha256: "bc757bdf9a4b75b9dc36e21c6ee0cfbd5a45641bba638c5ebc793af645ac3517",
@@ -138,7 +141,10 @@ window.CATALOGO = {
       requisitos: "Android 8.0 o superior, con flash",
       tamano: "965 KB",
       icono: "assets/icons/linterna.png",
-      capturas: [],
+      capturas: [
+        "assets/screens/linterna-encendida.webp",
+        "assets/screens/linterna-temporizador.webp"
+      ],
       video: null,
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/linterna-v1.0/Linterna-1.0.apk",
       sha256: "9e58d84d45fc94c48c29e754d730358280aeed8b062eade234ff0ae68c26c42a",
