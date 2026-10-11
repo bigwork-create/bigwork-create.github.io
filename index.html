@@ -72,6 +72,12 @@
           <div class="hero__acciones">
             <a class="btn btn--primario" href="#aplicaciones">Ver aplicaciones</a>
             <a class="btn btn--secundario" href="#software">Ver software</a>
+            <span class="compartir">
+              <button type="button" class="btn btn--secundario" data-compartir>
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="18" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="19" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4" stroke="currentColor" stroke-width="2"/></svg>
+                <span>Compartir</span>
+              </button>
+            </span>
           </div>
           <ul class="hero__stats" aria-label="Resumen del catálogo">
             <li><strong id="statApps">0</strong><span>apps</span></li>
@@ -164,6 +170,7 @@
         <li><a href="privacidad.html">Privacidad</a></li>
         <li><a href="terminos.html">Términos</a></li>
         <li><a href="licencias.html">Licencias</a></li>
+        <li><span class="compartir compartir--arriba"><button type="button" class="pie__compartir" data-compartir>Compartir esta web</button></span></li>
         <li><a href="#inicio">Volver arriba ↑</a></li>
       </ul>
     </div>
@@ -184,5 +191,6 @@
 
   <script src="data/apps.js"></script>
   <script src="script.js"></script>
+  <script src="compartir.js"></script>
 </body>
 </html>

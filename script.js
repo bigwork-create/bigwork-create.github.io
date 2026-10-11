@@ -63,12 +63,30 @@
     return el('span', { clase: 'insignia insignia--' + normalizar(p), texto: p });
   }
 
+  /* Botón "Compartir" de cada tarjeta: comparte el enlace directo …/#id (la lógica está en compartir.js) */
+  var ICONO_COMPARTIR = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="18" cy="5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="12" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="19" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4" stroke="currentColor" stroke-width="2"/></svg>';
+  function textoCorto(t) {
+    var m = String(t || '').match(/^.*?[.!?](\s|$)/);
+    return (m ? m[0] : String(t || '')).trim();
+  }
+  function botonCompartir(item) {
+    var b = el('button', {
+      clase: 'btn-icono tarjeta__compartir', type: 'button', 'data-compartir': '',
+      'aria-label': 'Compartir ' + item.nombre, title: 'Compartir',
+      'data-url': 'https://hubert-app-001.web.app/#' + item.id,
+      'data-titulo': item.nombre + ' · Hubert Apps',
+      'data-texto': textoCorto(item.descripcion)
+    });
+    b.innerHTML = ICONO_COMPARTIR;
+    return el('span', { clase: 'compartir compartir--derecha' }, [b]);
+  }
+
   function crearTarjeta(item, tipo) {
     var esApp = tipo === 'app';
     var clases = 'tarjeta';
     if (item.ejemplo) clases += ' tarjeta--ejemplo';
     if (item.proximamente) clases += ' tarjeta--proximamente';
-    var art = el('article', { clase: clases, 'aria-labelledby': 't-' + item.id });
+    var art = el('article', { clase: clases, id: item.id, 'aria-labelledby': 't-' + item.id });
 
     // Etiqueta "Ejemplo" / "Próximamente"
     if (item.ejemplo) art.appendChild(el('span', { clase: 'etiqueta-ejemplo', texto: 'Ejemplo' }));
@@ -117,6 +135,7 @@
         ])
       ])
     ]);
+    if (!item.proximamente) top.appendChild(botonCompartir(item));
     cuerpo.appendChild(top);
     cuerpo.appendChild(el('p', { clase: 'tarjeta__desc', texto: item.descripcion }));
 
@@ -246,6 +265,35 @@
   document.getElementById('statApps').textContent = apps.length;
   document.getElementById('statSoft').textContent = soft.filter(function (s) { return !s.proximamente; }).length;
   document.getElementById('anio').textContent = new Date().getFullYear();
+
+  /* ---------- Enlace directo a una tarjeta (…/#mebusco) ---------- */
+  // Las tarjetas se crean con JavaScript, así que el salto automático del navegador ocurre antes de que existan:
+  // por eso buscamos la tarjeta después de dibujar el catálogo (el margen de la cabecera fija lo da scroll-padding-top).
+  function irATarjeta() {
+    var id = decodeURIComponent((location.hash || '').slice(1));
+    if (!id) return;
+    var esApp = apps.some(function (a) { return a.id === id; });
+    var esSoft = soft.some(function (s) { return s.id === id; });
+    if (!esApp && !esSoft) return;
+    if (esApp && !document.getElementById(id)) {
+      // Estaba oculta por la búsqueda o el filtro: los quitamos para mostrarla.
+      buscar.value = '';
+      categoriaActiva = 'Todas';
+      Array.prototype.forEach.call(chipsApps.children, function (x) {
+        x.setAttribute('aria-pressed', String(x.textContent === 'Todas'));
+      });
+      pintarApps();
+    }
+    var t = document.getElementById(id);
+    if (!t) return;
+    t.scrollIntoView({ block: 'start' });
+    t.classList.remove('tarjeta--destacada');
+    void t.offsetWidth; // reinicia la animación
+    t.classList.add('tarjeta--destacada');
+    setTimeout(function () { t.classList.remove('tarjeta--destacada'); }, 2400);
+  }
+  window.addEventListener('hashchange', irATarjeta);
+  if (location.hash) requestAnimationFrame(irATarjeta);
 
   /* ---------- Modal de video ---------- */
   var modal = document.getElementById('modalVideo');

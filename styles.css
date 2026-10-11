@@ -293,3 +293,42 @@ p { margin: 0 0 1rem; }
 .error404 .hero__acciones { justify-content: center; }
 .legal__pre { white-space: pre-wrap; word-break: break-word; padding: .8rem 1rem; margin: 0 0 1rem; border: 1px solid var(--borde); border-radius: 10px; background: var(--superficie-2); color: var(--texto-suave); font-size: .8rem; }
 .legal small { color: var(--texto-suave); font-size: .8rem; }
+
+/* ---------- Botón Compartir ---------- */
+.compartir { position: relative; display: inline-flex; }
+.compartir__menu {
+  position: absolute; z-index: 60; top: calc(100% + .4rem); left: 0;
+  min-width: 13rem; padding: .35rem; display: grid; gap: .15rem;
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: 12px; box-shadow: var(--sombra);
+}
+.compartir--arriba .compartir__menu { top: auto; bottom: calc(100% + .4rem); left: auto; right: 0; }
+.compartir__opcion {
+  display: flex; align-items: center; gap: .6rem; width: 100%;
+  padding: .55rem .7rem; border: 0; border-radius: 8px; background: transparent;
+  color: var(--texto); font: inherit; font-size: .95rem; font-weight: 500; text-align: left; text-decoration: none; cursor: pointer;
+}
+.compartir__opcion:hover, .compartir__opcion:focus-visible { background: var(--superficie-2); color: var(--texto); }
+.compartir__opcion svg { color: var(--acento); flex: none; }
+.pie .compartir__opcion { color: var(--texto); }
+.pie__compartir {
+  display: inline-flex; align-items: center; gap: .35rem; padding: 0; border: 0; background: none;
+  color: var(--texto-suave); font: inherit; text-decoration: underline; cursor: pointer;
+}
+.pie__compartir:hover { color: var(--texto); }
+.toast {
+  position: fixed; left: 50%; bottom: 1.25rem; z-index: 200;
+  transform: translate(-50%, 1rem); opacity: 0; pointer-events: none;
+  padding: .6rem 1rem; border-radius: 10px; background: var(--texto); color: var(--fondo);
+  font-weight: 600; font-size: .95rem; box-shadow: var(--sombra);
+  transition: opacity .2s, transform .2s;
+}
+.toast--visible { opacity: 1; transform: translate(-50%, 0); }
+.compartir--derecha { margin-left: auto; align-self: flex-start; }
+.compartir--derecha .compartir__menu { left: auto; right: 0; }
+.tarjeta__compartir { width: 36px; height: 36px; color: var(--texto-suave); }
+.tarjeta__compartir:hover, .tarjeta__compartir[aria-expanded="true"] { color: var(--acento); border-color: var(--acento); }
+.tarjeta--destacada { animation: destacar 2.4s ease-out; }
+@keyframes destacar {
+  0%, 35% { border-color: var(--acento); box-shadow: 0 0 0 3px color-mix(in srgb, var(--acento) 45%, transparent), var(--sombra); }
+  100% { box-shadow: none; }
+}
