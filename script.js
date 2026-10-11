@@ -131,7 +131,10 @@
         el('div', { clase: 'tarjeta__meta' }, [
           el('span', { clase: 'version', texto: item.version && item.version !== '—' ? 'v' + item.version : 'Versión por definir' }),
           item.tamano ? el('span', { clase: 'tarjeta__sep', 'aria-hidden': 'true', texto: '·' }) : null,
-          item.tamano ? el('span', { texto: item.tamano }) : null
+          item.tamano ? el('span', { texto: item.tamano }) : null,
+          // Contador de descargas: oculto hasta que lleguen los datos de GitHub (ver "Contador de descargas")
+          item.releasePrefijos ? el('span', { clase: 'tarjeta__sep tarjeta__descargas-sep', 'aria-hidden': 'true', texto: '·', hidden: '' }) : null,
+          item.releasePrefijos ? el('span', { clase: 'tarjeta__descargas', 'data-descargas': item.id, hidden: '' }) : null
         ])
       ])
     ]);
@@ -218,6 +221,80 @@
     return;
   }
 
+  /* ---------- Contador de descargas (GitHub Releases) ----------
+     Suma las descargas de TODAS las versiones de cada app, leyendo la API pública
+     de GitHub (sin cuenta ni clave). Son 2 consultas por visita como máximo, y el
+     resultado se guarda 1 hora en el navegador. Si GitHub no responde, el contador
+     simplemente no aparece. */
+  var REPO_POR_DEFECTO = 'bigwork-create/bigwork-create.github.io';
+  var CACHE_MS = 60 * 60 * 1000;
+  var totalesDescargas = {}; // id de la app -> número de descargas
+  var formatoNumero = (function () {
+    try { var f = new Intl.NumberFormat('es-PE'); return function (n) { return f.format(n); }; }
+    catch (e) { return function (n) { return String(n); }; }
+  })();
+
+  function mostrarDescargas() {
+    var nodos = document.querySelectorAll('[data-descargas]');
+    Array.prototype.forEach.call(nodos, function (n) {
+      var total = totalesDescargas[n.getAttribute('data-descargas')];
+      var sep = n.previousElementSibling;
+      if (typeof total !== 'number' || total < 1) return;
+      n.textContent = '↓ ' + formatoNumero(total) + (total === 1 ? ' descarga' : ' descargas');
+      n.title = 'Descargas desde GitHub, sumando todas las versiones';
+      n.hidden = false;
+      if (sep && sep.classList.contains('tarjeta__descargas-sep')) sep.hidden = false;
+    });
+  }
+
+  function leerReleases(repo) {
+    var clave = 'descargas:' + repo;
+    try {
+      var c = JSON.parse(localStorage.getItem(clave) || 'null');
+      if (c && Date.now() - c.t < CACHE_MS && Array.isArray(c.r)) return Promise.resolve(c.r);
+    } catch (e) {}
+    return fetch('https://api.github.com/repos/' + repo + '/releases?per_page=100', {
+      headers: { Accept: 'application/vnd.github+json' },
+      credentials: 'omit', referrerPolicy: 'no-referrer'
+    }).then(function (res) {
+      if (!res.ok) throw new Error('GitHub ' + res.status);
+      return res.json();
+    }).then(function (lista) {
+      if (!Array.isArray(lista)) throw new Error('Respuesta inesperada');
+      // Solo guardamos lo necesario: etiqueta y descargas de cada versión
+      var r = lista.filter(function (x) { return x && !x.draft; }).map(function (x) {
+        var n = 0;
+        (x.assets || []).forEach(function (a) { n += Number(a.download_count) || 0; });
+        return { tag: String(x.tag_name || ''), n: n };
+      });
+      try { localStorage.setItem(clave, JSON.stringify({ t: Date.now(), r: r })); } catch (e) {}
+      return r;
+    });
+  }
+
+  function cargarDescargas() {
+    if (typeof fetch !== 'function' || typeof Promise === 'undefined') return;
+    var porRepo = {};
+    apps.concat(soft).forEach(function (it) {
+      if (!it.releasePrefijos || it.proximamente) return;
+      var repo = it.releaseRepo || REPO_POR_DEFECTO;
+      (porRepo[repo] = porRepo[repo] || []).push(it);
+    });
+    Object.keys(porRepo).forEach(function (repo) {
+      leerReleases(repo).then(function (releases) {
+        porRepo[repo].forEach(function (it) {
+          var total = 0;
+          releases.forEach(function (r) {
+            var coincide = it.releasePrefijos.some(function (p) { return r.tag.indexOf(p) === 0; });
+            if (coincide) total += r.n;
+          });
+          totalesDescargas[it.id] = total;
+        });
+        mostrarDescargas();
+      })['catch'](function () { /* sin conexión o límite de GitHub: no se muestra el contador */ });
+    });
+  }
+
   /* ---------- Catálogo de apps: búsqueda + filtros ---------- */
   var gridApps = document.getElementById('gridApps');
   var vacioApps = document.getElementById('vacioApps');
@@ -235,6 +312,7 @@
     });
     visibles.forEach(function (a) { gridApps.appendChild(crearTarjeta(a, 'app')); });
     vacioApps.hidden = visibles.length > 0;
+    mostrarDescargas();
   }
 
   function pintarChips() {
@@ -260,6 +338,7 @@
   /* ---------- Software ---------- */
   var gridSoft = document.getElementById('gridSoft');
   soft.forEach(function (s) { gridSoft.appendChild(crearTarjeta(s, 'soft')); });
+  cargarDescargas();
 
   /* ---------- Estadísticas del hero ---------- */
   document.getElementById('statApps').textContent = apps.length;

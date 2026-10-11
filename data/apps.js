@@ -31,6 +31,15 @@
                    Si tiene enlace aparece "Ver análisis en VirusTotal"
      permisos      (opcional) Lista de textos explicando cada permiso, o null.
                    Se muestra como una lista desplegable "Permisos"
+     releaseRepo   (opcional) Repositorio de GitHub donde están sus descargas,
+                   ej. "bigwork-create/registro-asistencia-desktop".
+                   Por defecto "bigwork-create/bigwork-create.github.io"
+     releasePrefijos (opcional) Lista de inicios de etiqueta (tag) de sus
+                   versiones en GitHub, ej. ["mebusco-"]. Se suman las
+                   descargas de TODAS las versiones cuya etiqueta empiece así
+                   y se muestra "↓ 123 descargas" en la tarjeta.
+                   [""] = todas las versiones del repositorio.
+                   Si falta, la tarjeta no muestra contador
      ejemplo       true = elemento de muestra (se marca como "Ejemplo")
      proximamente  true = tarjeta "Próximamente" (sin botón de descarga)
 
@@ -57,6 +66,7 @@ window.CATALOGO = {
       video: null,
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.0.1/Mebusco-2.0.1.apk",
       sha256: "88b267c2dc665388bd421a6d6233d786bdf787b6d2d186e70af4103a4ba7e4c7",
+      releasePrefijos: ["mebusco-"],
       virustotal: null,
       permisos: ["No pide permisos especiales."],
       tecnologias: ["Sin conexión"]
@@ -78,6 +88,7 @@ window.CATALOGO = {
       video: null,
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/modonoche-v1.1.1/ModoNoche-1.1.1.apk",
       sha256: "024a5960972ff68c3d1834302b75f71d72c8267b560eb5ebe8c328731a807f62",
+      releasePrefijos: ["modonoche-", "mineb-"], // incluye la versión antigua MineB
       virustotal: null,
       permisos: [
         "Mostrar sobre otras apps: para dibujar el filtro oscuro encima de la pantalla.",
@@ -100,6 +111,7 @@ window.CATALOGO = {
       video: null,
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/puenteapp-v1.0.1/PuenteApp-1.0.1.apk",
       sha256: "53dc117d15c4fc56d83440223535921643be0c9142506126c67308c7bf82ad3b",
+      releasePrefijos: ["puenteapp-"],
       virustotal: null,
       permisos: [
         "Cámara: para escanear los códigos QR.",
@@ -127,6 +139,7 @@ window.CATALOGO = {
       video: { tipo: "mp4", valor: "assets/videos/lectordoc-demo.mp4", poster: "assets/videos/lectordoc-demo-poster.webp", vertical: true },
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/lectordoc-v1.0.1/LectorDoc-1.0.1.apk",
       sha256: "a1035c57612a4a19c206e066418edaa6761e89894e5c5739775cff77e6f9cb2f",
+      releasePrefijos: ["lectordoc-"],
       virustotal: null,
       permisos: ["No pide permisos especiales."],
       tecnologias: ["Sin conexión", "PDF"]
@@ -148,6 +161,7 @@ window.CATALOGO = {
       video: null,
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/linterna-v1.0.1/Linterna-1.0.1.apk",
       sha256: "d29fe56680e9463f6241abeda738d50c3360e252f4a5e4f4b8180fee0f160ccc",
+      releasePrefijos: ["linterna-"],
       virustotal: null,
       permisos: [
         "Flash: usa el flash de la cámara solo como luz. No pide permiso de cámara, no toma fotos ni graba.",
@@ -177,6 +191,8 @@ window.CATALOGO = {
       descarga: "https://github.com/bigwork-create/registro-asistencia-desktop/releases/download/v2.0.2/RegistroAsistencia-2.0.2-windows.zip",
       textoBoton: "Descargar para Windows (.zip)",
       sha256: "31fd497d6384be30e1d5301f40a550207277bf13d7ee6a6c8f9f542ad7a65708",
+      releaseRepo: "bigwork-create/registro-asistencia-desktop",
+      releasePrefijos: [""], // todas las versiones del repositorio
       virustotal: null,
       permisos: [
         "Cómo abrirlo: descomprime el .zip (clic derecho > Extraer todo), abre la carpeta RegistroAsistencia y haz doble clic en RegistroAsistencia.exe. No saques el .exe de su carpeta.",

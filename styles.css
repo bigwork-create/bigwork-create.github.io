@@ -212,6 +212,8 @@ p { margin: 0 0 1rem; }
 .insignia--tec { font-weight: 500; color: var(--texto-suave); }
 .version { font-variant-numeric: tabular-nums; }
 .tarjeta__sep { opacity: .6; }
+.tarjeta__descargas { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tarjeta__descargas[hidden], .tarjeta__descargas-sep[hidden] { display: none; }
 .tarjeta__req { font-size: .85rem; color: var(--texto-suave); margin: 0; }
 .tarjeta__req strong { color: var(--texto); font-weight: 600; }
 
