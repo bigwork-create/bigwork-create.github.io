@@ -124,6 +124,28 @@ window.CATALOGO = {
       virustotal: null,
       permisos: ["No pide permisos especiales."],
       tecnologias: ["Sin conexión", "PDF"]
+    },
+    {
+      id: "linterna",
+      nombre: "Linterna",
+      descripcion: "Enciende la linterna con un toque, desde los ajustes rápidos, con su widget o con los botones de volumen aunque la app esté cerrada. Se apaga sola después del tiempo que elijas o al agitar el teléfono.",
+      categoria: "Utilidades",
+      version: "1.0",
+      plataformas: ["Android"],
+      requisitos: "Android 8.0 o superior, con flash",
+      tamano: "965 KB",
+      icono: "assets/icons/linterna.png",
+      capturas: [],
+      video: null,
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/linterna-v1.0/Linterna-1.0.apk",
+      sha256: "9e58d84d45fc94c48c29e754d730358280aeed8b062eade234ff0ae68c26c42a",
+      virustotal: null,
+      permisos: [
+        "Flash: usa el flash de la cámara solo como luz. No pide permiso de cámara, no toma fotos ni graba.",
+        "Vibración: una vibración corta te confirma si la linterna se encendió o se apagó con los botones de volumen.",
+        "Accesibilidad (opcional, la activas tú): permite usar los botones de volumen con la app cerrada. No lee el texto ni el contenido de la pantalla."
+      ],
+      tecnologias: ["Botones de volumen", "Widget", "Ajustes rápidos", "Apagado automático"]
     }
   ],
 
