@@ -3,7 +3,8 @@
      junto con los que Hubert agrega a mano en data/comentarios.js.
    - Si Firestore no responde, se quedan los de data/comentarios.js (los pinta script.js).
    - El botón "Comentar" abre una ventana para escribir; se publica al instante (sin cuenta ni
-     sesión) y Hubert borra los malos desde admin-comentarios.html.
+     sesión) y Hubert borra los malos con su programa de escritorio
+     "Moderar comentarios" (fuera de esta web).
    - La ventana siempre empieza en blanco: no se recuerda el apodo ni la elección anterior.
    Se compila con esbuild (ver herramientas/comentarios/README.md); no editar assets/js a mano. */
 import { collection, query, orderBy, limit, startAfter, getDocs, addDoc, serverTimestamp } from 'firebase/firestore/lite';

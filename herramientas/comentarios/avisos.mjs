@@ -5,7 +5,7 @@ const salida = '../../assets/js';
 const version = JSON.parse(readFileSync('node_modules/firebase/package.json', 'utf8')).version;
 let texto = 'Avisos de terceros incluidos en los scripts de comentarios de Hubert Apps (assets/js)\n' +
   '==========================================================================\n\n' +
-  'Firebase JavaScript SDK ' + version + ' (firebase/app, firebase/firestore/lite y, en la página de administración, firebase/auth)\n' +
+  'Firebase JavaScript SDK ' + version + ' (firebase/app y firebase/firestore/lite)\n' +
   'Copyright Google LLC. Licencia: Apache License 2.0 — https://www.apache.org/licenses/LICENSE-2.0\n' +
   'Código fuente: https://github.com/firebase/firebase-js-sdk\n\n' +
   'Avisos originales extraídos del código:\n\n';

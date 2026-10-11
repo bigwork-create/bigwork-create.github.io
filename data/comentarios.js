@@ -4,7 +4,7 @@
    Comentarios que agregas tú a mano (por ejemplo, opiniones que te enviaron
    y que la persona aceptó publicar). Se muestran en la sección "Comentarios"
    junto con los que la gente publica desde la web (esos se guardan en
-   Firestore y se borran desde admin-comentarios.html). Si Firestore no
+   Firestore y se borran con el programa "Moderar comentarios"). Si Firestore no
    responde, la página muestra al menos estos. Si no hay ninguno, aparece
    "Aún no hay comentarios."
 

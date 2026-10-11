@@ -1,4 +1,4 @@
-/* Utilidades compartidas por la página pública y la de administración. */
+/* Utilidades de la sección de comentarios. */
 export function el(tag, attrs, hijos) {
   const n = document.createElement(tag);
   if (attrs) {

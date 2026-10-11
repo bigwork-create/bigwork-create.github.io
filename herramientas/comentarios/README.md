@@ -4,7 +4,8 @@ Código fuente de los scripts de la sección "Comentarios". La web (CSP `script-
 carga nada desde CDN: el Firebase JS SDK se empaqueta con esbuild en archivos locales de `assets/js/`.
 
 - `src/comentarios.js`: lista (Firestore + `data/comentarios.js`), "Ver más" y la ventana "Comentar".
-- `src/admin-comentarios.js`: página privada `admin-comentarios.html` (entrar con Google y borrar).
+- Borrar comentarios: con el programa de escritorio "Moderar comentarios" (fuera de esta web,
+  en `Web-01/Moderador-Comentarios`). Las reglas no dejan borrar ni editar desde la web.
 - `src/firebase-config.js`: configuración pública del proyecto; en `localhost` usa los emuladores.
 - Reglas: `firestore.rules`; índices: `firestore.indexes.json` (en la raíz de la web).
 
@@ -20,7 +21,7 @@ npm run build      # borra y regenera ../../assets/js
 
 ```bash
 # en la raíz de la web (requiere Java 21)
-firebase emulators:start --only firestore,auth --project demo-hubert
+firebase emulators:start --only firestore --project demo-hubert
 ```
 
 Abre la web desde `http://127.0.0.1:...` con un servidor local: los scripts se conectan solos a los

@@ -14,10 +14,7 @@ export const configFirebase = {
 /* Al abrir la web desde tu propia PC (localhost / 127.0.0.1) se usan los emuladores de Firebase,
    así las pruebas nunca tocan los comentarios reales. */
 export const usarEmulador = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-export const EMULADOR_AUTH = 'http://127.0.0.1:9099';
 
 export const app = initializeApp(usarEmulador ? Object.assign({}, configFirebase, { projectId: 'demo-hubert' }) : configFirebase);
 export const db = getFirestore(app);
 if (usarEmulador) connectFirestoreEmulator(db, '127.0.0.1', 8080);
-
-export const CORREO_ADMIN = 'bigwork4002@gmail.com';

@@ -379,17 +379,3 @@ p { margin: 0 0 1rem; }
 .form-comentar__acciones .btn:disabled { opacity: .6; cursor: wait; transform: none; }
 .form-comentar__trampa { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
-/* Administración de comentarios (admin-comentarios.html) */
-.admin__barra { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1rem 0; }
-.admin__sesion { color: var(--texto-suave); font-size: .9rem; }
-.admin__estado:empty { display: none; }
-.admin__estado { padding: .6rem .8rem; border-radius: 10px; border: 1px solid var(--borde); background: var(--superficie-2); color: var(--texto); }
-.admin__estado--error { border-color: #c62828; }
-.admin__estado--ok { border-color: var(--acento); }
-.admin__lista { list-style: none; margin: 0; padding: 0 !important; display: grid; gap: .7rem; }
-.admin__item { padding: .75rem .9rem; border: 1px solid var(--borde); border-radius: 10px; background: var(--superficie); }
-.admin__meta { font-size: .88rem; color: var(--texto-suave); }
-.admin__texto { margin: .4rem 0 .5rem; color: var(--texto) !important; white-space: pre-line; overflow-wrap: anywhere; }
-.admin__pie { display: flex; justify-content: flex-end; align-items: center; gap: .5rem; }
-.admin__borrar { padding: .4rem .9rem; font-size: .85rem; border-color: #c62828; }
-.admin__borrar:hover { background: #c62828; color: #fff; border-color: #c62828; }
