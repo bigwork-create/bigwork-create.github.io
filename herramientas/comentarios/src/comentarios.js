@@ -5,7 +5,9 @@
    - El botón "Comentar" abre una ventana para escribir; se publica al instante (sin cuenta ni
      sesión) y Hubert borra los malos con su programa de escritorio
      "Moderar comentarios" (fuera de esta web).
-   - La ventana siempre empieza en blanco: no se recuerda el apodo ni la elección anterior.
+   - Mientras la página siga abierta se recuerda la elección (Anónimo o apodo) y el apodo, solo en
+     una variable en memoria: al recargar la página se pregunta de nuevo. No se usa localStorage,
+     sessionStorage ni cookies. El texto del comentario se borra al publicar.
    Se compila con esbuild (ver herramientas/comentarios/README.md); no editar assets/js a mano. */
 import { collection, query, orderBy, limit, startAfter, getDocs, addDoc, serverTimestamp } from 'firebase/firestore/lite';
 import { db } from './firebase-config.js';
@@ -169,7 +171,19 @@ dialogo.appendChild(el('div', { clase: 'modal__caja' }, [
 document.body.appendChild(dialogo);
 
 let abiertoEn = 0;
-/* Deja la ventana como nueva: sin elección, sin apodo, sin texto (no se guarda nada en el navegador). */
+/* Elección recordada solo en memoria (se pierde al recargar o cerrar la página). */
+const recordado = { modo: '', apodo: '' };
+function recordar() {
+  recordado.modo = modoApodo.checked ? 'apodo' : (modoAnon.checked ? 'anonimo' : '');
+  recordado.apodo = apodo.value;
+}
+function restaurar() {
+  modoAnon.checked = recordado.modo === 'anonimo';
+  modoApodo.checked = recordado.modo === 'apodo';
+  apodo.value = recordado.apodo;
+  apodoCaja.hidden = !modoApodo.checked;
+}
+/* Deja la ventana como nueva (sin elección, apodo ni texto); luego abrir() repone la elección recordada. */
 function limpiar() {
   form.reset();
   modoAnon.checked = false;
@@ -186,17 +200,22 @@ function actualizarModo() {
   apodoCaja.hidden = !modoApodo.checked;
   if (modoApodo.checked) apodo.focus();
 }
-modoAnon.addEventListener('change', actualizarModo);
-modoApodo.addEventListener('change', actualizarModo);
+modoAnon.addEventListener('change', function () { actualizarModo(); recordar(); });
+modoApodo.addEventListener('change', function () { actualizarModo(); recordar(); });
+apodo.addEventListener('input', recordar);
 texto.addEventListener('input', function () { cuenta.textContent = texto.value.length + ' / ' + MAX_TEXTO; });
 
 function abrir() {
   limpiar();
+  restaurar();
   abiertoEn = Date.now();
   if (typeof dialogo.showModal === 'function') dialogo.showModal(); else dialogo.setAttribute('open', '');
-  modoAnon.focus();
+  if (modoApodo.checked) apodo.focus();
+  else if (modoAnon.checked) texto.focus();
+  else modoAnon.focus();
 }
 function cerrar() {
+  recordar();
   if (dialogo.open && typeof dialogo.close === 'function') dialogo.close(); else dialogo.removeAttribute('open');
   limpiar();
   botonComentar.focus();
