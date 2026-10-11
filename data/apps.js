@@ -40,16 +40,6 @@
                    y se muestra "↓ 123 descargas" en la tarjeta.
                    [""] = todas las versiones del repositorio.
                    Si falta, la tarjeta no muestra contador
-     comentarios   (opcional) Lista de comentarios que te enviaron por correo y que la
-                   persona aceptó publicar. Si está vacía [] no se muestra nada.
-                   Cada uno: nombre (apodo que eligió, o "Anónimo"), estrellas (1 a 5,
-                   opcional), texto y fecha ("AAAA-MM-DD"). Se muestran del más
-                   reciente al más antiguo. Ejemplo:
-                     comentarios: [
-                       { nombre: "Anónimo", estrellas: 5, texto: "Me sirvió mucho.", fecha: "2026-10-11" },
-                       { nombre: "Profe Rosa", texto: "Sería bueno poder buscar en Word.", fecha: "2026-10-12" }
-                     ],
-                   No pongas nombres reales, correos ni teléfonos sin permiso de la persona.
      ejemplo       true = elemento de muestra (se marca como "Ejemplo")
      proximamente  true = tarjeta "Próximamente" (sin botón de descarga)
 
@@ -78,7 +68,6 @@ window.CATALOGO = {
       sha256: "88b267c2dc665388bd421a6d6233d786bdf787b6d2d186e70af4103a4ba7e4c7",
       releasePrefijos: ["mebusco-"],
       virustotal: null,
-      comentarios: [],
       permisos: ["No pide permisos especiales."],
       tecnologias: ["Sin conexión"]
     },
@@ -101,7 +90,6 @@ window.CATALOGO = {
       sha256: "024a5960972ff68c3d1834302b75f71d72c8267b560eb5ebe8c328731a807f62",
       releasePrefijos: ["modonoche-", "mineb-"], // incluye la versión antigua MineB
       virustotal: null,
-      comentarios: [],
       permisos: [
         "Mostrar sobre otras apps: para dibujar el filtro oscuro encima de la pantalla.",
         "Servicio en primer plano y notificaciones: para mantener el filtro activo y avisarte de que está encendido.",
@@ -125,7 +113,6 @@ window.CATALOGO = {
       sha256: "53dc117d15c4fc56d83440223535921643be0c9142506126c67308c7bf82ad3b",
       releasePrefijos: ["puenteapp-"],
       virustotal: null,
-      comentarios: [],
       permisos: [
         "Cámara: para escanear los códigos QR.",
         "Vibración: para avisarte cuando registra una lectura.",
@@ -154,7 +141,6 @@ window.CATALOGO = {
       sha256: "a1035c57612a4a19c206e066418edaa6761e89894e5c5739775cff77e6f9cb2f",
       releasePrefijos: ["lectordoc-"],
       virustotal: null,
-      comentarios: [],
       permisos: ["No pide permisos especiales."],
       tecnologias: ["Sin conexión", "PDF"]
     },
@@ -177,7 +163,6 @@ window.CATALOGO = {
       sha256: "d29fe56680e9463f6241abeda738d50c3360e252f4a5e4f4b8180fee0f160ccc",
       releasePrefijos: ["linterna-"],
       virustotal: null,
-      comentarios: [],
       permisos: [
         "Flash: usa el flash de la cámara solo como luz. No pide permiso de cámara, no toma fotos ni graba.",
         "Vibración: una vibración corta te confirma si la linterna se encendió o se apagó con los botones de volumen.",
@@ -209,7 +194,6 @@ window.CATALOGO = {
       releaseRepo: "bigwork-create/registro-asistencia-desktop",
       releasePrefijos: [""], // todas las versiones del repositorio
       virustotal: null,
-      comentarios: [],
       permisos: [
         "Cómo abrirlo: descomprime el .zip (clic derecho > Extraer todo), abre la carpeta RegistroAsistencia y haz doble clic en RegistroAsistencia.exe. No saques el .exe de su carpeta.",
         "No necesita instalarse ni pide permisos de administrador.",

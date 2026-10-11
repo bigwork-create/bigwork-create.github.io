@@ -81,18 +81,6 @@
     return el('span', { clase: 'compartir compartir--derecha' }, [b]);
   }
 
-  /* Fecha de un comentario ("2026-10-11") en formato peruano: "11 de octubre de 2026" */
-  var formatoFecha = (function () {
-    try { var f = new Intl.DateTimeFormat('es-PE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }); return function (d) { return f.format(d); }; }
-    catch (e) { return function (d) { return d.toISOString().slice(0, 10); }; }
-  })();
-  function fechaComentario(s) {
-    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || ''));
-    if (!m) return '';
-    var d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3]));
-    return isNaN(d.getTime()) ? '' : formatoFecha(d);
-  }
-
   function crearTarjeta(item, tipo) {
     var esApp = tipo === 'app';
     var clases = 'tarjeta';
@@ -189,30 +177,6 @@
         el('summary', { texto: 'Capturas de pantalla (' + item.capturas.length + ')' }), galeria
       ]));
     }
-    // Comentarios (los agrega Hubert a mano en data/apps.js); si no hay, no se muestra el bloque
-    var coms = (item.comentarios || []).filter(function (c) { return c && c.texto; });
-    if (coms.length) {
-      coms = coms.slice().sort(function (a, b) { return String(b.fecha || '').localeCompare(String(a.fecha || '')); });
-      var listaC = el('ul', { clase: 'comentarios' });
-      coms.forEach(function (c) {
-        var n = Math.round(Number(c.estrellas));
-        var cab = el('div', { clase: 'comentario__cabeza' }, [
-          el('strong', { clase: 'comentario__nombre', texto: String(c.nombre || '').trim() || 'Anónimo' })
-        ]);
-        if (n >= 1 && n <= 5) {
-          cab.appendChild(el('span', {
-            clase: 'comentario__estrellas', role: 'img', 'aria-label': n + (n === 1 ? ' estrella de 5' : ' estrellas de 5'),
-            texto: '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n)
-          }));
-        }
-        var f = fechaComentario(c.fecha);
-        if (f) cab.appendChild(el('time', { clase: 'comentario__fecha', datetime: c.fecha, texto: f }));
-        listaC.appendChild(el('li', { clase: 'comentario' }, [cab, el('p', { clase: 'comentario__texto', texto: String(c.texto) })]));
-      });
-      cuerpo.appendChild(el('details', { clase: 'detalle' }, [
-        el('summary', { texto: 'Comentarios (' + coms.length + ')' }), listaC
-      ]));
-    }
     if (item.sha256) {
       cuerpo.appendChild(el('details', { clase: 'detalle' }, [
         el('summary', { texto: 'Verificar archivo (SHA-256)' }),
@@ -242,14 +206,6 @@
           texto: 'Ver análisis en VirusTotal'
         }));
       }
-      // Invitación a opinar por correo (visible aunque no haya comentarios)
-      cuerpo.appendChild(el('p', { clase: 'tarjeta__opinar' }, [
-        document.createTextNode('¿Usaste ' + (esApp ? 'esta app' : 'este programa') + '? '),
-        el('a', {
-          href: 'mailto:bigwork4002@gmail.com?subject=' + encodeURIComponent('Comentario sobre ' + item.nombre),
-          texto: 'Cuéntame qué te pareció'
-        })
-      ]));
     } else {
       cuerpo.appendChild(el('span', { clase: 'btn btn--secundario btn--bloque', 'aria-disabled': 'true', texto: 'Muy pronto' }));
     }
