@@ -5,9 +5,12 @@
    - El botón "Comentar" abre una ventana para escribir; se publica al instante (sin cuenta ni
      sesión) y Hubert borra los malos con su programa de escritorio
      "Moderar comentarios" (fuera de esta web).
-   - Mientras la página siga abierta se recuerda la elección (Anónimo o apodo) y el apodo, solo en
-     una variable en memoria: al recargar la página se pregunta de nuevo. No se usa localStorage,
-     sessionStorage ni cookies. El texto del comentario se borra al publicar.
+   - Mientras la página siga abierta se recuerda la elección (Anónimo o apodo), el apodo y "Acepto
+     las reglas", solo en una variable en memoria: al recargar la página se pregunta de nuevo.
+   - Si la persona marca "No volver a preguntar" y publica, esa elección y la aceptación de las reglas
+     se guardan en localStorage (solo en su navegador, nunca se envían). En las siguientes visitas la
+     ventana muestra "Comentas como X · Cambiar"; "Cambiar" borra lo guardado.
+   - El texto del comentario se borra al publicar.
    Se compila con esbuild (ver herramientas/comentarios/README.md); no editar assets/js a mano. */
 import { collection, query, orderBy, limit, startAfter, getDocs, addDoc, serverTimestamp } from 'firebase/firestore/lite';
 import { db } from './firebase-config.js';
@@ -141,6 +144,10 @@ const texto = el('textarea', { id: 'textoComentario', rows: '5', maxlength: Stri
 const cuenta = el('span', { clase: 'form-comentar__cuenta', id: 'cuentaComentario', texto: '0 / ' + MAX_TEXTO });
 const trampa = el('input', { type: 'text', name: 'sitio_web', id: 'sitioWeb', tabindex: '-1', autocomplete: 'off' });
 const acepto = el('input', { type: 'checkbox', id: 'aceptoReglas' });
+const noPreguntar = el('input', { type: 'checkbox', id: 'noPreguntar', 'aria-describedby': 'notaNoPreguntar' });
+const nombreResumen = el('strong', { clase: 'form-comentar__quien' });
+const cambiar = el('button', { type: 'button', clase: 'form-comentar__cambiar', texto: 'Cambiar' });
+const resumen = el('p', { clase: 'form-comentar__resumen', hidden: true }, ['Comentas como ', nombreResumen, ' · ', cambiar]);
 const estadoForm = el('p', { clase: 'form-comentar__estado', role: 'alert', 'aria-live': 'assertive' });
 const enviar = el('button', { type: 'submit', clase: 'btn btn--primario', texto: 'Publicar comentario' });
 const cancelar = el('button', { type: 'button', clase: 'btn btn--secundario', value: 'cancelar', texto: 'Cancelar' });
@@ -148,7 +155,8 @@ const cerrarX = el('button', { type: 'button', clase: 'btn-icono', 'aria-label':
 cerrarX.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 
 const form = el('form', { clase: 'form-comentar', novalidate: true }, [
-  el('fieldset', { clase: 'form-comentar__modo' }, [
+  resumen,
+  el('fieldset', { clase: 'form-comentar__modo', id: 'bloqueModo' }, [
     el('legend', { texto: '¿Cómo quieres aparecer?' }),
     el('label', { clase: 'form-comentar__opcion', for: 'modoAnon' }, [modoAnon, ' Comentar como Anónimo']),
     el('label', { clase: 'form-comentar__opcion', for: 'modoApodo' }, [modoApodo, ' Usar un apodo']),
@@ -156,9 +164,13 @@ const form = el('form', { clase: 'form-comentar', novalidate: true }, [
   ]),
   el('div', { clase: 'form-comentar__campo' }, [el('label', { for: 'textoComentario', texto: 'Tu comentario' }), texto, cuenta]),
   el('div', { clase: 'form-comentar__trampa', 'aria-hidden': 'true' }, [el('label', { for: 'sitioWeb', texto: 'Deja este campo vacío' }), trampa]),
-  el('div', { clase: 'form-comentar__reglas' }, [
+  el('div', { clase: 'form-comentar__reglas', id: 'bloqueReglas' }, [
     acepto,
     el('label', { for: 'aceptoReglas' }, ['Acepto las ', el('a', { href: 'terminos.html#comentarios', target: '_blank', rel: 'noopener', texto: 'reglas de comentarios' })])
+  ]),
+  el('div', { clase: 'form-comentar__reglas form-comentar__nopreguntar', id: 'bloqueNoPreguntar' }, [
+    noPreguntar,
+    el('label', { for: 'noPreguntar' }, ['No volver a preguntar ', el('small', { id: 'notaNoPreguntar', texto: '(se guarda solo en este navegador)' })])
   ]),
   el('p', { clase: 'form-comentar__nota', texto: 'Tu comentario se publica al instante y lo puede leer cualquiera. No incluyas datos personales tuyos ni de otras personas.' }),
   estadoForm,
@@ -169,20 +181,77 @@ dialogo.appendChild(el('div', { clase: 'modal__caja' }, [
   form
 ]));
 document.body.appendChild(dialogo);
+const bloqueModo = form.querySelector('#bloqueModo');
+const bloqueReglas = form.querySelector('#bloqueReglas');
+const bloqueNoPreguntar = form.querySelector('#bloqueNoPreguntar');
+
+/* ---------- Preferencia guardada ("No volver a preguntar"): solo en este navegador ---------- */
+const CLAVE_PREF = 'comentarios:preferencia';
+function leerPreferencia() {
+  try {
+    const p = JSON.parse(window.localStorage.getItem(CLAVE_PREF) || 'null');
+    if (!p || p.acepto !== true) return null;
+    if (p.modo === 'anonimo') return { modo: 'anonimo', apodo: '' };
+    if (p.modo === 'apodo' && typeof p.apodo === 'string') {
+      const a = p.apodo.trim().replace(/\s+/g, ' ');
+      if (a && a.length <= MAX_APODO && !problemaDeContenido(a)) return { modo: 'apodo', apodo: a };
+    }
+  } catch (err) { /* sin acceso a localStorage o dato dañado */ }
+  return null;
+}
+function guardarPreferencia(modo, valorApodo) {
+  try {
+    window.localStorage.setItem(CLAVE_PREF, JSON.stringify({ modo: modo, apodo: modo === 'apodo' ? valorApodo : '', acepto: true }));
+    return true;
+  } catch (err) { return false; }
+}
+function borrarPreferencia() {
+  try { window.localStorage.removeItem(CLAVE_PREF); } catch (err) { /* nada */ }
+}
+let hayAlmacen = false;
+try { const k = CLAVE_PREF + ':prueba'; window.localStorage.setItem(k, '1'); window.localStorage.removeItem(k); hayAlmacen = true; } catch (err) { hayAlmacen = false; }
+if (!hayAlmacen) bloqueNoPreguntar.hidden = true;
+let preferencia = leerPreferencia();
 
 let abiertoEn = 0;
 /* Elección recordada solo en memoria (se pierde al recargar o cerrar la página). */
-const recordado = { modo: '', apodo: '' };
+const recordado = { modo: '', apodo: '', acepto: false, noPreguntar: false };
 function recordar() {
+  if (preferencia) return; // con preferencia guardada, la memoria no cambia
   recordado.modo = modoApodo.checked ? 'apodo' : (modoAnon.checked ? 'anonimo' : '');
   recordado.apodo = apodo.value;
+  recordado.acepto = acepto.checked;
+  recordado.noPreguntar = noPreguntar.checked;
+}
+function mostrarCampos(si) {
+  bloqueModo.hidden = !si;
+  bloqueReglas.hidden = !si;
+  bloqueNoPreguntar.hidden = !si || !hayAlmacen;
+  resumen.hidden = si;
 }
 function restaurar() {
-  modoAnon.checked = recordado.modo === 'anonimo';
-  modoApodo.checked = recordado.modo === 'apodo';
-  apodo.value = recordado.apodo;
+  const r = preferencia ? { modo: preferencia.modo, apodo: preferencia.apodo, acepto: true, noPreguntar: true } : recordado;
+  modoAnon.checked = r.modo === 'anonimo';
+  modoApodo.checked = r.modo === 'apodo';
+  apodo.value = r.apodo;
+  acepto.checked = r.acepto;
+  noPreguntar.checked = r.noPreguntar && hayAlmacen;
   apodoCaja.hidden = !modoApodo.checked;
+  nombreResumen.textContent = preferencia ? (preferencia.modo === 'apodo' ? preferencia.apodo : 'Anónimo') : '';
+  mostrarCampos(!preferencia);
 }
+cambiar.addEventListener('click', function () {
+  // Borra lo guardado y vuelve a mostrar los campos con los valores actuales para poder cambiarlos.
+  borrarPreferencia();
+  recordado.modo = modoApodo.checked ? 'apodo' : 'anonimo';
+  recordado.apodo = apodo.value;
+  recordado.acepto = acepto.checked;
+  recordado.noPreguntar = false;
+  preferencia = null;
+  noPreguntar.checked = false;
+  mostrarCampos(true);
+  (modoApodo.checked ? apodo : modoAnon).focus();
+});
 /* Deja la ventana como nueva (sin elección, apodo ni texto); luego abrir() repone la elección recordada. */
 function limpiar() {
   form.reset();
@@ -203,6 +272,8 @@ function actualizarModo() {
 modoAnon.addEventListener('change', function () { actualizarModo(); recordar(); });
 modoApodo.addEventListener('change', function () { actualizarModo(); recordar(); });
 apodo.addEventListener('input', recordar);
+acepto.addEventListener('change', recordar);
+noPreguntar.addEventListener('change', recordar);
 texto.addEventListener('input', function () { cuenta.textContent = texto.value.length + ' / ' + MAX_TEXTO; });
 
 function abrir() {
@@ -210,8 +281,8 @@ function abrir() {
   restaurar();
   abiertoEn = Date.now();
   if (typeof dialogo.showModal === 'function') dialogo.showModal(); else dialogo.setAttribute('open', '');
-  if (modoApodo.checked) apodo.focus();
-  else if (modoAnon.checked) texto.focus();
+  if (preferencia || modoAnon.checked) texto.focus();
+  else if (modoApodo.checked) apodo.focus();
   else modoAnon.focus();
 }
 function cerrar() {
@@ -260,6 +331,10 @@ form.addEventListener('submit', async function (e) {
   try {
     const nuevo = await addDoc(collection(db, 'comentarios'), { nombre: nombre, texto: t, creado: serverTimestamp() });
     propios.unshift({ id: nuevo.id, nombre: nombre, texto: t, fecha: new Date() });
+    if (!preferencia && noPreguntar.checked && hayAlmacen) {
+      recordar();
+      if (guardarPreferencia(usaApodo ? 'apodo' : 'anonimo', nombre)) preferencia = leerPreferencia();
+    }
     pintar();
     cerrar();
     estado.textContent = '¡Gracias! Tu comentario ya está publicado.';

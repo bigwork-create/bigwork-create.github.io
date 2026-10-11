@@ -377,5 +377,12 @@ p { margin: 0 0 1rem; }
 .form-comentar__estado:empty { display: none; }
 .form-comentar__acciones { display: flex; flex-wrap: wrap; gap: .6rem; }
 .form-comentar__acciones .btn:disabled { opacity: .6; cursor: wait; transform: none; }
+.form-comentar__resumen { margin: 0; padding: .6rem .8rem; border: 1px solid var(--borde); border-radius: 10px; background: var(--superficie-2); color: var(--texto); }
+.form-comentar__quien { overflow-wrap: anywhere; }
+.form-comentar__cambiar { background: none; border: 0; padding: 0; font: inherit; color: var(--acento); text-decoration: underline; cursor: pointer; }
+.form-comentar__cambiar:hover, .form-comentar__cambiar:focus-visible { text-decoration-thickness: 2px; }
+.form-comentar__nopreguntar label { font-weight: 500; }
+.form-comentar__nopreguntar small { color: var(--texto-suave); font-weight: 400; }
+.form-comentar [hidden] { display: none !important; }
 .form-comentar__trampa { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
