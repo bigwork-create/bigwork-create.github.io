@@ -60,7 +60,7 @@ Abre `data/apps.js`. Hay dos listas: `aplicaciones` (Android) y `software`
 }
 ```
 
-- Las apps publicadas son Mebusco, MineB, PuenteApp Asistencia y Lector Doc. Usa `ejemplo: true` solo para tarjetas de muestra.
+- Las apps publicadas son Mebusco, Modo Noche (antes MineB), PuenteApp Asistencia, Lector Doc y Linterna. Usa `ejemplo: true` solo para tarjetas de muestra.
 - **VirusTotal:** si `virustotal` tiene un enlace (ej. `"https://www.virustotal.com/gui/file/SHA256_DEL_APK"`), aparece
   "Ver análisis en VirusTotal" debajo del botón de descarga. Con `null` no se muestra nada.
 - **Permisos:** escribe un texto por permiso explicando para qué se usa. Con `null` o `[]` no se muestra la lista.
@@ -106,7 +106,7 @@ python3 -m http.server 8000
 GitHub Pages no admite archivos de más de 100 MB y no es buena idea guardar los APK en el repositorio. Mejor:
 
 Los APK actuales están publicados como Releases de este mismo repositorio
-(`bigwork-create.github.io`), una por app, con etiquetas `mebusco-v1.0`, `mineb-v1.0`, `puenteapp-v1.0` y `lectordoc-v1.0`.
+(`bigwork-create.github.io`), una por app, con etiquetas `mebusco-v1.0`, `modonoche-v1.1` (antes `mineb-v1.0`), `puenteapp-v1.0`, `lectordoc-v1.0` y `linterna-v1.0`.
 
 1. En el repositorio ve a **Releases → Draft a new release**.
 2. Pon una etiqueta nueva (ej. `mebusco-v1.1`), arrastra el `.apk` (o el `.zip` del programa de escritorio) y publica.
