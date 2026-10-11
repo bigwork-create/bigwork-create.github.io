@@ -53,7 +53,9 @@
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#aplicaciones">Aplicaciones</a></li>
           <li><a href="#software">Software</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <!-- Contacto oculto: no hay enlaces visibles por ahora. Para mostrarlo,
+               quita "hidden" de este <li> y de la sección id="contacto". -->
+          <li hidden><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
 
@@ -134,25 +136,30 @@
       </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section class="seccion" id="contacto" aria-labelledby="tituloContacto">
+    <!-- CONTACTO
+         Oculta por ahora (atributo "hidden") porque todavía no hay enlaces publicados.
+         Para mostrarla: quita "hidden" de esta <section>, del <li> "Contacto" del menú
+         y del enlace que quieras mostrar (GitHub y/o Correo). En Correo, cambia
+         TU_CORREO@ejemplo.com por tu correo real antes de mostrarlo. -->
+    <section class="seccion" id="contacto" aria-labelledby="tituloContacto" hidden>
       <div class="contenedor contacto">
         <div>
           <h2 id="tituloContacto">Contacto</h2>
           <p>¿Encontraste un error, tienes una idea o necesitas una app a medida? Escríbeme.</p>
         </div>
-        <!-- EDITA AQUÍ: tus enlaces reales -->
         <ul class="contacto__links">
-          <li>
-            <a class="contacto__link" href="#" data-editar="true">
+          <!-- GitHub: oculto a pedido. Para mostrarlo, pon el enlace de tu perfil en href y quita "hidden". -->
+          <li hidden>
+            <a class="contacto__link" href="#" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
-              <span>GitHub <small>(editar enlace)</small></span>
+              <span>GitHub</span>
             </a>
           </li>
-          <li>
-            <a class="contacto__link" href="#" data-editar="true">
+          <!-- Correo: oculto hasta tener un correo de contacto. Cambia el mailto y quita "hidden". -->
+          <li hidden>
+            <a class="contacto__link" href="mailto:TU_CORREO@ejemplo.com">
               <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-              <span>Correo <small>(editar enlace)</small></span>
+              <span>Correo</span>
             </a>
           </li>
         </ul>
@@ -164,7 +171,11 @@
     <div class="contenedor pie__fila">
       <!-- EDITA AQUÍ: nombre en el pie -->
       <p>© <span id="anio"></span> Hubert Apps. Hecho con HTML, CSS y JavaScript.</p>
-      <a href="#inicio">Volver arriba ↑</a>
+      <ul class="pie__enlaces">
+        <li><a href="privacidad.html">Privacidad</a></li>
+        <li><button type="button" class="pie__boton" data-configurar-cookies>Configurar cookies</button></li>
+        <li><a href="#inicio">Volver arriba ↑</a></li>
+      </ul>
     </div>
   </footer>
 
@@ -183,5 +194,7 @@
 
   <script src="data/apps.js"></script>
   <script src="script.js"></script>
+  <!-- Aviso de cookies. Google Analytics (analitica.js) solo se carga si el visitante pulsa "Aceptar". -->
+  <script src="consentimiento.js"></script>
 </body>
 </html>

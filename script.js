@@ -192,6 +192,13 @@
     return art;
   }
 
+  /* Páginas sin catálogo (por ejemplo privacidad.html): solo tema, menú y año */
+  if (!document.getElementById('gridApps')) {
+    var anioPie = document.getElementById('anio');
+    if (anioPie) anioPie.textContent = new Date().getFullYear();
+    return;
+  }
+
   /* ---------- Catálogo de apps: búsqueda + filtros ---------- */
   var gridApps = document.getElementById('gridApps');
   var vacioApps = document.getElementById('vacioApps');

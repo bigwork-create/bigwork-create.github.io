@@ -56,6 +56,7 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
 p { margin: 0 0 1rem; }
 
 .contenedor { width: min(1140px, 100% - 2rem); margin-inline: auto; }
+[hidden] { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .saltar { position: absolute; left: 1rem; top: -100px; background: var(--acento); color: var(--acento-texto); padding: .5rem 1rem; border-radius: 8px; z-index: 100; font-weight: 600; }
 .saltar:focus { top: 1rem; }
@@ -243,13 +244,15 @@ p { margin: 0 0 1rem; }
 .contacto__links { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
 .contacto__link { display: flex; align-items: center; gap: .75rem; padding: .9rem 1.1rem; background: var(--superficie); border: 1px solid var(--borde); border-radius: 12px; color: var(--texto); text-decoration: none; font-weight: 600; }
 .contacto__link:hover { border-color: var(--acento); }
-.contacto__link small { color: var(--aviso); font-weight: 500; }
 @media (min-width: 760px) { .contacto { grid-template-columns: 1fr 1fr; } }
 
 .pie { border-top: 1px solid var(--borde); padding: 1.5rem 0; color: var(--texto-suave); font-size: .9rem; }
 .pie__fila { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; }
 .pie p { margin: 0; }
 .pie a { color: var(--texto-suave); }
+.pie__enlaces { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .35rem 1.1rem; }
+.pie__boton { font: inherit; color: var(--texto-suave); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
+.pie__boton:hover, .pie a:hover { color: var(--texto); }
 
 /* ---------- Modal de video ---------- */
 .modal { border: 0; padding: 0; background: transparent; width: min(900px, 100% - 2rem); max-width: none; color: var(--texto); }
@@ -262,3 +265,43 @@ p { margin: 0 0 1rem; }
 .modal--vertical { width: min(420px, 100% - 2rem); }
 .modal--vertical .modal__video { aspect-ratio: 9 / 16; max-height: calc(100vh - 7rem); }
 .modal__video video { object-fit: contain; }
+
+/* ---------- Aviso de cookies ---------- */
+.cookies {
+  position: fixed; z-index: 90; left: 50%; bottom: 1rem; transform: translateX(-50%);
+  width: min(760px, 100% - 1.5rem);
+  background: var(--superficie); color: var(--texto);
+  border: 1px solid var(--borde); border-radius: var(--radio); box-shadow: var(--sombra);
+  padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .75rem;
+  max-height: calc(100vh - 2rem); overflow-y: auto;
+}
+.cookies__titulo { font-size: 1rem; margin: 0; }
+.cookies__texto { margin: 0; font-size: .92rem; color: var(--texto-suave); }
+.cookies__acciones { display: flex; gap: .6rem; }
+.cookies__acciones .btn { flex: 1; padding: .6rem 1rem; }
+@media (min-width: 620px) {
+  .cookies { flex-direction: row; align-items: center; gap: 1.25rem; }
+  .cookies__acciones { flex: 0 0 auto; }
+  .cookies__acciones .btn { flex: 0 0 auto; min-width: 7.5rem; }
+}
+@media (max-width: 619px) {
+  .cookies { bottom: .5rem; width: calc(100% - 1rem); padding: .85rem .9rem; }
+}
+
+/* ---------- Página de privacidad ---------- */
+.legal { width: min(780px, 100% - 2rem); margin-inline: auto; padding: 2.5rem 0 3.5rem; }
+.legal h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); }
+.legal h2 { font-size: 1.25rem; margin-top: 2.2rem; }
+.legal p, .legal li { color: var(--texto-suave); }
+.legal strong { color: var(--texto); }
+.legal ul { padding-left: 1.25rem; margin: 0 0 1rem; display: grid; gap: .35rem; }
+.legal__fecha { font-size: .9rem; }
+.legal__nota { margin-top: 2.5rem; padding: .9rem 1.1rem; border: 1px solid var(--borde); border-radius: 12px; background: var(--superficie); font-size: .9rem; }
+.legal__tabla-wrap { overflow-x: auto; margin: 0 0 1rem; border: 1px solid var(--borde); border-radius: 12px; }
+.legal table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.legal th, .legal td { text-align: left; padding: .6rem .75rem; border-bottom: 1px solid var(--borde); vertical-align: top; }
+.legal th { background: var(--superficie-2); color: var(--texto); }
+.legal td { color: var(--texto-suave); }
+.legal tr:last-child td { border-bottom: 0; }
+.legal code { font-size: .85em; background: var(--superficie-2); padding: .1rem .35rem; border-radius: 5px; color: var(--texto); }
+.legal__estado { padding: .75rem 1rem; border-radius: 10px; border: 1px solid var(--borde); background: var(--superficie-2); color: var(--texto); }

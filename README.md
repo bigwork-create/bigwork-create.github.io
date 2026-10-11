@@ -11,6 +11,9 @@ hubert-web/
 ├── index.html        → estructura de la página (textos del inicio y contacto)
 ├── styles.css        → diseño y colores
 ├── script.js         → lógica (tarjetas, búsqueda, filtros, tema, video)
+├── privacidad.html   → política de privacidad
+├── consentimiento.js → aviso de cookies (Aceptar / Rechazar)
+├── analitica.js      → Google Analytics; solo se carga si el visitante acepta
 ├── data/apps.js      → ★ EL CATÁLOGO: aquí agregas tus apps y programas
 └── assets/
     ├── logo.svg, favicon.svg, hero.svg
@@ -25,9 +28,10 @@ Abre `index.html` y busca los comentarios `<!-- EDITA AQUÍ -->`:
 
 - **Nombre / marca:** cambia `Hubert Apps` (aparece en la cabecera, el título y el pie).
 - **Título y lema** del inicio.
-- **Contacto:** reemplaza los `href="#"` por tus enlaces reales, por ejemplo
-  `https://github.com/TU_USUARIO` y `mailto:tucorreo@ejemplo.com`, y borra el texto
-  `(editar enlace)`.
+- **Contacto:** la sección está oculta (atributo `hidden`) hasta tener enlaces. Para
+  mostrarla, pon tus enlaces reales (por ejemplo `https://github.com/TU_USUARIO` y
+  `mailto:tucorreo@ejemplo.com`) y quita `hidden` de la sección, del enlace "Contacto"
+  del menú y de cada enlace que quieras mostrar. Los comentarios en `index.html` lo explican.
 
 ## 2. Agregar o editar una app
 
@@ -113,6 +117,13 @@ Los APK actuales están publicados como Releases de este mismo repositorio
 3. Copia el enlace del archivo y pégalo en el campo `descarga` de `data/apps.js`. Tiene esta forma:
    `https://github.com/bigwork-create/bigwork-create.github.io/releases/download/ETIQUETA/Archivo.apk`
 4. Actualiza también `version`, `tamano` y `sha256`.
+
+## Privacidad y cookies
+
+Google Analytics solo se activa si el visitante pulsa **Aceptar** en el aviso de
+cookies. La elección se guarda en el navegador (clave `consentimiento_analitica`) y
+se puede cambiar con **Configurar cookies**, al pie de cada página. Si agregas otro
+servicio externo (YouTube, formularios, etc.), actualiza `privacidad.html` y su fecha.
 
 ## Tema claro/oscuro
 
