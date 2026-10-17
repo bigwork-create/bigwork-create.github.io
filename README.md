@@ -64,7 +64,7 @@ Abre `data/apps.js`. Hay dos listas: `aplicaciones` (Android) y `software`
 }
 ```
 
-- Las apps publicadas son Mebusco, Modo Noche (antes MineB), PuenteApp Asistencia, Lector Doc y Linterna. Usa `ejemplo: true` solo para tarjetas de muestra.
+- Las apps publicadas son Mebusco, Modo Noche (antes MineB), Asiste QR (antes PuenteApp Asistencia), Lector Doc y Linterna. Usa `ejemplo: true` solo para tarjetas de muestra.
 - **VirusTotal:** si `virustotal` tiene un enlace (ej. `"https://www.virustotal.com/gui/file/SHA256_DEL_APK"`), aparece
   "Ver análisis en VirusTotal" debajo del botón de descarga. Con `null` no se muestra nada. Pon el enlace solo
   después de subir el archivo a VirusTotal y comprobar que el análisis existe.
@@ -101,7 +101,7 @@ firebase deploy --only hosting
 ## 5. Subir los APK (Releases)
 
 Los APK están publicados como Releases de este mismo repositorio, una por versión:
-`mebusco-v2.0.1`, `modonoche-v1.1.1`, `puenteapp-v1.0.1`, `lectordoc-v1.0.1` y `linterna-v1.0.1`
+`mebusco-v2.0.1`, `modonoche-v1.1.1`, `asisteqr-v1.1.0` (antes `puenteapp-v1.0.1`), `lectordoc-v1.0.1` y `linterna-v1.0.1`
 (las anteriores siguen disponibles y dicen que fueron reemplazadas). El programa de Windows se publica en
 [registro-asistencia-desktop](https://github.com/bigwork-create/registro-asistencia-desktop/releases)
 como `RegistroAsistencia-<versión>-windows.zip`.

@@ -384,7 +384,17 @@
     if (!id) return;
     var esApp = apps.some(function (a) { return a.id === id; });
     var esSoft = soft.some(function (s) { return s.id === id; });
-    if (!esApp && !esSoft) return;
+    if (!esApp && !esSoft) {
+      // ¿Es un id viejo? (idsAnteriores, ej. #puenteapp → #asiste-qr)
+      var nuevo = apps.concat(soft).filter(function (x) {
+        return Array.isArray(x.idsAnteriores) && x.idsAnteriores.indexOf(id) !== -1;
+      })[0];
+      if (!nuevo) return;
+      id = nuevo.id;
+      history.replaceState(null, '', '#' + encodeURIComponent(id));
+      esApp = apps.indexOf(nuevo) !== -1;
+      esSoft = !esApp;
+    }
     if (esApp && !document.getElementById(id)) {
       // Estaba oculta por la búsqueda o el filtro: los quitamos para mostrarla.
       buscar.value = '';

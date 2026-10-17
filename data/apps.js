@@ -40,6 +40,8 @@
                    y se muestra "↓ 123 descargas" en la tarjeta.
                    [""] = todas las versiones del repositorio.
                    Si falta, la tarjeta no muestra contador
+     idsAnteriores (opcional) Lista de ids viejos que siguen funcionando como
+                   enlace directo …/#id (llevan a la tarjeta con el id nuevo)
      ejemplo       true = elemento de muestra (se marca como "Ejemplo")
      proximamente  true = tarjeta "Próximamente" (sin botón de descarga)
 
@@ -98,25 +100,25 @@ window.CATALOGO = {
       ]
     },
     {
-      id: "puenteapp-asistencia",
-      nombre: "PuenteApp Asistencia",
-      descripcion: "Toma asistencia escaneando el código QR con el DNI de cada persona. Importa el padrón desde CSV, mira quién asistió y quién falta, y exporta el resultado a CSV.",
+      id: "asiste-qr",
+      idsAnteriores: ["puenteapp-asistencia", "puenteapp"], // enlaces viejos …/#puenteapp-asistencia y …/#puenteapp
+      nombre: "Asiste QR",
+      descripcion: "Antes PuenteApp Asistencia. Toma asistencia escaneando el código QR con el DNI de cada persona: deshaz un registro, cierra eventos y guarda su historial, y exporta a CSV con todas las columnas del padrón. Funciona sin internet.",
       categoria: "Gestión",
-      version: "1.0.1",
+      version: "1.1.0",
       plataformas: ["Android"],
-      requisitos: "Android 7.0 o superior, con cámara",
-      tamano: "29.3 MB",
-      icono: "assets/icons/puenteapp.png",
-      capturas: ["assets/screens/puenteapp-inicio.png"],
+      requisitos: "Android 7.0 o superior (cámara recomendada; sin cámara se registra por DNI)",
+      tamano: "17.3 MB",
+      icono: "assets/icons/asisteqr.png",
+      capturas: ["assets/screens/asisteqr-inicio.webp", "assets/screens/asisteqr-lista.webp"],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/puenteapp-v1.0.1/PuenteApp-1.0.1.apk",
-      sha256: "53dc117d15c4fc56d83440223535921643be0c9142506126c67308c7bf82ad3b",
-      releasePrefijos: ["puenteapp-"],
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/asisteqr-v1.1.0/AsisteQR-1.1.0.apk",
+      sha256: "c1d412ae000a96be927330dc9db5f39fd00462423703d1c22ae97d363de2103c",
+      releasePrefijos: ["asisteqr-", "puenteapp-"], // incluye la versión antigua PuenteApp Asistencia
       virustotal: null,
       permisos: [
         "Cámara: para escanear los códigos QR.",
-        "Vibración: para avisarte cuando registra una lectura.",
-        "Internet y estado de la red: los agrega la librería de escaneo ML Kit de Google, que puede enviar a Google métricas de uso y diagnóstico (no las imágenes ni el contenido de los códigos). El código de la app no usa internet."
+        "Vibración: para avisarte cuando registra una lectura."
       ],
       tecnologias: ["Escáner QR", "CSV"]
     },
