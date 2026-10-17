@@ -5,6 +5,7 @@
   var datos = window.CATALOGO || { aplicaciones: [], software: [] };
   var apps = datos.aplicaciones || [];
   var soft = datos.software || [];
+  var combos = datos.appPrograma || []; // App + Programa: app Android que necesita un programa de Windows
 
   /* ---------- Utilidades ---------- */
   function el(tag, attrs, hijos) {
@@ -83,7 +84,9 @@
 
   function crearTarjeta(item, tipo) {
     var esApp = tipo === 'app';
+    var esCombo = tipo === 'combo';
     var clases = 'tarjeta';
+    if (esCombo) clases += ' tarjeta--combo';
     if (item.ejemplo) clases += ' tarjeta--ejemplo';
     if (item.proximamente) clases += ' tarjeta--proximamente';
     var art = el('article', { clase: clases, id: item.id, 'aria-labelledby': 't-' + item.id });
@@ -133,8 +136,8 @@
           item.tamano ? el('span', { clase: 'tarjeta__sep', 'aria-hidden': 'true', texto: '·' }) : null,
           item.tamano ? el('span', { texto: item.tamano }) : null,
           // Contador de descargas: oculto hasta que lleguen los datos de GitHub (ver "Contador de descargas")
-          item.releasePrefijos ? el('span', { clase: 'tarjeta__sep tarjeta__descargas-sep', 'aria-hidden': 'true', texto: '·', hidden: '' }) : null,
-          item.releasePrefijos ? el('span', { clase: 'tarjeta__descargas', 'data-descargas': item.id, hidden: '' }) : null
+          (item.releasePrefijos || item.releaseFuentes) ? el('span', { clase: 'tarjeta__sep tarjeta__descargas-sep', 'aria-hidden': 'true', texto: '·', hidden: '' }) : null,
+          (item.releasePrefijos || item.releaseFuentes) ? el('span', { clase: 'tarjeta__descargas', 'data-descargas': item.id, hidden: '' }) : null
         ])
       ])
     ]);
@@ -142,7 +145,16 @@
     cuerpo.appendChild(top);
     cuerpo.appendChild(el('p', { clase: 'tarjeta__desc', texto: item.descripcion }));
 
+    // App + Programa: aviso visible de que se necesitan las dos partes
+    if (item.aviso) {
+      var aviso = el('p', { clase: 'aviso-combo', role: 'note' });
+      aviso.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="2.5" y="5" width="11" height="8" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="16" y="4" width="5.5" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 9h2.5" stroke="currentColor" stroke-width="1.8" stroke-dasharray="1.5 1.5"/></svg>';
+      aviso.appendChild(el('span', null, [el('strong', { texto: 'Necesitas las dos partes. ' }), document.createTextNode(item.aviso)]));
+      cuerpo.appendChild(aviso);
+    }
+
     var ins = el('div', { clase: 'insignias' });
+    if (esCombo) ins.appendChild(el('span', { clase: 'insignia insignia--combo', texto: 'App + Programa' }));
     if (item.categoria) ins.appendChild(el('span', { clase: 'insignia insignia--cat', texto: item.categoria }));
     (item.plataformas || []).forEach(function (p) { ins.appendChild(insigniaPlataforma(p)); });
     (item.tecnologias || []).forEach(function (t) { ins.appendChild(el('span', { clase: 'insignia insignia--tec', texto: t })); });
@@ -162,6 +174,7 @@
       var filas = [
         ['Sistema', rq.sistema],
         ['Equipo', rq.equipo],
+        ['Red', rq.red],
         ['Permisos', permisosRq],
         ['Descarga', item.tamano],
         ['Espacio', rq.espacio]
@@ -176,6 +189,14 @@
         el('h4', { clase: 'requisitos__titulo', texto: 'Requisitos' }), dl
       ]));
     }
+    // App + Programa: pasos para conectar la app con el programa
+    if (item.pasos && item.pasos.length) {
+      var ol = el('ol', { clase: 'detalle__lista' });
+      item.pasos.forEach(function (t) { ol.appendChild(el('li', { texto: t })); });
+      cuerpo.appendChild(el('details', { clase: 'detalle detalle--pasos', open: '' }, [
+        el('summary', { texto: 'Cómo conectar' }), ol
+      ]));
+    }
     if (item.permisos && item.permisos.length) {
       var lista = el('ul', { clase: 'detalle__lista' });
       item.permisos.forEach(function (t) { lista.appendChild(el('li', { texto: t })); });
@@ -186,7 +207,7 @@
     // Galería: todas las capturas en miniatura (solo si hay más de una)
     if (item.capturas && item.capturas.length > 1) {
       // Software de escritorio: capturas horizontales (no recortarlas como las de teléfono)
-      var galeria = el('div', { clase: esApp ? 'galeria' : 'galeria galeria--horizontal' });
+      var galeria = el('div', { clase: esApp ? 'galeria' : (esCombo ? 'galeria galeria--mixta' : 'galeria galeria--horizontal') });
       item.capturas.forEach(function (src, i) {
         galeria.appendChild(el('a', {
           clase: 'galeria__item', href: src, target: '_blank', rel: 'noopener',
@@ -205,6 +226,35 @@
         el('summary', { texto: 'Verificar archivo (SHA-256)' }),
         el('code', { clase: 'detalle__hash', texto: item.sha256 })
       ]));
+    }
+    // Varios archivos (App + Programa): una huella por cada parte
+    if (item.partes && item.partes.some(function (pt) { return pt.sha256; })) {
+      var hashes = el('div', { clase: 'detalle__hashes' });
+      item.partes.forEach(function (pt) {
+        if (!pt.sha256) return;
+        hashes.appendChild(el('p', { clase: 'detalle__hash-titulo', texto: pt.nombre + (pt.archivo ? ' (' + pt.archivo + ')' : '') }));
+        hashes.appendChild(el('code', { clase: 'detalle__hash', texto: pt.sha256 }));
+      });
+      cuerpo.appendChild(el('details', { clase: 'detalle' }, [
+        el('summary', { texto: 'Verificar archivos (SHA-256)' }), hashes
+      ]));
+    }
+
+    // App + Programa: un botón por cada parte (app y programa)
+    if (item.partes && item.partes.length && !item.proximamente) {
+      var bloque = el('div', { clase: 'descargas-combo' });
+      item.partes.forEach(function (pt) {
+        var d = el('a', { clase: 'btn btn--primario btn--bloque', href: pt.descarga || '#', rel: 'noopener' });
+        d.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        d.appendChild(document.createTextNode(pt.textoBoton || ('Descargar ' + pt.nombre)));
+        if (/\.(apk|zip|exe|msi)$/i.test(pt.descarga || '')) d.setAttribute('download', '');
+        bloque.appendChild(el('div', { clase: 'descargas-combo__parte' }, [
+          d, el('small', { clase: 'descargas-combo__nota', texto: [pt.nombre, pt.version ? 'v' + pt.version : '', pt.tamano].filter(Boolean).join(' · ') })
+        ]));
+      });
+      cuerpo.appendChild(bloque);
+      art.appendChild(cuerpo);
+      return art;
     }
 
     // Botón de descarga
@@ -298,20 +348,24 @@
   function cargarDescargas() {
     if (typeof fetch !== 'function' || typeof Promise === 'undefined') return;
     var porRepo = {};
-    apps.concat(soft).forEach(function (it) {
-      if (!it.releasePrefijos || it.proximamente) return;
-      var repo = it.releaseRepo || REPO_POR_DEFECTO;
-      (porRepo[repo] = porRepo[repo] || []).push(it);
+    apps.concat(soft, combos).forEach(function (it) {
+      if (it.proximamente) return;
+      // releaseFuentes: [{ repo, prefijos }] para sumar descargas de varios repositorios (App + Programa)
+      var fuentes = it.releaseFuentes || (it.releasePrefijos ? [{ repo: it.releaseRepo, prefijos: it.releasePrefijos }] : []);
+      fuentes.forEach(function (f) {
+        var repo = f.repo || REPO_POR_DEFECTO;
+        (porRepo[repo] = porRepo[repo] || []).push({ it: it, prefijos: f.prefijos || [''] });
+      });
     });
     Object.keys(porRepo).forEach(function (repo) {
       leerReleases(repo).then(function (releases) {
-        porRepo[repo].forEach(function (it) {
+        porRepo[repo].forEach(function (x) {
           var total = 0;
           releases.forEach(function (r) {
-            var coincide = it.releasePrefijos.some(function (p) { return r.tag.indexOf(p) === 0; });
+            var coincide = x.prefijos.some(function (p) { return r.tag.indexOf(p) === 0; });
             if (coincide) total += r.n;
           });
-          totalesDescargas[it.id] = total;
+          totalesDescargas[x.it.id] = (totalesDescargas[x.it.id] || 0) + total;
         });
         mostrarDescargas();
       })['catch'](function () { /* sin conexión o límite de GitHub: no se muestra el contador */ });
@@ -361,6 +415,10 @@
   /* ---------- Software ---------- */
   var gridSoft = document.getElementById('gridSoft');
   soft.forEach(function (s) { gridSoft.appendChild(crearTarjeta(s, 'soft')); });
+
+  /* ---------- App + Programa ---------- */
+  var gridCombo = document.getElementById('gridCombo');
+  if (gridCombo) combos.forEach(function (c) { gridCombo.appendChild(crearTarjeta(c, 'combo')); });
   cargarDescargas();
 
   /* ---------- Comentarios (data/comentarios.js) ---------- */
@@ -397,6 +455,8 @@
   /* ---------- Estadísticas del hero ---------- */
   document.getElementById('statApps').textContent = apps.length;
   document.getElementById('statSoft').textContent = soft.filter(function (s) { return !s.proximamente; }).length;
+  var statCombo = document.getElementById('statCombo');
+  if (statCombo) statCombo.textContent = combos.filter(function (c) { return !c.proximamente; }).length;
   document.getElementById('anio').textContent = new Date().getFullYear();
 
   /* ---------- Enlace directo a una tarjeta (…/#mebusco) ---------- */
@@ -406,10 +466,10 @@
     var id = decodeURIComponent((location.hash || '').slice(1));
     if (!id) return;
     var esApp = apps.some(function (a) { return a.id === id; });
-    var esSoft = soft.some(function (s) { return s.id === id; });
+    var esSoft = soft.some(function (s) { return s.id === id; }) || combos.some(function (c) { return c.id === id; });
     if (!esApp && !esSoft) {
       // ¿Es un id viejo? (idsAnteriores, ej. #puenteapp → #asiste-qr)
-      var nuevo = apps.concat(soft).filter(function (x) {
+      var nuevo = apps.concat(soft, combos).filter(function (x) {
         return Array.isArray(x.idsAnteriores) && x.idsAnteriores.indexOf(id) !== -1;
       })[0];
       if (!nuevo) return;

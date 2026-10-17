@@ -393,3 +393,20 @@ p { margin: 0 0 1rem; }
 .form-comentar [hidden] { display: none !important; }
 .form-comentar__trampa { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
+
+/* ---------- App + Programa (app Android que funciona con un programa de Windows) ---------- */
+.insignia--combo { color: #fff; border-color: transparent; background: linear-gradient(90deg, #1a8f50, #1565c0); }
+.tarjeta--combo { border-top: 3px solid color-mix(in srgb, var(--acento) 70%, #4ca3ff); }
+.aviso-combo { display: flex; gap: .55rem; align-items: flex-start; margin: 0; padding: .6rem .75rem; font-size: .88rem; color: var(--texto-suave); border: 1px solid color-mix(in srgb, var(--aviso) 45%, var(--borde)); background: color-mix(in srgb, var(--aviso) 9%, var(--superficie)); border-radius: 10px; }
+.aviso-combo svg { flex-shrink: 0; color: var(--aviso); margin-top: .1rem; }
+.aviso-combo strong { color: var(--texto); }
+.detalle--pasos ol.detalle__lista { padding-left: 2.1rem; }
+.descargas-combo { display: grid; gap: .6rem; }
+.descargas-combo__parte { display: grid; gap: .2rem; justify-items: center; }
+.descargas-combo__nota { color: var(--texto-suave); font-size: .78rem; text-align: center; }
+.detalle__hashes { padding: .5rem .75rem .7rem; display: grid; gap: .3rem; }
+.detalle__hashes .detalle__hash { margin: 0; padding: 0; }
+.detalle__hash-titulo { margin: .2rem 0 0; font-weight: 600; color: var(--texto); }
+.galeria--mixta { grid-template-columns: repeat(2, 1fr); align-items: start; }
+.galeria--mixta .galeria__item img { aspect-ratio: auto; object-fit: contain; max-height: 220px; background: var(--superficie-2); }
+@media (min-width: 980px) { .tarjeta--combo { grid-column: span 2; } }

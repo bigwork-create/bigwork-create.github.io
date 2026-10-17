@@ -41,6 +41,7 @@
           <li><a href="index.html#inicio">Inicio</a></li>
           <li><a href="index.html#aplicaciones">Aplicaciones</a></li>
           <li><a href="index.html#software">Software</a></li>
+          <li><a href="index.html#app-programa">App + Programa</a></li>
           <li><a href="index.html#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -105,17 +106,21 @@
       <p><strong>No publiques datos personales</strong>, tuyos ni de otras personas (nombres reales, DNI, teléfonos, correos, direcciones). Si alguien publica datos tuyos, avísame y los borro.</p>
 
       <h2>7. Las apps y el software: tus datos se quedan contigo</h2>
-      <p>Las apps (Mebusco, Modo Noche, Asiste QR (antes PuenteApp Asistencia), Lector Doc y Linterna) y el programa Registro de Asistencia Empresarial para Windows funcionan <strong>sin conexión a internet</strong> y guardan todo <strong>solo en tu dispositivo</strong>:</p>
+      <p>Las apps (Mebusco, Modo Noche, Asiste QR (antes PuenteApp Asistencia), Lector Doc y Linterna) el programa Registro de Asistencia Empresarial para Windows y Punto Asistencia (la app Punto junto con su programa de Windows) funcionan <strong>sin conexión a internet</strong> y guardan todo <strong>solo en tu dispositivo</strong>:</p>
       <ul>
         <li>Los padrones que cargas en Mebusco o en Asiste QR (con nombres y DNI) se quedan en tu teléfono. Estas apps solo leen el archivo que eliges o abres con ellas, y solo escriben donde decides exportar.</li>
         <li>Los registros de asistencia se guardan en tu teléfono o en tu PC (en Windows, en la carpeta <code>%APPDATA%\RegistroAsistencia</code> de tu usuario).</li>
         <li>Lector Doc solo accede a los archivos con tu autorización: los que abres o compartes con la app y la carpeta que eliges con el selector de Android para buscar documentos. El acceso a esa carpeta se mantiene para volver a buscar y se quita al borrar los datos de la app o al desinstalarla. No ve el resto del teléfono, no usa internet y tus documentos no salen de tu teléfono.</li>
+        <li>En <strong>Punto Asistencia</strong>, la app Punto envía el contenido del QR del DNI que escaneas <strong>solo al programa de tu PC</strong>, por tu red wifi o LAN, sin pasar por internet. Lo envía solo a la PC que enlazaste escaneando su QR, con un token propio de cada teléfono y una firma en cada registro. El padrón, la asistencia y el historial se guardan en tu PC (en la carpeta <code>%APPDATA%\PuntoAsistencia</code> de tu usuario), y en el teléfono queda un historial de los últimos 90 días. El programa solo abre el padrón que eliges y escribe donde decides exportar.</li>
         <li>Modo Noche y Linterna solo guardan tus ajustes en el teléfono.</li>
       </ul>
       <p>Ni esta web ni yo recibimos esos datos, y no tengo forma de verlos.</p>
 
       <h3>Una excepción: ML Kit en Asiste QR (antes PuenteApp Asistencia)</h3>
       <p>Asiste QR usa <strong>ML Kit</strong>, la biblioteca de Google para leer códigos QR. La lectura se hace dentro del teléfono: <strong>las imágenes de la cámara y el contenido de los códigos no salen de tu equipo</strong>. Desde la versión 1.1.0 la app <strong>no tiene permiso de internet</strong>, así que ML Kit no puede enviar nada. La versión 1.0.1 (PuenteApp Asistencia) sí tenía ese permiso, y ML Kit podía enviar a Google métricas de uso y diagnóstico (por ejemplo, el modelo del teléfono, la versión de la app y datos de rendimiento y errores), como explica Google en <a href="https://developers.google.com/ml-kit/android-data-disclosure" target="_blank" rel="noopener">su aviso sobre datos de ML Kit</a>. Yo nunca recibí esas métricas. Si todavía usas la 1.0.1, actualízala.</p>
+
+      <h3>ML Kit en la app Punto (Punto Asistencia)</h3>
+      <p>La app Punto también usa <strong>ML Kit</strong> para leer los códigos QR dentro del teléfono. Necesita el permiso de red para hablar con el programa de tu PC en tu red local, pero en esta app <strong>el envío de métricas de ML Kit a Google está desactivado</strong>: la app no incluye el componente que las enviaría. Las imágenes de la cámara y el contenido de los códigos nunca salen hacia internet.</p>
 
       <h2>8. Si cargas datos de otras personas</h2>
       <p>Cuando cargas un padrón con nombres y DNI de otras personas, tú decides qué datos usas y para qué. Por eso, <strong>tú eres el responsable de esos datos</strong>. Te recomiendo:</p>

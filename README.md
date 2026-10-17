@@ -10,7 +10,7 @@ de apps Android y software para Windows de Hubert Apps.
 ## Estructura
 
 ```
-├── index.html        → página principal (inicio, apps, software, contacto)
+├── index.html        → página principal (inicio, apps, software, app + programa, contacto)
 ├── privacidad.html   → política de privacidad
 ├── terminos.html     → términos de uso
 ├── licencias.html    → licencias de terceros y cómo verificar descargas
@@ -35,7 +35,7 @@ páginas legales. El botón de GitHub está oculto (atributo `hidden`).
 
 ## 2. Agregar o editar una app
 
-Abre `data/apps.js`. Hay dos listas: `aplicaciones` (Android) y `software`
+Abre `data/apps.js`. Hay tres listas: `aplicaciones` (Android), `appPrograma` (categoría «App + Programa»: app Android que necesita un programa de Windows, con dos descargas, aviso y pasos «Cómo conectar») y `software`
 (Windows). Cada elemento tiene esta forma:
 
 ```js
@@ -64,7 +64,7 @@ Abre `data/apps.js`. Hay dos listas: `aplicaciones` (Android) y `software`
 }
 ```
 
-- Las apps publicadas son Mebusco, Modo Noche (antes MineB), Asiste QR (antes PuenteApp Asistencia), Lector Doc y Linterna. Usa `ejemplo: true` solo para tarjetas de muestra.
+- Las apps publicadas son Mebusco, Modo Noche (antes MineB), Asiste QR (antes PuenteApp Asistencia), Lector Doc y Linterna. En «App + Programa» está Punto Asistencia (app Punto + programa de Windows, código en `bigwork-create/punto-asistencia-pc`). Usa `ejemplo: true` solo para tarjetas de muestra.
 - **VirusTotal:** si `virustotal` tiene un enlace (ej. `"https://www.virustotal.com/gui/file/SHA256_DEL_APK"`), aparece
   "Ver análisis en VirusTotal" debajo del botón de descarga. Con `null` no se muestra nada. Pon el enlace solo
   después de subir el archivo a VirusTotal y comprobar que el análisis existe.

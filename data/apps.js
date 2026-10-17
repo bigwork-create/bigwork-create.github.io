@@ -48,6 +48,17 @@
      idsAnteriores (opcional) Lista de ids viejos que siguen funcionando como
                    enlace directo …/#id (llevan a la tarjeta con el id nuevo)
      ejemplo       true = elemento de muestra (se marca como "Ejemplo")
+
+   Lista appPrograma (sección y categoría "App + Programa"): productos que
+   necesitan la app Android Y el programa de Windows. Usan los mismos campos
+   y además:
+     aviso         Texto del aviso "Necesitas las dos partes"
+     pasos         Lista de pasos de "Cómo conectar"
+     partes        Lista de descargas, una por parte:
+                   { nombre, version, archivo, tamano, descarga, textoBoton, sha256 }
+     requisitos    Igual que arriba, con un campo extra "red" (ej. misma wifi)
+     releaseFuentes Lista { repo, prefijos } para sumar las descargas de
+                   varios repositorios de GitHub en un solo contador
      proximamente  true = tarjeta "Próximamente" (sin botón de descarga)
 
    El ID de YouTube es lo que va después de "v=" en el enlace:
@@ -235,6 +246,74 @@ window.CATALOGO = {
       video: null,
       descarga: "#",
       proximamente: true
+    }
+  ],
+  /* App + Programa: la app Android y el programa de Windows se necesitan juntos */
+  appPrograma: [
+    {
+      id: "punto-asistencia",
+      nombre: "Punto Asistencia",
+      descripcion: "Toma asistencia con el teléfono y regístrala en tu computadora. La app Punto escanea el QR del DNI y lo envía por tu wifi al programa de Windows, que marca a la persona en el padrón al instante y guarda el historial por fecha. Hasta 2 teléfonos por PC, sin internet.",
+      categoria: "Gestión",
+      version: "1.0.0",
+      plataformas: ["Android", "Windows"],
+      aviso: "La app Punto va en el teléfono y el programa Punto Asistencia (PC) en la computadora, conectados a la misma red wifi. Solo con una de las dos no funciona.",
+      pasos: [
+        "En la PC: descomprime el .zip, abre la carpeta PuntoAsistencia y haz doble clic en PuntoAsistencia.exe. Carga tu padrón (CSV o Excel) en la pestaña Padrón.",
+        "La primera vez, cuando el Firewall de Windows pregunte, permite el acceso solo en «Redes privadas». Si el teléfono no encuentra la PC, ejecuta permitir_firewall_windows.bat como administrador.",
+        "En el teléfono: instala la app Punto y conéctalo a la misma wifi que la PC (no necesita internet).",
+        "En el programa pulsa «Enlazar teléfono». En la app toca «Enlazar con la PC» y escanea el QR que aparece (vence a los 5 minutos). Puedes enlazar hasta 2 teléfonos.",
+        "Listo: escanea el QR del DNI de cada persona con Punto y la PC la marca como presente."
+      ],
+      requisitos: {
+        sistema: "App: Android 7.0 o superior · Programa: Windows 10 (versión 1809 o posterior) u 11, de 64 bits",
+        equipo: "Teléfono con cámara",
+        red: "Teléfono y PC en la misma red wifi o LAN (sin internet). Usa los puertos 8080 y 8081 solo en redes privadas",
+        permisos: "App: cámara, red local y vibración · Programa: red local y los archivos que elijas, solo con tu autorización",
+        espacio: "Teléfono: unos 60 MB libres · PC: unos 170 MB libres (48 MB del .zip y 119 MB al descomprimirlo)"
+      },
+      tamano: "17.0 MB (app) + 47.6 MB (programa)",
+      icono: "assets/icons/punto-asistencia.png",
+      capturas: [
+        "assets/screens/punto-asistencia-pc.webp",
+        "assets/screens/punto-asistencia-enlace.webp"
+      ],
+      video: null,
+      partes: [
+        {
+          nombre: "App Punto (Android)",
+          version: "1.0.0",
+          archivo: "Punto-1.0.0.apk",
+          tamano: "17.0 MB",
+          descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/punto-v1.0.0/Punto-1.0.0.apk",
+          textoBoton: "Descargar app Punto (APK)",
+          sha256: "cb2dc66f9cd69809d782e32ac0525749f7568f7591bccf685a4ea36a5e8e26b4"
+        },
+        {
+          nombre: "Programa Punto Asistencia (Windows)",
+          version: "1.0.0",
+          archivo: "PuntoAsistencia-1.0.0-windows.zip",
+          tamano: "47.6 MB",
+          descarga: "https://github.com/bigwork-create/punto-asistencia-pc/releases/download/v1.0.0/PuntoAsistencia-1.0.0-windows.zip",
+          textoBoton: "Descargar programa para Windows (.zip)",
+          sha256: "d55fa4ab362d5c94e25464e5a2b28668455644ae18391df63dae58f3e07490bd"
+        }
+      ],
+      releaseFuentes: [
+        { repo: "bigwork-create/bigwork-create.github.io", prefijos: ["punto-"] },
+        { repo: "bigwork-create/punto-asistencia-pc", prefijos: [""] }
+      ],
+      virustotal: null,
+      permisos: [
+        "App · Cámara: para escanear el QR del DNI y el QR de enlace de la PC.",
+        "App · Red (wifi local): solo para hablar con el programa de tu PC en la misma red. No usa internet y tiene desactivado el envío de métricas de ML Kit a Google.",
+        "App · Vibración: para avisarte de cada registro.",
+        "Programa · Red local: recibe los registros en el puerto TCP 8080 y responde a la app en el puerto UDP 8081. Permítelo solo en redes privadas; solo acepta teléfonos que enlazaste con su QR, y cada registro va firmado.",
+        "Programa · Archivos, solo con tu autorización: el padrón que elijas y el archivo donde decidas exportar. Sus datos se guardan solo en tu PC, en %APPDATA%\\PuntoAsistencia.",
+        "Windows SmartScreen puede mostrar un aviso porque el programa no está firmado: elige «Más información» y luego «Ejecutar de todas formas». No necesita instalarse ni pide permisos de administrador (solo el .bat opcional del Firewall).",
+        "El programa es de código abierto (licencia MIT) e incluye Qt for Python (PySide6) bajo LGPL-3.0; los avisos están en la carpeta LICENSES del zip."
+      ],
+      tecnologias: ["Escáner QR", "Wifi local", "Python", "PySide6 (Qt)", "SQLite"]
     }
   ]
 };

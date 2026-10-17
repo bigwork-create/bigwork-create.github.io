@@ -49,6 +49,7 @@
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#aplicaciones">Aplicaciones</a></li>
           <li><a href="#software">Software</a></li>
+          <li><a href="#app-programa">App + Programa</a></li>
           <li><a href="#comentarios">Comentarios</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -82,6 +83,7 @@
           <ul class="hero__stats" aria-label="Resumen del catálogo">
             <li><strong id="statApps">0</strong><span>apps</span></li>
             <li><strong id="statSoft">0</strong><span>programas</span></li>
+            <li><strong id="statCombo">0</strong><span>app + programa</span></li>
             <li><strong>100%</strong><span>sin publicidad</span></li>
           </ul>
         </div>
@@ -137,9 +139,21 @@
       </div>
     </section>
 
+    <!-- APP + PROGRAMA: productos que necesitan la app Android Y el programa de Windows
+         (se editan en data/apps.js, lista appPrograma) -->
+    <section class="seccion" id="app-programa" aria-labelledby="tituloCombo">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <h2 id="tituloCombo">App + Programa</h2>
+          <p>Una app Android que trabaja junto con un programa de Windows. <strong>Necesitas las dos partes</strong>: las descargas están juntas en la misma tarjeta.</p>
+        </div>
+        <div class="grid" id="gridCombo"></div>
+      </div>
+    </section>
+
     <!-- COMENTARIOS: los publicados desde la web (Firestore, assets/js/comentarios.js)
          y los que agregas a mano en data/comentarios.js -->
-    <section class="seccion" id="comentarios" aria-labelledby="tituloComentarios">
+    <section class="seccion seccion--alt" id="comentarios" aria-labelledby="tituloComentarios">
       <div class="contenedor">
         <div class="seccion__cabeza">
           <h2 id="tituloComentarios">Comentarios</h2>
