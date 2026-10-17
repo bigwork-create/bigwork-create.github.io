@@ -148,9 +148,32 @@
     (item.tecnologias || []).forEach(function (t) { ins.appendChild(el('span', { clase: 'insignia insignia--tec', texto: t })); });
     cuerpo.appendChild(ins);
 
-    if (item.requisitos) {
-      cuerpo.appendChild(el('p', { clase: 'tarjeta__req' }, [
-        el('strong', { texto: 'Requiere: ' }), document.createTextNode(item.requisitos)
+    // Requisitos (siempre visible): sistema, permisos, tamaño de descarga y espacio.
+    // item.requisitos puede ser un texto (solo el sistema) o un objeto:
+    // { sistema, equipo, permisos, espacio }. Si falta "permisos" se deduce de
+    // item.permisos; el tamaño de descarga sale de item.tamano.
+    var rq = item.requisitos;
+    if (rq && !item.proximamente) {
+      if (typeof rq === 'string') rq = { sistema: rq };
+      var permisosRq = rq.permisos;
+      if (!permisosRq && item.permisos && item.permisos.length) {
+        permisosRq = /^no (pide|necesita)/i.test(item.permisos[0]) ? 'Ninguno' : item.permisos.length + ' (ver la lista abajo)';
+      }
+      var filas = [
+        ['Sistema', rq.sistema],
+        ['Equipo', rq.equipo],
+        ['Permisos', permisosRq],
+        ['Descarga', item.tamano],
+        ['Espacio', rq.espacio]
+      ];
+      var dl = el('dl', { clase: 'requisitos__lista' });
+      filas.forEach(function (f) {
+        if (!f[1]) return;
+        dl.appendChild(el('dt', { texto: f[0] }));
+        dl.appendChild(el('dd', { texto: f[1] }));
+      });
+      cuerpo.appendChild(el('section', { clase: 'requisitos', 'aria-label': 'Requisitos de ' + item.nombre }, [
+        el('h4', { clase: 'requisitos__titulo', texto: 'Requisitos' }), dl
       ]));
     }
     if (item.permisos && item.permisos.length) {

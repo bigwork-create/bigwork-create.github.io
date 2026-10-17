@@ -24,7 +24,12 @@
      textoBoton    (opcional) Texto del botón. Por defecto "Descargar APK"
                    en apps y "Descargar" en software
      tecnologias   (opcional) Lista de etiquetas, ej. ["Python", "SQLite"]
-     requisitos    (opcional) Texto, ej. "Android 8.0 o superior"
+     requisitos    (opcional) Se muestra en el bloque visible "Requisitos".
+                   Texto (solo el sistema), ej. "Android 8.0 o superior", u
+                   objeto { sistema, equipo, permisos, espacio }, ej.
+                   { sistema: "Android 8.0 o superior", permisos: "Ninguno",
+                     espacio: "unos 15 MB libres" }. "Descarga" sale de tamano;
+                   si falta permisos se deduce de la lista permisos.
      tamano        (opcional) Tamaño del archivo, ej. "10.6 MB"
      sha256        (opcional) Huella SHA-256 del archivo, para verificarlo
      virustotal    (opcional) Enlace al análisis en VirusTotal, o null.
@@ -58,7 +63,7 @@ window.CATALOGO = {
       categoria: "Utilidades",
       version: "2.1.0",
       plataformas: ["Android"],
-      requisitos: "Android 8.0 o superior",
+      requisitos: { sistema: "Android 8.0 o superior", permisos: "Ninguno", espacio: "Unos 10 MB libres, más el padrón que cargues" },
       tamano: "1.5 MB",
       icono: "assets/icons/mebusco.png",
       capturas: [
@@ -82,7 +87,7 @@ window.CATALOGO = {
       categoria: "Utilidades",
       version: "1.1.1",
       plataformas: ["Android"],
-      requisitos: "Android 8.0 o superior",
+      requisitos: { sistema: "Android 8.0 o superior", permisos: "Mostrar sobre otras apps, notificaciones, inicio al encender y batería (detalle abajo)", espacio: "Unos 20 MB libres" },
       tamano: "6.2 MB",
       icono: "assets/icons/modonoche.png",
       capturas: [
@@ -109,7 +114,7 @@ window.CATALOGO = {
       categoria: "Gestión",
       version: "1.1.0",
       plataformas: ["Android"],
-      requisitos: "Android 7.0 o superior (cámara recomendada; sin cámara se registra por DNI)",
+      requisitos: { sistema: "Android 7.0 o superior", equipo: "Cámara recomendada (sin cámara se registra por DNI)", permisos: "Cámara y vibración", espacio: "Unos 50 MB libres, más tus eventos" },
       tamano: "17.3 MB",
       icono: "assets/icons/asisteqr.png",
       capturas: ["assets/screens/asisteqr-inicio.webp", "assets/screens/asisteqr-lista.webp"],
@@ -127,26 +132,29 @@ window.CATALOGO = {
     {
       id: "lectordoc",
       nombre: "Lector Doc",
-      descripcion: "Lee PDF, TXT, CSV e imágenes sin internet, y convierte imágenes a PDF, TXT a PDF y PDF a PNG. Tus archivos se quedan en tu teléfono.",
+      descripcion: "Lee PDF, Word (.docx), TXT, CSV e imágenes sin internet. Convierte imágenes a PDF, texto a PDF, CSV a PDF, PDF a PNG y PDF a texto. Filtra tus documentos por tipo y busca los de una carpeta que elijas, sin permisos de almacenamiento. Tus archivos se quedan en tu teléfono.",
       categoria: "Utilidades",
-      version: "1.0.1",
+      version: "2.0.0",
       plataformas: ["Android"],
-      requisitos: "Android 8.0 o superior",
-      tamano: "19.8 MB",
+      requisitos: { sistema: "Android 8.0 o superior", permisos: "Ninguno (ni almacenamiento ni internet)", espacio: "Unos 15 MB libres, más los archivos que conviertas" },
+      tamano: "3.9 MB",
       icono: "assets/icons/lectordoc.png",
       capturas: [
         "assets/screens/lectordoc-inicio.webp",
+        "assets/screens/lectordoc-word.webp",
+        "assets/screens/lectordoc-transformar.webp",
+        "assets/screens/lectordoc-ajustes.webp",
         "assets/screens/lectordoc-pdf.webp",
         "assets/screens/lectordoc-csv.webp",
         "assets/screens/lectordoc-busqueda.webp"
       ],
       video: { tipo: "mp4", valor: "assets/videos/lectordoc-demo.mp4", poster: "assets/videos/lectordoc-demo-poster.webp", vertical: true },
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/lectordoc-v1.0.1/LectorDoc-1.0.1.apk",
-      sha256: "a1035c57612a4a19c206e066418edaa6761e89894e5c5739775cff77e6f9cb2f",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/lectordoc-v2.0.0/LectorDoc-2.0.0.apk",
+      sha256: "49073d8a33f44d6ece23d44f91e885f2a37d53bbc45d9888b23d837b6d3d0b1a",
       releasePrefijos: ["lectordoc-"],
       virustotal: null,
-      permisos: ["No pide permisos especiales."],
-      tecnologias: ["Sin conexión", "PDF"]
+      permisos: ["No pide permisos especiales. Para buscar documentos eliges una carpeta con el selector de Android y la app solo puede leer esa carpeta."],
+      tecnologias: ["Sin conexión", "PDF", "Word", "Conversiones"]
     },
     {
       id: "linterna",
@@ -155,7 +163,7 @@ window.CATALOGO = {
       categoria: "Utilidades",
       version: "1.0.1",
       plataformas: ["Android"],
-      requisitos: "Android 8.0 o superior, con flash",
+      requisitos: { sistema: "Android 8.0 o superior", equipo: "Teléfono de 64 bits (ARM64) con flash", permisos: "Vibración; accesibilidad opcional (detalle abajo)", espacio: "Unos 5 MB libres" },
       tamano: "969 KB",
       icono: "assets/icons/linterna.png",
       capturas: [
@@ -184,7 +192,7 @@ window.CATALOGO = {
       categoria: "Gestión",
       version: "2.0.2",
       plataformas: ["Windows"],
-      requisitos: "Windows 10 o superior (64 bits)",
+      requisitos: { sistema: "Windows 10 (versión 1809 o posterior) u 11, de 64 bits", permisos: "No pide permisos de administrador", espacio: "Unos 170 MB libres: 46 MB del .zip y 116 MB al descomprimirlo" },
       tamano: "46.3 MB",
       icono: "assets/icons/asistencia.svg",
       capturas: [

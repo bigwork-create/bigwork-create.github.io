@@ -217,6 +217,13 @@ p { margin: 0 0 1rem; }
 .tarjeta__req { font-size: .85rem; color: var(--texto-suave); margin: 0; }
 .tarjeta__req strong { color: var(--texto); font-weight: 600; }
 
+/* Requisitos (bloque visible en cada tarjeta) */
+.requisitos { font-size: .85rem; border: 1px solid var(--borde); border-left: 3px solid var(--acento); border-radius: 10px; background: var(--superficie-2); padding: .55rem .75rem .6rem; }
+.requisitos__titulo { margin: 0 0 .35rem; font-size: .85rem; font-weight: 700; color: var(--texto); }
+.requisitos__lista { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: .2rem .75rem; }
+.requisitos__lista dt { color: var(--texto); font-weight: 600; }
+.requisitos__lista dd { margin: 0; color: var(--texto-suave); }
+
 /* Detalles desplegables (permisos, SHA-256) */
 .detalle { font-size: .85rem; border: 1px solid var(--borde); border-radius: 10px; background: var(--superficie-2); }
 .detalle summary { cursor: pointer; padding: .5rem .75rem; font-weight: 600; color: var(--texto); list-style-position: inside; }

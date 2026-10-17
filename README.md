@@ -52,7 +52,7 @@ Abre `data/apps.js`. Hay dos listas: `aplicaciones` (Android) y `software`
   descarga: "https://github.com/TU_USUARIO/mi-app/releases/download/v1.0.0/mi-app.apk",
   textoBoton: "Descargar APK",        // opcional
   tecnologias: ["Kotlin", "Room"],    // opcional
-  requisitos: "Android 8.0 o superior", // opcional, se muestra como "Requiere: …"
+  requisitos: { sistema: "Android 8.0 o superior", permisos: "Ninguno", espacio: "Unos 15 MB libres" }, // opcional: bloque visible "Requisitos" (también acepta un texto; "Descarga" sale de tamano y, si falta permisos, se deduce de la lista permisos; para software o equipos especiales: equipo: "…")
   tamano: "10.6 MB",                  // opcional, aparece junto a la versión
   sha256: "6bc707…",                  // opcional, huella del archivo (desplegable)
   virustotal: null,                   // opcional: enlace al análisis en VirusTotal
@@ -101,7 +101,7 @@ firebase deploy --only hosting
 ## 5. Subir los APK (Releases)
 
 Los APK están publicados como Releases de este mismo repositorio, una por versión:
-`mebusco-v2.1.0`, `modonoche-v1.1.1`, `asisteqr-v1.1.0` (antes `puenteapp-v1.0.1`), `lectordoc-v1.0.1` y `linterna-v1.0.1`
+`mebusco-v2.1.0`, `modonoche-v1.1.1`, `asisteqr-v1.1.0` (antes `puenteapp-v1.0.1`), `lectordoc-v2.0.0` y `linterna-v1.0.1`
 (las anteriores siguen disponibles y dicen que fueron reemplazadas). El programa de Windows se publica en
 [registro-asistencia-desktop](https://github.com/bigwork-create/registro-asistencia-desktop/releases)
 como `RegistroAsistencia-<versión>-windows.zip`.
