@@ -27,7 +27,7 @@
      requisitos    (opcional) Se muestra en el bloque visible "Requisitos".
                    Texto (solo el sistema), ej. "Android 8.0 o superior", u
                    objeto { sistema, equipo, permisos, espacio }, ej.
-                   { sistema: "Android 8.0 o superior", permisos: "Ninguno",
+                   { sistema: "Android 8.0 o superior", permisos: "Ninguno" (solo si de verdad no accede a nada),
                      espacio: "unos 15 MB libres" }. "Descarga" sale de tamano;
                    si falta permisos se deduce de la lista permisos.
      tamano        (opcional) Tamaño del archivo, ej. "10.6 MB"
@@ -63,7 +63,7 @@ window.CATALOGO = {
       categoria: "Utilidades",
       version: "2.1.0",
       plataformas: ["Android"],
-      requisitos: { sistema: "Android 8.0 o superior", permisos: "Ninguno", espacio: "Unos 10 MB libres, más el padrón que cargues" },
+      requisitos: { sistema: "Android 8.0 o superior", permisos: "Acceso a archivos: solo el CSV que elijas o abras con la app y el que exportes", espacio: "Unos 10 MB libres, más el padrón que cargues" },
       tamano: "1.5 MB",
       icono: "assets/icons/mebusco.png",
       capturas: [
@@ -77,7 +77,10 @@ window.CATALOGO = {
       sha256: "95d509b5ded7bb96c8e883eb1a439ab96e17f24be6e027f940b061384493ca2e",
       releasePrefijos: ["mebusco-"],
       virustotal: null,
-      permisos: ["No pide permisos especiales."],
+      permisos: [
+        "Acceso a archivos, solo con tu autorización: el CSV que elijas o abras desde otra app, y el archivo donde decidas exportar el padrón.",
+        "No ve el resto del teléfono ni usa internet."
+      ],
       tecnologias: ["Sin conexión", "CSV", "Modo oscuro"]
     },
     {
@@ -114,7 +117,7 @@ window.CATALOGO = {
       categoria: "Gestión",
       version: "1.1.0",
       plataformas: ["Android"],
-      requisitos: { sistema: "Android 7.0 o superior", equipo: "Cámara recomendada (sin cámara se registra por DNI)", permisos: "Cámara y vibración", espacio: "Unos 50 MB libres, más tus eventos" },
+      requisitos: { sistema: "Android 7.0 o superior", equipo: "Cámara recomendada (sin cámara se registra por DNI)", permisos: "Cámara y vibración; acceso a archivos: solo el padrón que elijas y lo que exportes", espacio: "Unos 50 MB libres, más tus eventos" },
       tamano: "17.3 MB",
       icono: "assets/icons/asisteqr.png",
       capturas: ["assets/screens/asisteqr-inicio.webp", "assets/screens/asisteqr-lista.webp"],
@@ -125,18 +128,19 @@ window.CATALOGO = {
       virustotal: null,
       permisos: [
         "Cámara: para escanear los códigos QR.",
-        "Vibración: para avisarte cuando registra una lectura."
+        "Vibración: para avisarte cuando registra una lectura.",
+        "Acceso a archivos, solo con tu autorización: el padrón CSV que elijas o abras desde otra app, y el archivo donde decidas guardar lo que exportes. No ve el resto del teléfono."
       ],
       tecnologias: ["Escáner QR", "CSV"]
     },
     {
       id: "lectordoc",
       nombre: "Lector Doc",
-      descripcion: "Lee PDF, Word (.docx), TXT, CSV e imágenes sin internet. Convierte imágenes a PDF, texto a PDF, CSV a PDF, PDF a PNG y PDF a texto. Filtra tus documentos por tipo y busca los de una carpeta que elijas, sin permisos de almacenamiento. Tus archivos se quedan en tu teléfono.",
+      descripcion: "Lee PDF, Word (.docx), TXT, CSV e imágenes sin internet. Convierte imágenes a PDF, texto a PDF, CSV a PDF, PDF a PNG y PDF a texto. Filtra tus documentos por tipo y busca los de una carpeta que elijas. Solo accede a los archivos que abras y a esa carpeta, y todo se queda en tu teléfono.",
       categoria: "Utilidades",
       version: "2.0.0",
       plataformas: ["Android"],
-      requisitos: { sistema: "Android 8.0 o superior", permisos: "Ninguno (ni almacenamiento ni internet)", espacio: "Unos 15 MB libres, más los archivos que conviertas" },
+      requisitos: { sistema: "Android 8.0 o superior", permisos: "Acceso a archivos: solo los que abras y la carpeta que elijas. Sin internet", espacio: "Unos 15 MB libres, más los archivos que conviertas" },
       tamano: "3.9 MB",
       icono: "assets/icons/lectordoc.png",
       capturas: [
@@ -153,7 +157,11 @@ window.CATALOGO = {
       sha256: "49073d8a33f44d6ece23d44f91e885f2a37d53bbc45d9888b23d837b6d3d0b1a",
       releasePrefijos: ["lectordoc-"],
       virustotal: null,
-      permisos: ["No pide permisos especiales. Para buscar documentos eliges una carpeta con el selector de Android y la app solo puede leer esa carpeta."],
+      permisos: [
+        "Acceso a archivos, solo con tu autorización: los documentos que abras o compartas con Lector Doc, y la carpeta que elijas con el selector de Android para buscar documentos.",
+        "El acceso a esa carpeta se mantiene para volver a buscar; se quita al borrar los datos de la app o al desinstalarla.",
+        "No ve el resto del teléfono ni usa internet."
+      ],
       tecnologias: ["Sin conexión", "PDF", "Word", "Conversiones"]
     },
     {
@@ -192,7 +200,7 @@ window.CATALOGO = {
       categoria: "Gestión",
       version: "2.0.2",
       plataformas: ["Windows"],
-      requisitos: { sistema: "Windows 10 (versión 1809 o posterior) u 11, de 64 bits", permisos: "No pide permisos de administrador", espacio: "Unos 170 MB libres: 46 MB del .zip y 116 MB al descomprimirlo" },
+      requisitos: { sistema: "Windows 10 (versión 1809 o posterior) u 11, de 64 bits", permisos: "Usa los archivos que elijas (padrón y actas); no pide permisos de administrador", espacio: "Unos 170 MB libres: 46 MB del .zip y 116 MB al descomprimirlo" },
       tamano: "46.3 MB",
       icono: "assets/icons/asistencia.svg",
       capturas: [

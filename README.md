@@ -52,7 +52,7 @@ Abre `data/apps.js`. Hay dos listas: `aplicaciones` (Android) y `software`
   descarga: "https://github.com/TU_USUARIO/mi-app/releases/download/v1.0.0/mi-app.apk",
   textoBoton: "Descargar APK",        // opcional
   tecnologias: ["Kotlin", "Room"],    // opcional
-  requisitos: { sistema: "Android 8.0 o superior", permisos: "Ninguno", espacio: "Unos 15 MB libres" }, // opcional: bloque visible "Requisitos" (también acepta un texto; "Descarga" sale de tamano y, si falta permisos, se deduce de la lista permisos; para software o equipos especiales: equipo: "…")
+  requisitos: { sistema: "Android 8.0 o superior", permisos: "Acceso a archivos: solo los que abras", espacio: "Unos 15 MB libres" }, // opcional: bloque visible "Requisitos" (también acepta un texto; "Descarga" sale de tamano y, si falta permisos, se deduce de la lista permisos; para software o equipos especiales: equipo: "…")
   tamano: "10.6 MB",                  // opcional, aparece junto a la versión
   sha256: "6bc707…",                  // opcional, huella del archivo (desplegable)
   virustotal: null,                   // opcional: enlace al análisis en VirusTotal
