@@ -101,13 +101,13 @@ firebase deploy --only hosting
 ## 5. Subir los APK (Releases)
 
 Los APK están publicados como Releases de este mismo repositorio, una por versión:
-`mebusco-v2.0.1`, `modonoche-v1.1.1`, `asisteqr-v1.1.0` (antes `puenteapp-v1.0.1`), `lectordoc-v1.0.1` y `linterna-v1.0.1`
+`mebusco-v2.1.0`, `modonoche-v1.1.1`, `asisteqr-v1.1.0` (antes `puenteapp-v1.0.1`), `lectordoc-v1.0.1` y `linterna-v1.0.1`
 (las anteriores siguen disponibles y dicen que fueron reemplazadas). El programa de Windows se publica en
 [registro-asistencia-desktop](https://github.com/bigwork-create/registro-asistencia-desktop/releases)
 como `RegistroAsistencia-<versión>-windows.zip`.
 
 1. En el repositorio ve a **Releases → Draft a new release**.
-2. Pon una etiqueta nueva (ej. `mebusco-v2.0.2`), arrastra el `.apk` y publica.
+2. Pon una etiqueta nueva (ej. `mebusco-v2.1.1`), arrastra el `.apk` y publica.
 3. Copia el enlace del archivo y pégalo en el campo `descarga` de `data/apps.js`:
    `https://github.com/bigwork-create/bigwork-create.github.io/releases/download/ETIQUETA/Archivo.apk`
 4. Actualiza también `version`, `tamano` y `sha256`.

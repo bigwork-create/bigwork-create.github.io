@@ -54,24 +54,26 @@ window.CATALOGO = {
     {
       id: "mebusco",
       nombre: "Mebusco",
-      descripcion: "Consulta un padrón sin internet: importa un CSV y busca por DNI, apellido o nombre, aun con palabras incompletas. Reemplaza o agrega personas, y la ficha muestra también las columnas extra. Los datos se quedan en tu teléfono.",
+      descripcion: "Consulta un padrón sin internet: carga un CSV y busca por DNI (aunque falten los ceros iniciales), apellido o nombre, aun con palabras incompletas. Nuevo diseño con modo oscuro, abre el CSV desde otras apps, acepta la columna “Apellidos y nombres”, comparte o copia la ficha y exporta el padrón a CSV. Los datos se quedan en tu teléfono.",
       categoria: "Utilidades",
-      version: "2.0.1",
+      version: "2.1.0",
       plataformas: ["Android"],
       requisitos: "Android 8.0 o superior",
-      tamano: "6.6 MB",
+      tamano: "1.5 MB",
       icono: "assets/icons/mebusco.png",
       capturas: [
         "assets/screens/mebusco-inicio.webp",
-        "assets/screens/mebusco-busqueda.webp"
+        "assets/screens/mebusco-busqueda.webp",
+        "assets/screens/mebusco-ficha.webp",
+        "assets/screens/mebusco-oscuro.webp"
       ],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.0.1/Mebusco-2.0.1.apk",
-      sha256: "88b267c2dc665388bd421a6d6233d786bdf787b6d2d186e70af4103a4ba7e4c7",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.1.0/Mebusco-2.1.0.apk",
+      sha256: "95d509b5ded7bb96c8e883eb1a439ab96e17f24be6e027f940b061384493ca2e",
       releasePrefijos: ["mebusco-"],
       virustotal: null,
       permisos: ["No pide permisos especiales."],
-      tecnologias: ["Sin conexión"]
+      tecnologias: ["Sin conexión", "CSV", "Modo oscuro"]
     },
     {
       id: "modonoche",
