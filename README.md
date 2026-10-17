@@ -64,7 +64,7 @@ Abre `data/apps.js`. Hay tres listas: `aplicaciones` (Android), `appPrograma` (c
 }
 ```
 
-- Las apps publicadas son Mebusco, Modo Noche (antes MineB), Asiste QR (antes PuenteApp Asistencia), Lector Doc y Linterna. En «App + Programa» está Punto Asistencia (app Punto + programa de Windows, código en `bigwork-create/punto-asistencia-pc`). Usa `ejemplo: true` solo para tarjetas de muestra.
+- Las apps publicadas son Mebusco, Modo Noche (antes MineB), Asiste QR (antes PuenteApp Asistencia), Lector Doc y Linterna. En «App + Programa» está Asistencia x QR (antes Punto Asistencia: app Android + programa de Windows, código en `bigwork-create/punto-asistencia-pc`). Usa `ejemplo: true` solo para tarjetas de muestra.
 - **VirusTotal:** si `virustotal` tiene un enlace (ej. `"https://www.virustotal.com/gui/file/SHA256_DEL_APK"`), aparece
   "Ver análisis en VirusTotal" debajo del botón de descarga. Con `null` no se muestra nada. Pon el enlace solo
   después de subir el archivo a VirusTotal y comprobar que el análisis existe.

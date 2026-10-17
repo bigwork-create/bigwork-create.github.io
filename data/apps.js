@@ -251,19 +251,20 @@ window.CATALOGO = {
   /* App + Programa: la app Android y el programa de Windows se necesitan juntos */
   appPrograma: [
     {
-      id: "punto-asistencia",
-      nombre: "Punto Asistencia",
-      descripcion: "Toma asistencia con el teléfono y regístrala en tu computadora. La app Punto escanea el QR del DNI y lo envía por tu wifi al programa de Windows, que marca a la persona en el padrón al instante y guarda el historial por fecha. Hasta 2 teléfonos por PC, sin internet.",
+      id: "asistencia-x-qr",
+      idsAnteriores: ["punto-asistencia"], // enlace viejo …/#punto-asistencia
+      nombre: "Asistencia x QR",
+      descripcion: "Antes Punto Asistencia. Toma asistencia con el teléfono y regístrala en tu computadora. La app Asistencia x QR escanea el QR del DNI y lo envía por tu wifi al programa de Windows, que marca a la persona en el padrón al instante y guarda el historial por fecha. Hasta 2 teléfonos por PC, sin internet.",
       categoria: "Gestión",
-      version: "1.0.0",
+      version: "1.0.1",
       plataformas: ["Android", "Windows"],
-      aviso: "La app Punto va en el teléfono y el programa Punto Asistencia (PC) en la computadora, conectados a la misma red wifi. Solo con una de las dos no funciona.",
+      aviso: "La app Asistencia x QR va en el teléfono y el programa Asistencia x QR (PC) en la computadora, conectados a la misma red wifi. Solo con una de las dos no funciona.",
       pasos: [
-        "En la PC: descomprime el .zip, abre la carpeta PuntoAsistencia y haz doble clic en PuntoAsistencia.exe. Carga tu padrón (CSV o Excel) en la pestaña Padrón.",
+        "En la PC: descomprime el .zip, abre la carpeta AsistenciaXQR y haz doble clic en AsistenciaXQR.exe. Carga tu padrón (CSV o Excel) en la pestaña Padrón.",
         "La primera vez, cuando el Firewall de Windows pregunte, permite el acceso solo en «Redes privadas». Si el teléfono no encuentra la PC, ejecuta permitir_firewall_windows.bat como administrador.",
-        "En el teléfono: instala la app Punto y conéctalo a la misma wifi que la PC (no necesita internet).",
+        "En el teléfono: instala la app Asistencia x QR y conéctalo a la misma wifi que la PC (no necesita internet).",
         "En el programa pulsa «Enlazar teléfono». En la app toca «Enlazar con la PC» y escanea el QR que aparece (vence a los 5 minutos). Puedes enlazar hasta 2 teléfonos.",
-        "Listo: escanea el QR del DNI de cada persona con Punto y la PC la marca como presente."
+        "Listo: escanea el QR del DNI de cada persona con la app y la PC la marca como presente."
       ],
       requisitos: {
         sistema: "App: Android 7.0 o superior · Programa: Windows 10 (versión 1809 o posterior) u 11, de 64 bits",
@@ -281,26 +282,26 @@ window.CATALOGO = {
       video: null,
       partes: [
         {
-          nombre: "App Punto (Android)",
-          version: "1.0.0",
-          archivo: "Punto-1.0.0.apk",
+          nombre: "App Asistencia x QR (Android)",
+          version: "1.0.1",
+          archivo: "AsistenciaXQR-1.0.1.apk",
           tamano: "17.0 MB",
-          descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/punto-v1.0.0/Punto-1.0.0.apk",
-          textoBoton: "Descargar app Punto (APK)",
-          sha256: "cb2dc66f9cd69809d782e32ac0525749f7568f7591bccf685a4ea36a5e8e26b4"
+          descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/asistenciaxqr-app-v1.0.1/AsistenciaXQR-1.0.1.apk",
+          textoBoton: "Descargar app Asistencia x QR (APK)",
+          sha256: "6a530e7567edfe1e271ff19440d7fe90a84bb27ec92dba72f93583ab2ea5de70"
         },
         {
-          nombre: "Programa Punto Asistencia (Windows)",
-          version: "1.0.0",
-          archivo: "PuntoAsistencia-1.0.0-windows.zip",
+          nombre: "Programa Asistencia x QR (Windows)",
+          version: "1.0.1",
+          archivo: "AsistenciaXQR-1.0.1-windows.zip",
           tamano: "47.6 MB",
-          descarga: "https://github.com/bigwork-create/punto-asistencia-pc/releases/download/v1.0.0/PuntoAsistencia-1.0.0-windows.zip",
+          descarga: "https://github.com/bigwork-create/punto-asistencia-pc/releases/download/v1.0.1/AsistenciaXQR-1.0.1-windows.zip",
           textoBoton: "Descargar programa para Windows (.zip)",
-          sha256: "d55fa4ab362d5c94e25464e5a2b28668455644ae18391df63dae58f3e07490bd"
+          sha256: "6ed6846e2a5b2b7189ef9d93b0a3609cc120bc216931334f840bf20fda952bfc"
         }
       ],
       releaseFuentes: [
-        { repo: "bigwork-create/bigwork-create.github.io", prefijos: ["punto-"] },
+        { repo: "bigwork-create/bigwork-create.github.io", prefijos: ["asistenciaxqr-", "punto-"] }, // incluye la versión antigua (app Punto)
         { repo: "bigwork-create/punto-asistencia-pc", prefijos: [""] }
       ],
       virustotal: null,
