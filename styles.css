@@ -421,3 +421,30 @@ p { margin: 0 0 1rem; }
   transition: transform .15s ease;
 }
 .whatsapp-flotante:hover { transform: scale(1.08); }
+
+/* ---------- Tienda (productos de la bodega, tienda.js) ---------- */
+.tienda-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.producto { display: flex; flex-direction: column; background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); transition: transform .15s ease, border-color .15s ease; }
+.producto:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--acento) 50%, var(--borde)); }
+.producto__foto { position: relative; aspect-ratio: 1 / 1; background: #fff; display: flex; align-items: center; justify-content: center; }
+.producto__foto img { width: 100%; height: 100%; object-fit: contain; padding: .5rem; }
+.producto__foto--vacia { background: var(--superficie-2); color: var(--texto-suave); }
+.producto__estado { position: absolute; top: .5rem; left: .5rem; font-size: .72rem; font-weight: 700; padding: .2rem .5rem; border-radius: 6px; background: var(--acento); color: var(--acento-texto); }
+.producto__estado--pocos { background: var(--aviso); color: #2a1a00; }
+.producto__estado--agotado { background: #6b7280; color: #fff; }
+.producto__estado--proximamente { background: #4ca3ff; color: #04162b; }
+.producto--agotado .producto__foto img { filter: grayscale(1); opacity: .6; }
+.producto__cuerpo { padding: .85rem .9rem 1rem; display: flex; flex-direction: column; gap: .35rem; flex: 1; }
+.producto__nombre { font-size: 1rem; margin: 0; line-height: 1.3; overflow-wrap: anywhere; }
+.producto__precio { margin: 0; font-size: 1.15rem; font-weight: 700; color: var(--acento); font-variant-numeric: tabular-nums; }
+.producto__mayor { margin: 0; font-size: .82rem; color: var(--texto-suave); }
+.producto__accion { margin-top: auto; gap: .45rem; font-size: .92rem; padding-left: .6rem; padding-right: .6rem; text-align: center; }
+a.producto__accion { background: #25D366; border-color: #25D366; color: #fff; }
+#estadoTienda .btn { margin-left: .5rem; }
+#estadoTienda[hidden] { display: none; }
+@media (max-width: 520px) {
+  .tienda-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+  .producto__cuerpo { padding: .7rem .7rem .8rem; }
+  .producto__accion { font-size: .82rem; }
+  .producto__accion svg { display: none; }
+}

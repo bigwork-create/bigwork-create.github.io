@@ -552,7 +552,7 @@
         }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['inicio', 'aplicaciones', 'software', 'comentarios', 'contacto'].forEach(function (id) {
+    ['inicio', 'aplicaciones', 'software', 'app-programa', 'tienda', 'comentarios', 'contacto'].forEach(function (id) {
       var s = document.getElementById(id); if (s) obs.observe(s);
     });
   }

@@ -50,6 +50,7 @@
           <li><a href="#aplicaciones">Aplicaciones</a></li>
           <li><a href="#software">Software</a></li>
           <li><a href="#app-programa">App + Programa</a></li>
+          <li><a href="#tienda">Tienda</a></li>
           <li><a href="#comentarios">Comentarios</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -151,9 +152,25 @@
       </div>
     </section>
 
+    <!-- TIENDA: productos de la bodega, en vivo desde Firestore (tiendas-001).
+         Se cargan y editan desde la app Tiendas Admin; la lógica está en tienda.js -->
+    <section class="seccion seccion--alt" id="tienda" aria-labelledby="tituloTienda">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <h2 id="tituloTienda">Tienda</h2>
+          <p>Gaseosas, abarrotes y más. Comunícate por WhatsApp para adquirir el producto.</p>
+        </div>
+        <div class="filtros">
+          <div class="chips" id="chipsTienda" role="group" aria-label="Filtrar productos por categoría" hidden></div>
+        </div>
+        <div class="tienda-grid" id="gridTienda" aria-live="polite"></div>
+        <p class="vacio" id="estadoTienda" role="status">Cargando productos…</p>
+      </div>
+    </section>
+
     <!-- COMENTARIOS: los publicados desde la web (Firestore, assets/js/comentarios.js)
          y los que agregas a mano en data/comentarios.js -->
-    <section class="seccion seccion--alt" id="comentarios" aria-labelledby="tituloComentarios">
+    <section class="seccion" id="comentarios" aria-labelledby="tituloComentarios">
       <div class="contenedor">
         <div class="seccion__cabeza">
           <h2 id="tituloComentarios">Comentarios</h2>
@@ -174,7 +191,7 @@
     </section>
 
     <!-- CONTACTO -->
-    <section class="seccion" id="contacto" aria-labelledby="tituloContacto">
+    <section class="seccion seccion--alt" id="contacto" aria-labelledby="tituloContacto">
       <div class="contenedor contacto">
         <div>
           <h2 id="tituloContacto">Contacto</h2>
@@ -237,6 +254,7 @@
   <script src="data/comentarios.js"></script>
   <script src="script.js"></script>
   <script src="compartir.js"></script>
+  <script src="tienda.js"></script>
   <script type="module" src="assets/js/comentarios.js"></script>
 </body>
 </html>
