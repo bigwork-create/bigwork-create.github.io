@@ -1,4 +1,4 @@
-/* Botones "Compartir" de Hubert Apps.
+/* Botones "Compartir" de Fhuture'S.
    - Botón general (cabecera del inicio y pie de página): comparte la página principal.
    - Botón de cada tarjeta: comparte el enlace directo a esa app (…/#id); lo crea script.js
      con los atributos data-url, data-titulo y data-texto.
@@ -9,7 +9,7 @@
   'use strict';
 
   var URL_WEB = 'https://hubert-app-001.web.app/';
-  var TITULO = 'Hubert Apps';
+  var TITULO = "Fhuture'S";
   var TEXTO = 'Herramientas simples para trabajo real: apps Android y software para Windows que funcionan sin conexión.';
 
   var ICO_COPIAR = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" fill="none" stroke="currentColor" stroke-width="2"/></svg>';

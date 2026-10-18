@@ -1,4 +1,4 @@
-/* Comentarios de Hubert Apps (sección "Comentarios" de la página principal).
+/* Comentarios de Fhuture'S (sección "Comentarios" de la página principal).
    - Muestra los comentarios publicados en Firestore EN VIVO (onSnapshot): los nuevos aparecen y los
      borrados desaparecen sin recargar. Los más recientes primero, de 20 en 20 ("Ver más" amplía
      el límite de la misma escucha). Se mezclan con los que Hubert agrega a mano en data/comentarios.js.

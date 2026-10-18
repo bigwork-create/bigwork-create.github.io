@@ -1,5 +1,5 @@
 /* =====================================================================
-   COMENTARIOS DE HUBERT APPS
+   COMENTARIOS DE FHUTURE'S
    ---------------------------------------------------------------------
    Comentarios que agregas tú a mano (por ejemplo, opiniones que te enviaron
    y que la persona aceptó publicar). Se muestran en la sección "Comentarios"

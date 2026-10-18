@@ -1,7 +1,7 @@
-# Hubert Apps — página web
+# Fhuture'S — página web
 
 Página estática (HTML + CSS + JavaScript, sin librerías ni servicios externos) con el catálogo
-de apps Android y software para Windows de Hubert Apps.
+de apps Android y software para Windows de Fhuture'S.
 
 - **Sitio oficial:** <https://hubert-app-001.web.app> (Firebase Hosting).
 - `https://bigwork-create.github.io` (GitHub Pages) solo **redirige** al sitio oficial.
@@ -131,4 +131,4 @@ Para cambiar el color de acento edita `--acento` al inicio de `styles.css`.
 ## Licencia
 
 El código de esta web usa la licencia MIT (archivo `LICENSE`). Los iconos, las capturas y el
-nombre "Hubert Apps" no se incluyen en esa licencia.
+nombre "Fhuture'S" no se incluyen en esa licencia.

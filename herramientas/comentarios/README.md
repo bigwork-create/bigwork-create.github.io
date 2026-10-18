@@ -1,4 +1,4 @@
-# Comentarios de Hubert Apps
+# Comentarios de Fhuture'S
 
 Código fuente de los scripts de la sección "Comentarios". La web (CSP `script-src 'self'`) no
 carga nada desde CDN: el Firebase JS SDK se empaqueta con esbuild en archivos locales de `assets/js/`.

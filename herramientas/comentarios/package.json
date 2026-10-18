@@ -1,9 +1,9 @@
 {
   "name": "hubert-comentarios",
   "private": true,
-  "description": "Compila los scripts de comentarios de Hubert Apps (Firebase JS SDK empaquetado en archivos locales, por la CSP script-src 'self').",
+  "description": "Compila los scripts de comentarios de Fhuture'S (Firebase JS SDK empaquetado en archivos locales, por la CSP script-src 'self').",
   "scripts": {
-    "build": "rm -rf ../../assets/js && esbuild src/comentarios.js --bundle --format=esm --splitting --minify --target=es2020 --legal-comments=external --chunk-names=chunks/[name]-[hash] --banner:js=\"/*! Hubert Apps · comentarios. Incluye Firebase JS SDK (Apache-2.0); avisos en /assets/js/AVISOS-TERCEROS.txt */\" --outdir=../../assets/js && node avisos.mjs"
+    "build": "rm -rf ../../assets/js && esbuild src/comentarios.js --bundle --format=esm --splitting --minify --target=es2020 --legal-comments=external --chunk-names=chunks/[name]-[hash] --banner:js=\"/*! Fhuture'S · comentarios. Incluye Firebase JS SDK (Apache-2.0); avisos en /assets/js/AVISOS-TERCEROS.txt */\" --outdir=../../assets/js && node avisos.mjs"
   },
   "devDependencies": {
     "esbuild": "^0.28.2",

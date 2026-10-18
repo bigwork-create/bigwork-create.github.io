@@ -1,4 +1,4 @@
-Avisos de terceros incluidos en los scripts de comentarios de Hubert Apps (assets/js)
+Avisos de terceros incluidos en los scripts de comentarios de Fhuture'S (assets/js)
 ==========================================================================
 
 Firebase JavaScript SDK 12.19.0 (firebase/app y firebase/firestore)

@@ -1,4 +1,4 @@
-/* Hubert Apps — lógica de la página (JavaScript puro, sin librerías) */
+/* Fhuture'S — lógica de la página (JavaScript puro, sin librerías) */
 (function () {
   'use strict';
 
@@ -75,7 +75,7 @@
       clase: 'btn-icono tarjeta__compartir', type: 'button', 'data-compartir': '',
       'aria-label': 'Compartir ' + item.nombre, title: 'Compartir',
       'data-url': 'https://hubert-app-001.web.app/#' + item.id,
-      'data-titulo': item.nombre + ' · Hubert Apps',
+      'data-titulo': item.nombre + ' · Fhuture\'S',
       'data-texto': textoCorto(item.descripcion)
     });
     b.innerHTML = ICONO_COMPARTIR;

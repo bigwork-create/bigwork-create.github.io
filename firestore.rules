@@ -1,6 +1,6 @@
 rules_version = '2';
 
-// Reglas de seguridad de Firestore para los comentarios de Hubert Apps (sección "Comentarios").
+// Reglas de seguridad de Firestore para los comentarios de Fhuture'S (sección "Comentarios").
 // - Cualquiera puede LEER los comentarios (son públicos).
 // - Cualquiera puede CREAR uno (sin cuenta ni sesión), pero solo con los campos y largos
 //   permitidos, sin enlaces y con la fecha del servidor.

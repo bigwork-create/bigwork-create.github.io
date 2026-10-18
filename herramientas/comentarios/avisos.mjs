@@ -3,7 +3,7 @@ import { readdirSync, readFileSync, writeFileSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 const salida = '../../assets/js';
 const version = JSON.parse(readFileSync('node_modules/firebase/package.json', 'utf8')).version;
-let texto = 'Avisos de terceros incluidos en los scripts de comentarios de Hubert Apps (assets/js)\n' +
+let texto = 'Avisos de terceros incluidos en los scripts de comentarios de Fhuture'S (assets/js)\n' +
   '==========================================================================\n\n' +
   'Firebase JavaScript SDK ' + version + ' (firebase/app y firebase/firestore)\n' +
   'Copyright Google LLC. Licencia: Apache License 2.0 — https://www.apache.org/licenses/LICENSE-2.0\n' +

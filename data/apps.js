@@ -1,5 +1,5 @@
 /* =====================================================================
-   CATÁLOGO DE HUBERT APPS
+   CATÁLOGO DE FHUTURE'S
    ---------------------------------------------------------------------
    Este es el ÚNICO archivo que necesitas editar para agregar, quitar o
    cambiar apps y programas. La página lo lee automáticamente.

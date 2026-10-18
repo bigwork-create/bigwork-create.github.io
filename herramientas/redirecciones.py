@@ -19,14 +19,14 @@ PLANTILLA = """<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hubert Apps se mudó a hubert-app-001.web.app</title>
+  <title>Fhuture'S se mudó a hubert-app-001.web.app</title>
   <link rel="canonical" href="{destino}">
   <meta name="robots" content="noindex">
   <meta http-equiv="refresh" content="0; url={destino}">
   <script>location.replace("{oficial}" + location.pathname + location.search + location.hash);</script>
 </head>
 <body>
-  <p>Hubert Apps ahora está en <a href="{destino}">{destino_txt}</a>.</p>
+  <p>Fhuture'S ahora está en <a href="{destino}">{destino_txt}</a>.</p>
 </body>
 </html>
 """
