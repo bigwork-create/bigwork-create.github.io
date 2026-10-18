@@ -152,13 +152,14 @@
       </div>
     </section>
 
-    <!-- TIENDA: productos de la bodega, en vivo desde Firestore (tiendas-001).
-         Se cargan y editan desde la app Tiendas Admin; la lógica está en tienda.js -->
+    <!-- TIENDA: vitrina de la web Tiendas (tiendas-001.web.app). Sin productos aquí (pedido de Hubert,
+         2026-10-18): los productos solo se ven dentro de la tienda ("Abrir la tienda"). 0 lecturas de Firestore.
+         tienda.js ya no se carga (se deja el archivo por si se quiere volver a usar). -->
     <section class="seccion seccion--alt" id="tienda" aria-labelledby="tituloTienda">
       <div class="contenedor">
         <div class="seccion__cabeza">
           <h2 id="tituloTienda">Tienda</h2>
-          <p>Tu bodega en internet: tus clientes ven tus productos con precio y foto, y te piden por WhatsApp.</p>
+          <p>Tu bodega en internet: tus clientes miran tu tienda web desde casa.</p>
         </div>
         <div class="tienda-web">
           <a class="tienda-web__captura" href="https://tiendas-001.web.app/" target="_blank" rel="noopener">
@@ -172,17 +173,11 @@
               <li>Tu propio enlace y cartel con QR para tu bodega.</li>
             </ul>
             <div class="tienda-web__botones">
-              <a class="btn btn--primario" href="https://tiendas-001.web.app/paciano" target="_blank" rel="noopener">Abrir la tienda</a>
+              <a class="btn btn--primario" href="https://tiendas-001.web.app/hubert" target="_blank" rel="noopener">Abrir la tienda</a>
               <a class="btn btn--secundario" href="https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20mi%20tienda%20en%20internet" target="_blank" rel="noopener">Comunicarse para adquirir</a>
             </div>
           </div>
         </div>
-        <h3 class="tienda-productos__titulo">Productos disponibles</h3>
-        <div class="filtros">
-          <div class="chips" id="chipsTienda" role="group" aria-label="Filtrar productos por categoría" hidden></div>
-        </div>
-        <div class="tienda-grid" id="gridTienda" aria-live="polite"></div>
-        <p class="vacio" id="estadoTienda" role="status">Cargando productos…</p>
       </div>
     </section>
 
@@ -273,6 +268,5 @@
   <script src="script.js"></script>
   <script src="compartir.js"></script>
   <script type="module" src="assets/js/comentarios.js"></script>
-  <script src="tienda.js"></script>
 </body>
 </html>

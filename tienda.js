@@ -10,7 +10,7 @@
   'use strict';
 
   /* ---------- EDITA AQUÍ ---------- */
-  // Documento de la tienda en Firestore: tiendas/{TIENDA_ID} ("paciano").
+  // Documento de la tienda en Firestore: tiendas/{TIENDA_ID} ("Hubert", enlace /hubert).
   var TIENDA_ID = 'JXRp9brwmmZL9UJ62cgV';
   // Clave web pública de Firebase (app web "Tienda Web" de tiendas-001). No es secreta:
   // la seguridad la dan las reglas de Firestore (lectura pública, escritura solo del dueño).
