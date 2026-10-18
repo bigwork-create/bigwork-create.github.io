@@ -102,7 +102,7 @@ firebase deploy --only hosting:antiguo     # hubert-app-001.web.app: redirige 30
 ## 5. Subir los APK (Releases)
 
 Los APK están publicados como Releases de este mismo repositorio, una por versión:
-`mebusco-v2.1.0`, `modonoche-v1.1.1`, `asisteqr-v1.1.0` (antes `puenteapp-v1.0.1`), `lectordoc-v2.0.0` y `linterna-v1.0.1`
+`mebusco-v2.1.1`, `modonoche-v1.1.1`, `asisteqr-v1.1.1` (antes `puenteapp-v1.0.1`), `lectordoc-v2.0.0` y `linterna-v1.0.1`
 (las anteriores siguen disponibles y dicen que fueron reemplazadas). El programa de Windows se publica en
 [registro-asistencia-desktop](https://github.com/bigwork-create/registro-asistencia-desktop/releases)
 como `RegistroAsistencia-<versión>-windows.zip`.

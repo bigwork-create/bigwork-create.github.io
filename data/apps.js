@@ -72,7 +72,7 @@ window.CATALOGO = {
       nombre: "Mebusco",
       descripcion: "Consulta un padrón sin internet: carga un CSV y busca por DNI (aunque falten los ceros iniciales), apellido o nombre, aun con palabras incompletas. Nuevo diseño con modo oscuro, abre el CSV desde otras apps, acepta la columna “Apellidos y nombres”, comparte o copia la ficha y exporta el padrón a CSV. Los datos se quedan en tu teléfono.",
       categoria: "Utilidades",
-      version: "2.1.0",
+      version: "2.1.1",
       plataformas: ["Android"],
       requisitos: { sistema: "Android 8.0 o superior", permisos: "Acceso a archivos: solo el CSV que elijas o abras con la app y el que exportes", espacio: "Unos 10 MB libres, más el padrón que cargues" },
       tamano: "1.5 MB",
@@ -84,8 +84,8 @@ window.CATALOGO = {
         "assets/screens/mebusco-oscuro.webp"
       ],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.1.0/Mebusco-2.1.0.apk",
-      sha256: "95d509b5ded7bb96c8e883eb1a439ab96e17f24be6e027f940b061384493ca2e",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.1.1/Mebusco-2.1.1.apk",
+      sha256: "34ec110f45844621cc655d3e29b162539d9e5277f16c224f942bcf2afe745c97",
       releasePrefijos: ["mebusco-"],
       virustotal: null,
       permisos: [
@@ -126,15 +126,15 @@ window.CATALOGO = {
       nombre: "Asiste QR",
       descripcion: "Antes PuenteApp Asistencia. Toma asistencia escaneando el código QR con el DNI de cada persona: deshaz un registro, cierra eventos y guarda su historial, y exporta a CSV con todas las columnas del padrón. Funciona sin internet.",
       categoria: "Gestión",
-      version: "1.1.0",
+      version: "1.1.1",
       plataformas: ["Android"],
       requisitos: { sistema: "Android 7.0 o superior", equipo: "Cámara recomendada (sin cámara se registra por DNI)", permisos: "Cámara y vibración; acceso a archivos: solo el padrón que elijas y lo que exportes", espacio: "Unos 50 MB libres, más tus eventos" },
       tamano: "17.3 MB",
       icono: "assets/icons/asisteqr.png",
       capturas: ["assets/screens/asisteqr-inicio.webp", "assets/screens/asisteqr-lista.webp"],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/asisteqr-v1.1.0/AsisteQR-1.1.0.apk",
-      sha256: "c1d412ae000a96be927330dc9db5f39fd00462423703d1c22ae97d363de2103c",
+      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/asisteqr-v1.1.1/AsisteQR-1.1.1.apk",
+      sha256: "02439163d16587dbe6002392742da365f3a76f7c2d8216881a6e425fb3bb8d32",
       releasePrefijos: ["asisteqr-", "puenteapp-"], // incluye la versión antigua PuenteApp Asistencia
       virustotal: null,
       permisos: [
