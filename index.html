@@ -172,11 +172,17 @@
               <li>Tu propio enlace y cartel con QR para tu bodega.</li>
             </ul>
             <div class="tienda-web__botones">
-              <a class="btn btn--primario" href="https://tiendas-001.web.app/" target="_blank" rel="noopener">Abrir la tienda</a>
+              <a class="btn btn--primario" href="https://tiendas-001.web.app/paciano" target="_blank" rel="noopener">Abrir la tienda</a>
               <a class="btn btn--secundario" href="https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20mi%20tienda%20en%20internet" target="_blank" rel="noopener">Comunicarse para adquirir</a>
             </div>
           </div>
         </div>
+        <h3 class="tienda-productos__titulo">Productos disponibles</h3>
+        <div class="filtros">
+          <div class="chips" id="chipsTienda" role="group" aria-label="Filtrar productos por categoría" hidden></div>
+        </div>
+        <div class="tienda-grid" id="gridTienda" aria-live="polite"></div>
+        <p class="vacio" id="estadoTienda" role="status">Cargando productos…</p>
       </div>
     </section>
 
@@ -267,5 +273,6 @@
   <script src="script.js"></script>
   <script src="compartir.js"></script>
   <script type="module" src="assets/js/comentarios.js"></script>
+  <script src="tienda.js"></script>
 </body>
 </html>

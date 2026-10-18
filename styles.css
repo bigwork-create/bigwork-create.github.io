@@ -457,3 +457,5 @@ a.producto__accion { background: #25D366; border-color: #25D366; color: #fff; }
 .tienda-web__lista { margin: 0 0 1.5rem; padding-left: 1.2rem; display: grid; gap: .6rem; }
 .tienda-web__botones { display: flex; flex-wrap: wrap; gap: .75rem; }
 @media (max-width: 800px) { .tienda-web { grid-template-columns: 1fr; } }
+
+.tienda-productos__titulo { margin: 2.5rem 0 1rem; font-size: 1.3rem; }
