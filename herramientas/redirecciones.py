@@ -1,6 +1,6 @@
 """Genera el sitio mínimo que GitHub Pages publica: solo redirecciones al sitio oficial.
 
-El sitio oficial es https://hubert-app-001.web.app (Firebase Hosting). Este repositorio
+El sitio oficial es https://fhutures.web.app (Firebase Hosting). Este repositorio
 guarda el código completo, pero bigwork-create.github.io solo debe llevar al sitio oficial,
 conservando la ruta, los parámetros y el ancla (#...).
 
@@ -11,7 +11,7 @@ import html
 import sys
 from pathlib import Path
 
-OFICIAL = "https://hubert-app-001.web.app"
+OFICIAL = "https://fhutures.web.app"
 PAGINAS = ["index.html", "privacidad.html", "terminos.html", "licencias.html"]
 
 PLANTILLA = """<!DOCTYPE html>
@@ -19,7 +19,7 @@ PLANTILLA = """<!DOCTYPE html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fhuture'S se mudó a hubert-app-001.web.app</title>
+  <title>Fhuture'S se mudó a fhutures.web.app</title>
   <link rel="canonical" href="{destino}">
   <meta name="robots" content="noindex">
   <meta http-equiv="refresh" content="0; url={destino}">

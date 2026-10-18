@@ -3,7 +3,7 @@
 Página estática (HTML + CSS + JavaScript, sin librerías ni servicios externos) con el catálogo
 de apps Android y software para Windows de Fhuture'S.
 
-- **Sitio oficial:** <https://hubert-app-001.web.app> (Firebase Hosting).
+- **Sitio oficial:** <https://fhutures.web.app> (Firebase Hosting).
 - `https://bigwork-create.github.io` (GitHub Pages) solo **redirige** al sitio oficial.
   Este repositorio guarda el código completo de la web y las Releases con los APK.
 
@@ -90,12 +90,13 @@ python3 -m http.server 8000
 **Sitio oficial (Firebase Hosting):** desde la carpeta `hubert-web` en Zorin:
 
 ```bash
-firebase deploy --only hosting
+firebase deploy --only hosting:principal   # sitio fhutures.web.app
+firebase deploy --only hosting:antiguo     # hubert-app-001.web.app: redirige 301 a fhutures
 ```
 
 **GitHub Pages:** al hacer `git push` a `main`, el flujo `.github/workflows/pages.yml` genera con
 `herramientas/redirecciones.py` páginas mínimas que redirigen cada dirección de
-`bigwork-create.github.io` a la misma ruta en `hubert-app-001.web.app`. No hace falta tocar nada más.
+`bigwork-create.github.io` a la misma ruta en `fhutures.web.app`. No hace falta tocar nada más.
 (En *Settings → Pages* la fuente es **GitHub Actions**.)
 
 ## 5. Subir los APK (Releases)

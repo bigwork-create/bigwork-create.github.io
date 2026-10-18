@@ -1,75 +1,103 @@
 {
-  "hosting": {
-    "public": ".",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**",
-      "*.bak",
-      "README.md",
-      "LICENSE",
-      "herramientas/**",
-      "Web-App/**",
-      "**/*.apk",
-      "firestore.rules",
-      "firestore.indexes.json"
-    ],
-    "cleanUrls": false,
-    "headers": [
-      {
-        "source": "**",
-        "headers": [
-          {
-            "key": "X-Content-Type-Options",
-            "value": "nosniff"
-          },
-          {
-            "key": "Referrer-Policy",
-            "value": "strict-origin-when-cross-origin"
-          },
-          {
-            "key": "X-Frame-Options",
-            "value": "DENY"
-          },
-          {
-            "key": "Permissions-Policy",
-            "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
-          },
-          {
-            "key": "Content-Security-Policy",
-            "value": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://res.cloudinary.com; media-src 'self'; font-src 'self'; connect-src 'self' https://api.github.com https://firestore.googleapis.com; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests"
-          }
-        ]
-      },
-      {
-        "source": "**/*.@(html|js|css)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
-          }
-        ]
-      },
-      {
-        "source": "/",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
-          }
-        ]
-      },
-      {
-        "source": "/@(robots.txt|sitemap.xml)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-cache"
-          }
-        ]
-      }
-    ]
-  },
+  "hosting": [
+    {
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**",
+        "*.bak",
+        "README.md",
+        "LICENSE",
+        "herramientas/**",
+        "Web-App/**",
+        "**/*.apk",
+        "firestore.rules",
+        "firestore.indexes.json",
+        "redirect-antiguo/**"
+      ],
+      "cleanUrls": false,
+      "headers": [
+        {
+          "source": "**",
+          "headers": [
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "strict-origin-when-cross-origin"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Permissions-Policy",
+              "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+            },
+            {
+              "key": "Content-Security-Policy",
+              "value": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://res.cloudinary.com; media-src 'self'; font-src 'self'; connect-src 'self' https://api.github.com https://firestore.googleapis.com; frame-src 'none'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(html|js|css)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        {
+          "source": "/",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        },
+        {
+          "source": "/@(robots.txt|sitemap.xml)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache"
+            }
+          ]
+        }
+      ],
+      "target": "principal"
+    },
+    {
+      "target": "antiguo",
+      "public": "redirect-antiguo",
+      "ignore": [
+        "**/.*"
+      ],
+      "redirects": [
+        {
+          "source": "/",
+          "destination": "https://fhutures.web.app/",
+          "type": 301
+        },
+        {
+          "source": "/index.html",
+          "destination": "https://fhutures.web.app/",
+          "type": 301
+        },
+        {
+          "source": "/:path*",
+          "destination": "https://fhutures.web.app/:path",
+          "type": 301
+        }
+      ]
+    }
+  ],
   "firestore": {
     "database": "(default)",
     "rules": "firestore.rules",

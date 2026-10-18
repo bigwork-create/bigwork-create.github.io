@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  var URL_WEB = 'https://hubert-app-001.web.app/';
+  var URL_WEB = 'https://fhutures.web.app/';
   var TITULO = "Fhuture'S";
   var TEXTO = 'Herramientas simples para trabajo real: apps Android y software para Windows que funcionan sin conexión.';
 

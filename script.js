@@ -74,7 +74,7 @@
     var b = el('button', {
       clase: 'btn-icono tarjeta__compartir', type: 'button', 'data-compartir': '',
       'aria-label': 'Compartir ' + item.nombre, title: 'Compartir',
-      'data-url': 'https://hubert-app-001.web.app/#' + item.id,
+      'data-url': 'https://fhutures.web.app/#' + item.id,
       'data-titulo': item.nombre + ' · Fhuture\'S',
       'data-texto': textoCorto(item.descripcion)
     });

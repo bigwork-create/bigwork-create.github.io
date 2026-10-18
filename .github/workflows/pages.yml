@@ -1,6 +1,6 @@
 name: GitHub Pages (redirección al sitio oficial)
 
-# bigwork-create.github.io solo redirige a https://hubert-app-001.web.app.
+# bigwork-create.github.io solo redirige a https://fhutures.web.app.
 # El código completo de la web vive en este repositorio y se publica en Firebase Hosting.
 on:
   push:

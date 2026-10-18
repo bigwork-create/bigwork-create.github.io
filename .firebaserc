@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "hubert-app-001"
-  }
+  },
+  "targets": {
+    "hubert-app-001": {
+      "hosting": {
+        "principal": [
+          "fhutures"
+        ],
+        "antiguo": [
+          "hubert-app-001"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
