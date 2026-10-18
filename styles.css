@@ -448,3 +448,12 @@ a.producto__accion { background: #25D366; border-color: #25D366; color: #fff; }
   .producto__accion { font-size: .82rem; }
   .producto__accion svg { display: none; }
 }
+
+/* ---------- Tienda: vitrina de la web Tiendas (tiendas-001.web.app) ---------- */
+.tienda-web { display: grid; gap: 2rem; grid-template-columns: 1.2fr 1fr; align-items: center; }
+.tienda-web__captura { display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--borde); box-shadow: 0 10px 30px rgba(0,0,0,.35); transition: transform .15s ease; }
+.tienda-web__captura:hover { transform: translateY(-2px); }
+.tienda-web__captura img { display: block; width: 100%; height: auto; }
+.tienda-web__lista { margin: 0 0 1.5rem; padding-left: 1.2rem; display: grid; gap: .6rem; }
+.tienda-web__botones { display: flex; flex-wrap: wrap; gap: .75rem; }
+@media (max-width: 800px) { .tienda-web { grid-template-columns: 1fr; } }

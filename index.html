@@ -158,13 +158,25 @@
       <div class="contenedor">
         <div class="seccion__cabeza">
           <h2 id="tituloTienda">Tienda</h2>
-          <p>Gaseosas, abarrotes y más. Comunícate por WhatsApp para adquirir el producto.</p>
+          <p>Tu bodega en internet: tus clientes ven tus productos con precio y foto, y te piden por WhatsApp.</p>
         </div>
-        <div class="filtros">
-          <div class="chips" id="chipsTienda" role="group" aria-label="Filtrar productos por categoría" hidden></div>
+        <div class="tienda-web">
+          <a class="tienda-web__captura" href="https://tiendas-001.web.app/" target="_blank" rel="noopener">
+            <img src="assets/screens/tiendas-web.png" alt="Vista de la web Tiendas: tu bodega en internet" loading="lazy" width="1024" height="720">
+          </a>
+          <div class="tienda-web__texto">
+            <ul class="tienda-web__lista">
+              <li>Gaseosas, abarrotes y más, con precios por mayor, búsqueda y fotos.</li>
+              <li>El cliente arma su pedido y te lo envía listo por WhatsApp.</li>
+              <li>Cobra con efectivo, Yape o Plin.</li>
+              <li>Tu propio enlace y cartel con QR para tu bodega.</li>
+            </ul>
+            <div class="tienda-web__botones">
+              <a class="btn btn--primario" href="https://tiendas-001.web.app/" target="_blank" rel="noopener">Abrir la tienda</a>
+              <a class="btn btn--secundario" href="https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20mi%20tienda%20en%20internet" target="_blank" rel="noopener">Comunicarse para adquirir</a>
+            </div>
+          </div>
         </div>
-        <div class="tienda-grid" id="gridTienda" aria-live="polite"></div>
-        <p class="vacio" id="estadoTienda" role="status">Cargando productos…</p>
       </div>
     </section>
 
@@ -254,7 +266,6 @@
   <script src="data/comentarios.js"></script>
   <script src="script.js"></script>
   <script src="compartir.js"></script>
-  <script src="tienda.js"></script>
   <script type="module" src="assets/js/comentarios.js"></script>
 </body>
 </html>
