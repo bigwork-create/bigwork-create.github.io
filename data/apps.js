@@ -48,6 +48,9 @@
      idsAnteriores (opcional) Lista de ids viejos que siguen funcionando como
                    enlace directo …/#id (llevan a la tarjeta con el id nuevo)
      ejemplo       true = elemento de muestra (se marca como "Ejemplo")
+     pago          (opcional) { texto, whatsapp }: aviso "Producto de pago" con botón
+                   "Comunicarse para adquirir". En una app normal se suma al botón
+                   de descarga; en una parte de appPrograma lo REEMPLAZA (sin descarga)
 
    Lista appPrograma (sección y categoría "App + Programa"): productos que
    necesitan la app Android Y el programa de Windows. Usan los mismos campos
@@ -85,6 +88,7 @@ window.CATALOGO = {
       ],
       video: null,
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.1.1/Mebusco-2.1.1.apk",
+      pago: { texto: "Para adquirir la app Mebusco se necesita pagar.", whatsapp: "https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20adquirir%20la%20app%20Mebusco%20de%20Fhuture%27S" },
       sha256: "34ec110f45844621cc655d3e29b162539d9e5277f16c224f942bcf2afe745c97",
       releasePrefijos: ["mebusco-"],
       virustotal: null,
@@ -288,6 +292,7 @@ window.CATALOGO = {
           tamano: "17.0 MB",
           descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/asistenciaxqr-app-v1.0.1/AsistenciaXQR-1.0.1.apk",
           textoBoton: "Descargar app Asistencia x QR (APK)",
+          pago: { texto: "Para adquirir la app Asistencia x QR se necesita pagar.", whatsapp: "https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20adquirir%20la%20app%20Asistencia%20x%20QR%20de%20Fhuture%27S" },
           sha256: "6a530e7567edfe1e271ff19440d7fe90a84bb27ec92dba72f93583ab2ea5de70"
         },
         {

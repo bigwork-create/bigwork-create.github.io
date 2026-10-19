@@ -20,6 +20,18 @@
     (hijos || []).forEach(function (h) { if (h) n.appendChild(h); });
     return n;
   }
+  /* ---------- Aviso de pago (campo pago: { texto, whatsapp }) ---------- */
+  function avisoPago(pago, nombre) {
+    var caja = el('div', { clase: 'aviso-pago', role: 'note' });
+    caja.appendChild(el('p', { clase: 'aviso-pago__texto' }, [
+      el('strong', { texto: (nombre ? nombre + ': producto de pago. ' : 'Producto de pago. ') }),
+      document.createTextNode(pago.texto || '')
+    ]));
+    if (pago.whatsapp) {
+      caja.appendChild(el('a', { clase: 'btn btn--secundario btn--bloque', href: pago.whatsapp, target: '_blank', rel: 'noopener', texto: 'Comunicarse para adquirir' }));
+    }
+    return caja;
+  }
   function normalizar(s) {
     return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
@@ -228,10 +240,10 @@
       ]));
     }
     // Varios archivos (App + Programa): una huella por cada parte
-    if (item.partes && item.partes.some(function (pt) { return pt.sha256; })) {
+    if (item.partes && item.partes.some(function (pt) { return pt.sha256 && !pt.pago; })) {
       var hashes = el('div', { clase: 'detalle__hashes' });
       item.partes.forEach(function (pt) {
-        if (!pt.sha256) return;
+        if (!pt.sha256 || pt.pago) return;
         hashes.appendChild(el('p', { clase: 'detalle__hash-titulo', texto: pt.nombre + (pt.archivo ? ' (' + pt.archivo + ')' : '') }));
         hashes.appendChild(el('code', { clase: 'detalle__hash', texto: pt.sha256 }));
       });
@@ -244,6 +256,13 @@
     if (item.partes && item.partes.length && !item.proximamente) {
       var bloque = el('div', { clase: 'descargas-combo' });
       item.partes.forEach(function (pt) {
+        if (pt.pago) { // parte de pago: aviso en lugar del botón de descarga
+          bloque.appendChild(el('div', { clase: 'descargas-combo__parte' }, [
+            avisoPago(pt.pago, pt.nombre),
+            el('small', { clase: 'descargas-combo__nota', texto: [pt.nombre, pt.version ? 'v' + pt.version : ''].filter(Boolean).join(' · ') })
+          ]));
+          return;
+        }
         var d = el('a', { clase: 'btn btn--primario btn--bloque', href: pt.descarga || '#', rel: 'noopener' });
         d.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
         d.appendChild(document.createTextNode(pt.textoBoton || ('Descargar ' + pt.nombre)));
@@ -273,6 +292,7 @@
         if (/\.(apk|zip|exe|deb|appimage|msi|tar\.gz)$/i.test(item.descarga)) a.setAttribute('download', '');
       }
       cuerpo.appendChild(a);
+      if (item.pago) cuerpo.appendChild(avisoPago(item.pago, 'App ' + item.nombre));
       if (item.virustotal) {
         cuerpo.appendChild(el('a', {
           clase: 'enlace-vt', href: item.virustotal, target: '_blank', rel: 'noopener',
