@@ -87,7 +87,7 @@ window.CATALOGO = {
         "assets/screens/mebusco-oscuro.webp"
       ],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/mebusco-v2.1.1/Mebusco-2.1.1.apk",
+      descarga: "#", // producto de pago: sin enlace público al APK
       pago: { texto: "Para adquirir la app Mebusco se necesita pagar.", whatsapp: "https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20adquirir%20la%20app%20Mebusco%20de%20Fhuture%27S" },
       sha256: "34ec110f45844621cc655d3e29b162539d9e5277f16c224f942bcf2afe745c97",
       releasePrefijos: ["mebusco-"],
@@ -137,7 +137,7 @@ window.CATALOGO = {
       icono: "assets/icons/asisteqr.png",
       capturas: ["assets/screens/asisteqr-inicio.webp", "assets/screens/asisteqr-lista.webp"],
       video: null,
-      descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/asisteqr-v1.1.1/AsisteQR-1.1.1.apk",
+      descarga: "#", // producto de pago: sin enlace público al APK
       pago: { texto: "Para adquirir la app Asiste QR se necesita pagar.", whatsapp: "https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20adquirir%20la%20app%20Asiste%20QR%20de%20Fhuture%27S" },
       sha256: "02439163d16587dbe6002392742da365f3a76f7c2d8216881a6e425fb3bb8d32",
       releasePrefijos: ["asisteqr-", "puenteapp-"], // incluye la versión antigua PuenteApp Asistencia

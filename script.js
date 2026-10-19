@@ -52,8 +52,7 @@
         el('div', { clase: 'dialogo-pago__cuerpo' }, [
           el('p', { clase: 'dialogo-pago__texto', id: 'dialogoPagoTexto' }),
           el('div', { clase: 'dialogo-pago__botones' }, [
-            el('a', { clase: 'btn btn--primario btn--bloque', id: 'dialogoPagoWhatsapp', target: '_blank', rel: 'noopener', texto: 'Comunicarse para adquirir' }),
-            el('a', { clase: 'btn btn--secundario btn--bloque', id: 'dialogoPagoDescarga', rel: 'noopener', texto: 'Continuar descarga' })
+            el('a', { clase: 'btn btn--primario btn--bloque', id: 'dialogoPagoWhatsapp', target: '_blank', rel: 'noopener', texto: 'Comunicarse para adquirir' })
           ])
         ])
       ]));
@@ -68,19 +67,15 @@
         else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
       });
       dlgPago.querySelector('#dialogoPagoWhatsapp').addEventListener('click', cerrarDialogoPago);
-      dlgPago.querySelector('#dialogoPagoDescarga').addEventListener('click', function () { setTimeout(cerrarDialogoPago, 0); });
       document.body.appendChild(dlgPago);
     }
     dlgPago.querySelector('#dialogoPagoTexto').textContent = item.pago.texto || ('Para adquirir la app ' + item.nombre + ' se necesita pagar.');
     var wa = dlgPago.querySelector('#dialogoPagoWhatsapp');
     if (item.pago.whatsapp) { wa.setAttribute('href', item.pago.whatsapp); wa.hidden = false; } else { wa.removeAttribute('href'); wa.hidden = true; }
-    var d = dlgPago.querySelector('#dialogoPagoDescarga');
-    d.setAttribute('href', item.descarga);
-    if (/\.(apk|zip|exe|deb|appimage|msi|tar\.gz)$/i.test(item.descarga)) d.setAttribute('download', ''); else d.removeAttribute('download');
     dlgPagoOrigen = origen || document.activeElement;
     if (typeof dlgPago.showModal === 'function') dlgPago.showModal();
     else dlgPago.setAttribute('open', '');
-    (wa.hidden ? d : wa).focus();
+    (wa.hidden ? dlgPago.querySelector('.btn-icono') : wa).focus();
   }
   function normalizar(s) {
     return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -326,8 +321,17 @@
       return art;
     }
 
+    // Producto de pago: el botón solo abre el aviso (es un <button>, no lleva enlace al archivo)
+    if (item.pago && !item.proximamente) {
+      var bp = el('button', { clase: 'btn btn--primario btn--bloque', type: 'button', 'aria-haspopup': 'dialog' });
+      bp.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      bp.appendChild(document.createTextNode(item.textoBoton || (esApp ? 'Descargar APK' : 'Descargar')));
+      bp.addEventListener('click', function () { abrirDialogoPago(item, bp); });
+      cuerpo.appendChild(bp);
+      cuerpo.appendChild(avisoPago(item.pago, 'App ' + item.nombre));
+    }
     // Botón de descarga
-    if (!item.proximamente) {
+    else if (!item.proximamente) {
       var texto = item.textoBoton || (esApp ? 'Descargar APK' : 'Descargar');
       var sinEnlace = !item.descarga || item.descarga === '#';
       var a = el('a', { clase: 'btn btn--primario btn--bloque', href: item.descarga || '#' });
@@ -340,13 +344,8 @@
       } else {
         a.setAttribute('rel', 'noopener');
         if (/\.(apk|zip|exe|deb|appimage|msi|tar\.gz)$/i.test(item.descarga)) a.setAttribute('download', '');
-        if (item.pago) { // producto de pago: primero el aviso, luego (si quiere) la descarga
-          a.setAttribute('aria-haspopup', 'dialog');
-          a.addEventListener('click', function (e) { e.preventDefault(); abrirDialogoPago(item, a); });
-        }
       }
       cuerpo.appendChild(a);
-      if (item.pago) cuerpo.appendChild(avisoPago(item.pago, 'App ' + item.nombre));
       if (item.virustotal) {
         cuerpo.appendChild(el('a', {
           clase: 'enlace-vt', href: item.virustotal, target: '_blank', rel: 'noopener',
