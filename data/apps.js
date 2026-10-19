@@ -138,6 +138,7 @@ window.CATALOGO = {
       capturas: ["assets/screens/asisteqr-inicio.webp", "assets/screens/asisteqr-lista.webp"],
       video: null,
       descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/asisteqr-v1.1.1/AsisteQR-1.1.1.apk",
+      pago: { texto: "Para adquirir la app Asiste QR se necesita pagar.", whatsapp: "https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20adquirir%20la%20app%20Asiste%20QR%20de%20Fhuture%27S" },
       sha256: "02439163d16587dbe6002392742da365f3a76f7c2d8216881a6e425fb3bb8d32",
       releasePrefijos: ["asisteqr-", "puenteapp-"], // incluye la versión antigua PuenteApp Asistencia
       virustotal: null,
