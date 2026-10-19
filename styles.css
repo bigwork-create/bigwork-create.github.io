@@ -408,6 +408,12 @@ p { margin: 0 0 1rem; }
 .aviso-pago { display: grid; gap: .5rem; width: 100%; padding: .65rem .75rem; border: 1px solid color-mix(in srgb, #25d366 45%, var(--borde)); background: color-mix(in srgb, #25d366 8%, var(--superficie)); border-radius: 10px; }
 .aviso-pago__texto { margin: 0; font-size: .88rem; color: var(--texto-suave); text-align: center; }
 .aviso-pago__texto strong { color: var(--texto); }
+/* Diálogo "Producto de pago" (antes de descargar) */
+.modal--pago { width: min(440px, 100% - 2rem); }
+.dialogo-pago { border-color: color-mix(in srgb, #25d366 45%, var(--borde)); }
+.dialogo-pago__cuerpo { display: grid; gap: .9rem; padding: 1rem; background: color-mix(in srgb, #25d366 6%, var(--superficie)); }
+.dialogo-pago__texto { margin: 0; font-size: .95rem; color: var(--texto); text-align: center; }
+.dialogo-pago__botones { display: grid; gap: .55rem; }
 .detalle__hashes { padding: .5rem .75rem .7rem; display: grid; gap: .3rem; }
 .detalle__hashes .detalle__hash { margin: 0; padding: 0; }
 .detalle__hash-titulo { margin: .2rem 0 0; font-weight: 600; color: var(--texto); }

@@ -32,6 +32,56 @@
     }
     return caja;
   }
+  /* ---------- Diálogo "Producto de pago" antes de descargar (entradas con pago) ---------- */
+  var dlgPago = null, dlgPagoOrigen = null;
+  function cerrarDialogoPago() {
+    if (!dlgPago) return;
+    if (dlgPago.open && typeof dlgPago.close === 'function') dlgPago.close();
+    else dlgPago.removeAttribute('open');
+    if (dlgPagoOrigen && document.contains(dlgPagoOrigen)) dlgPagoOrigen.focus();
+    dlgPagoOrigen = null;
+  }
+  function abrirDialogoPago(item, origen) {
+    if (!dlgPago) {
+      dlgPago = el('dialog', { clase: 'modal modal--pago', id: 'dialogoPago', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'dialogoPagoTitulo', 'aria-describedby': 'dialogoPagoTexto' });
+      var cerrar = el('button', { clase: 'btn-icono', type: 'button', 'aria-label': 'Cerrar' });
+      cerrar.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+      cerrar.addEventListener('click', cerrarDialogoPago);
+      dlgPago.appendChild(el('div', { clase: 'modal__caja dialogo-pago' }, [
+        el('div', { clase: 'modal__cabeza' }, [el('h3', { id: 'dialogoPagoTitulo', texto: 'Producto de pago' }), cerrar]),
+        el('div', { clase: 'dialogo-pago__cuerpo' }, [
+          el('p', { clase: 'dialogo-pago__texto', id: 'dialogoPagoTexto' }),
+          el('div', { clase: 'dialogo-pago__botones' }, [
+            el('a', { clase: 'btn btn--primario btn--bloque', id: 'dialogoPagoWhatsapp', target: '_blank', rel: 'noopener', texto: 'Comunicarse para adquirir' }),
+            el('a', { clase: 'btn btn--secundario btn--bloque', id: 'dialogoPagoDescarga', rel: 'noopener', texto: 'Continuar descarga' })
+          ])
+        ])
+      ]));
+      dlgPago.addEventListener('click', function (e) { if (e.target === dlgPago) cerrarDialogoPago(); }); // tocar fuera
+      dlgPago.addEventListener('cancel', function (e) { e.preventDefault(); cerrarDialogoPago(); }); // Esc
+      dlgPago.addEventListener('keydown', function (e) { // foco dentro del diálogo
+        if (e.key === 'Escape') { e.preventDefault(); cerrarDialogoPago(); return; }
+        if (e.key !== 'Tab') return;
+        var f = dlgPago.querySelectorAll('button, a[href]');
+        var primero = f[0], ultimo = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+        else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+      });
+      dlgPago.querySelector('#dialogoPagoWhatsapp').addEventListener('click', cerrarDialogoPago);
+      dlgPago.querySelector('#dialogoPagoDescarga').addEventListener('click', function () { setTimeout(cerrarDialogoPago, 0); });
+      document.body.appendChild(dlgPago);
+    }
+    dlgPago.querySelector('#dialogoPagoTexto').textContent = item.pago.texto || ('Para adquirir la app ' + item.nombre + ' se necesita pagar.');
+    var wa = dlgPago.querySelector('#dialogoPagoWhatsapp');
+    if (item.pago.whatsapp) { wa.setAttribute('href', item.pago.whatsapp); wa.hidden = false; } else { wa.removeAttribute('href'); wa.hidden = true; }
+    var d = dlgPago.querySelector('#dialogoPagoDescarga');
+    d.setAttribute('href', item.descarga);
+    if (/\.(apk|zip|exe|deb|appimage|msi|tar\.gz)$/i.test(item.descarga)) d.setAttribute('download', ''); else d.removeAttribute('download');
+    dlgPagoOrigen = origen || document.activeElement;
+    if (typeof dlgPago.showModal === 'function') dlgPago.showModal();
+    else dlgPago.setAttribute('open', '');
+    (wa.hidden ? d : wa).focus();
+  }
   function normalizar(s) {
     return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
@@ -290,6 +340,10 @@
       } else {
         a.setAttribute('rel', 'noopener');
         if (/\.(apk|zip|exe|deb|appimage|msi|tar\.gz)$/i.test(item.descarga)) a.setAttribute('download', '');
+        if (item.pago) { // producto de pago: primero el aviso, luego (si quiere) la descarga
+          a.setAttribute('aria-haspopup', 'dialog');
+          a.addEventListener('click', function (e) { e.preventDefault(); abrirDialogoPago(item, a); });
+        }
       }
       cuerpo.appendChild(a);
       if (item.pago) cuerpo.appendChild(avisoPago(item.pago, 'App ' + item.nombre));
