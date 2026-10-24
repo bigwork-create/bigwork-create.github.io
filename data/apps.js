@@ -301,14 +301,14 @@ window.CATALOGO = {
           version: "1.0.1",
           archivo: "AsistenciaXQR-1.0.1-windows.zip",
           tamano: "47.6 MB",
-          descarga: "https://github.com/bigwork-create/punto-asistencia-pc/releases/download/v1.0.1/AsistenciaXQR-1.0.1-windows.zip",
+          descarga: "#", // producto de pago: sin enlace público al .zip
           textoBoton: "Descargar programa para Windows (.zip)",
+          pago: { texto: "Para adquirir el programa Asistencia x QR (PC) se necesita pagar.", whatsapp: "https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20adquirir%20el%20programa%20Asistencia%20x%20QR%20(PC)%20de%20Fhuture%27S" },
           sha256: "6ed6846e2a5b2b7189ef9d93b0a3609cc120bc216931334f840bf20fda952bfc"
         }
       ],
       releaseFuentes: [
-        { repo: "bigwork-create/bigwork-create.github.io", prefijos: ["asistenciaxqr-", "punto-"] }, // incluye la versión antigua (app Punto)
-        { repo: "bigwork-create/punto-asistencia-pc", prefijos: [""] }
+        { repo: "bigwork-create/bigwork-create.github.io", prefijos: ["asistenciaxqr-", "punto-"] } // incluye la versión antigua (app Punto); punto-asistencia-pc ahora es privado
       ],
       virustotal: null,
       permisos: [
