@@ -291,7 +291,7 @@ window.CATALOGO = {
           version: "1.0.1",
           archivo: "AsistenciaXQR-1.0.1.apk",
           tamano: "17.0 MB",
-          descarga: "https://github.com/bigwork-create/bigwork-create.github.io/releases/download/asistenciaxqr-app-v1.0.1/AsistenciaXQR-1.0.1.apk",
+          descarga: "#", // producto de pago: sin enlace público al APK
           textoBoton: "Descargar app Asistencia x QR (APK)",
           pago: { texto: "Para adquirir la app Asistencia x QR se necesita pagar.", whatsapp: "https://wa.me/51907523553?text=Hola%20Hubert%2C%20quiero%20adquirir%20la%20app%20Asistencia%20x%20QR%20de%20Fhuture%27S" },
           sha256: "6a530e7567edfe1e271ff19440d7fe90a84bb27ec92dba72f93583ab2ea5de70"

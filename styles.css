@@ -469,3 +469,7 @@ a.producto__accion { background: #25D366; border-color: #25D366; color: #fff; }
 @media (max-width: 800px) { .tienda-web { grid-template-columns: 1fr; } }
 
 .tienda-productos__titulo { margin: 2.5rem 0 1rem; font-size: 1.3rem; }
+
+/* Parche 2026-10-24: áreas táctiles mínimas de 44px */
+.galeria__item { min-width: 44px; min-height: 44px; }
+.pie__enlaces a, .pie__fila a, .pie__compartir { display: inline-flex; align-items: center; min-height: 44px; }

@@ -268,7 +268,8 @@
       item.capturas.forEach(function (src, i) {
         galeria.appendChild(el('a', {
           clase: 'galeria__item', href: src, target: '_blank', rel: 'noopener',
-          title: 'Ver captura ' + (i + 1) + ' en tamaño completo'
+          title: 'Ver captura ' + (i + 1) + ' en tamaño completo',
+          'aria-label': 'Ver captura ' + (i + 1) + ' de ' + item.nombre + ' en tamaño completo'
         }, [el('img', {
           src: src, alt: 'Captura ' + (i + 1) + ' de ' + item.nombre,
           loading: 'lazy', decoding: 'async', width: '135', height: '300'
