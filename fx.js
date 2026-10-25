@@ -214,25 +214,102 @@
     });
   }
 
-  /* ===== Tarjetas: inclinación 3D + holograma + foco en la cuadrícula ===== */
+  /* ===== Tarjetas 3D v2: ratón + dedo + giroscopio, todo agrupado en un solo rAF ===== */
   function tarjetas() {
-    if (!finoPuntero) return; // en táctil no se inclina (evita tirones al hacer scroll)
-    var activa = null;
+    var SEL = '.tarjeta, .tienda-web';
+    // mesh gradient detrás de las secciones con tarjetas
+    ['aplicaciones', 'software', 'app-programa', 'tienda'].forEach(function (id, k) {
+      var s = doc.getElementById(id); if (!s) return;
+      var m = doc.createElement('div'); m.className = 'fx-mesh' + (k % 2 ? ' fx-mesh--b' : ''); m.setAttribute('aria-hidden', 'true');
+      s.insertBefore(m, s.firstChild);
+    });
+    // cinta decorativa (nombre + versión) que se revela sobre la captura
+    function cintas(scope) {
+      scope.querySelectorAll('.tarjeta').forEach(function (t) {
+        var cap = t.querySelector('.tarjeta__captura'); if (!cap || cap.querySelector('.fx-cinta')) return;
+        var n = t.querySelector('.tarjeta__nombre'), v = t.querySelector('.version');
+        var c = doc.createElement('span'); c.className = 'fx-cinta'; c.setAttribute('aria-hidden', 'true');
+        var b = doc.createElement('b'); b.textContent = n ? n.textContent : ''; c.appendChild(b);
+        var i = doc.createElement('i'); i.textContent = v ? v.textContent : ''; c.appendChild(i);
+        cap.appendChild(c);
+      });
+    }
+    cintas(doc);
+    var cintaPend = 0;
+    new MutationObserver(function (ms) {
+      if (cintaPend || !ms.some(function (m) { return Array.prototype.some.call(m.addedNodes, function (n) { return n.nodeType === 1 && !n.classList.contains('fx-cinta') && !n.classList.contains('fx-onda'); }); })) return;
+      cintaPend = requestAnimationFrame(function () { cintaPend = 0; cintas(doc); });
+    }).observe(doc.getElementById('contenido') || doc.body, { childList: true, subtree: true });
+
+    var estado = new Map(), pend = new Set(), rafId = 0;
+    function st(t) { var s = estado.get(t); if (!s) { s = { x: .5, y: .5, on: 0, prox: 0, fuente: '' }; estado.set(t, s); } return s; }
+    function pedir(t) { pend.add(t); if (!rafId) rafId = requestAnimationFrame(pintar); }
+    function pintar() {
+      rafId = 0;
+      pend.forEach(function (t) {
+        var s = st(t), big = t.classList.contains('tienda-web') ? .45 : 1;
+        var px = (s.x - .5) * 2, py = (s.y - .5) * 2, k = s.on;
+        var st_ = t.style;
+        st_.setProperty('--rx', (-py * 6 * big * k).toFixed(2) + 'deg');
+        st_.setProperty('--ry', (px * 8 * big * k).toFixed(2) + 'deg');
+        st_.setProperty('--px', (px * k).toFixed(3)); st_.setProperty('--py', (py * k).toFixed(3));
+        st_.setProperty('--mx', (s.x * 100).toFixed(1) + '%'); st_.setProperty('--my', (s.y * 100).toFixed(1) + '%');
+        st_.setProperty('--ang', (Math.atan2(py, px) * 57.3 + 90).toFixed(1) + 'deg');
+        st_.setProperty('--prox', s.prox.toFixed(2)); st_.setProperty('--on', k);
+      });
+      pend.clear();
+    }
+    function mover(t, cx, cy, fuente) {
+      var b = t.getBoundingClientRect(), s = st(t);
+      s.x = Math.min(1, Math.max(0, (cx - b.left) / b.width)); s.y = Math.min(1, Math.max(0, (cy - b.top) / b.height));
+      var dx = Math.abs(s.x - .5) * 2, dy = Math.abs(s.y - .5) * 2;
+      s.prox = 1 - Math.max(dx, dy) * .55; s.on = 1; s.fuente = fuente;
+      t.classList.add('fx-tilt'); pedir(t);
+    }
+    function soltar(t) { var s = st(t); s.on = 0; s.prox = 0; s.x = s.y = .5; s.fuente = ''; t.classList.remove('fx-tilt', 'fx-activa'); pedir(t); }
+
+    // Ratón
+    var actual = null;
     doc.addEventListener('pointermove', function (e) {
       var g = e.target.closest && e.target.closest('.grid');
-      if (g) { var gb = g.getBoundingClientRect(); g.style.setProperty('--gx', (e.clientX - gb.left) + 'px'); g.style.setProperty('--gy', (e.clientY - gb.top) + 'px'); }
-      var t = e.target.closest && e.target.closest('.tarjeta');
-      if (activa && activa !== t) soltar(activa);
-      if (!t) return; activa = t;
-      var b = t.getBoundingClientRect(), x = (e.clientX - b.left) / b.width, y = (e.clientY - b.top) / b.height;
-      t.classList.add('fx-tilt');
-      t.style.setProperty('--rx', ((.5 - y) * 9).toFixed(2) + 'deg');
-      t.style.setProperty('--ry', ((x - .5) * 11).toFixed(2) + 'deg');
-      t.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); t.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-      t.style.setProperty('--hx', (x * 100).toFixed(1) + '%'); t.style.setProperty('--hy', (y * 100).toFixed(1) + '%');
+      if (g && e.pointerType === 'mouse') { var gb = g.getBoundingClientRect(); g.style.setProperty('--gx', (e.clientX - gb.left) + 'px'); g.style.setProperty('--gy', (e.clientY - gb.top) + 'px'); }
+      var t = e.target.closest && e.target.closest(SEL);
+      if (actual && actual !== t) { soltar(actual); actual = null; }
+      if (!t || e.target.closest('.modal')) return;
+      if (e.pointerType !== 'mouse' && !dedo) return;
+      actual = t; mover(t, e.clientX, e.clientY, e.pointerType);
     }, { passive: true });
-    function soltar(t) { t.classList.remove('fx-tilt'); t.style.setProperty('--rx', '0deg'); t.style.setProperty('--ry', '0deg'); activa = null; }
-    doc.addEventListener('pointerleave', function () { if (activa) soltar(activa); });
+    doc.addEventListener('pointerleave', function () { if (actual) { soltar(actual); actual = null; } });
+
+    // Dedo: inclina mientras el dedo está sobre la tarjeta (el scroll sigue funcionando)
+    var dedo = false;
+    doc.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse') return;
+      var t = e.target.closest && e.target.closest(SEL); if (!t) return;
+      dedo = true; actual = t; t.classList.add('fx-activa'); mover(t, e.clientX, e.clientY, 'touch');
+    }, { passive: true });
+    function finDedo() { if (!dedo) return; dedo = false; var t = actual; actual = null; if (t) setTimeout(function () { soltar(t); }, 450); }
+    doc.addEventListener('pointerup', finDedo, { passive: true });
+    doc.addEventListener('pointercancel', finDedo, { passive: true });
+
+    // Giroscopio suave en Android (sin pedir permisos: en iOS se omite)
+    if (!finoPuntero && 'DeviceOrientationEvent' in window && typeof DeviceOrientationEvent.requestPermission !== 'function') {
+      var visibles = new Set(), base = null, ultimo = 0;
+      var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) visibles.add(e.target); else visibles.delete(e.target); }); }, { threshold: .25 });
+      function observar() { doc.querySelectorAll(SEL).forEach(function (t) { if (!t.__fxg) { t.__fxg = 1; io.observe(t); } }); }
+      observar(); setTimeout(observar, 2000); setTimeout(observar, 6000);
+      addEventListener('deviceorientation', function (e) {
+        if (e.beta == null || doc.hidden) return;
+        var ahora = performance.now(); if (ahora - ultimo < 50) return; ultimo = ahora; // máx. ~20 por segundo
+        if (!base) base = { b: e.beta, g: e.gamma };
+        base.b += (e.beta - base.b) * .02; base.g += (e.gamma - base.g) * .02; // se acomoda a cómo sostienes el celular
+        var gx = Math.max(-1, Math.min(1, (e.gamma - base.g) / 25)), gy = Math.max(-1, Math.min(1, (e.beta - base.b) / 25));
+        visibles.forEach(function (t) {
+          var s = st(t); if (s.fuente === 'touch') return;
+          s.x = .5 + gx * .5; s.y = .5 + gy * .5; s.on = .55; s.prox = .35 + Math.max(Math.abs(gx), Math.abs(gy)) * .5; s.fuente = 'gyro'; pedir(t);
+        });
+      }, { passive: true });
+    }
   }
 
   /* ===== Botones magnéticos + onda al tocar ===== */
